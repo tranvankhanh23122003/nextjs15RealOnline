@@ -7,9 +7,10 @@ import iconBang from "../../assets/images/Ico_banghangduan.png";
 import iconBangdoso from "../../assets/images/Icon_bandoso.png";
 import iconXemnha from "../../assets/images/Icon_xemnhathucteao.png";
 import BookingModal from "../DatCho_LienHe/BookingModal";
-
+import Booking_TuVan from "../DatCho_LienHe/Booking_TuVan";
 const Services_section = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isTuVanOpen, setIsTuVanOpen] = useState(false);
   const services = [  
     {
       id: 1,
@@ -60,6 +61,7 @@ const Services_section = () => {
                 className="flex flex-col items-center group cursor-pointer"
                 onClick={() => {
                   if (service.id === 1) setIsBookingOpen(true);
+                  if (service.id === 2) setIsTuVanOpen(true);
                 }}
               >
 
@@ -92,6 +94,7 @@ const Services_section = () => {
         </div>
       </div>
       <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+      <Booking_TuVan isOpen={isTuVanOpen} onClose={() => setIsTuVanOpen(false)} />
     </section>
   );
 };

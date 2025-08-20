@@ -9,6 +9,7 @@ import testImage from "../../assets/images/Bg_test.png";
 import imageTest from "../../assets/images/ImageTest.png";
 import logoTDC from "../../assets/images/Logo.png";
 import BookingModal from "../DatCho_LienHe/BookingModal";
+import Booking_TuVan from "../DatCho_LienHe/Booking_TuVan";
 interface ProjectCard {
   id: number;
   name: string;
@@ -23,6 +24,7 @@ const List_TDC = () => {
   const [sortBy, setSortBy] = useState("Phù hợp nhất");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isTuVanOpen, setIsTuVanOpen] = useState(false);
   const router = useRouter();
   const sortOptions = [
     "Phù hợp nhất",
@@ -215,7 +217,7 @@ const List_TDC = () => {
               <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-medium transition-colors" onClick={() => setIsBookingOpen(true)}>
                 Đăng ký tham quan
               </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 rounded-lg font-medium transition-colors">
+              <button className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 rounded-lg font-medium transition-colors" onClick={() => setIsTuVanOpen(true)}>
                 Liên hệ tư vấn
               </button>
             </div>
@@ -223,6 +225,7 @@ const List_TDC = () => {
         </div>
       </div>
       <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+      <Booking_TuVan isOpen={isTuVanOpen} onClose={() => setIsTuVanOpen(false)} />
     </div>
   );
 };
