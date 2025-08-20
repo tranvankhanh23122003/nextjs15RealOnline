@@ -1,0 +1,211 @@
+.duan-slider-container {
+  width: 100vw;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.duan-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.duan-slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.duan-top-left-text {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  font-size: 1em;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.duan-back-link {
+  color: #f47f29;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.duan-back-link:hover {
+  text-decoration: underline;
+}
+
+.duan-bottom-left-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.duan-bottom-left-text h3 {
+  font-size: 1.5em;
+  margin: 0;
+  font-weight: bold;
+}
+
+.duan-bottom-left-text p {
+  font-size: 1em;
+  margin: 5px 0 0;
+  font-weight: normal;
+}
+
+/* Album ảnh nhỏ */
+.duan-album-controls {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  flex-wrap: nowrap;
+}
+
+.duan-album {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1260px;
+  position: relative;
+  flex-grow: 1;
+}
+
+.duan-album-inner {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.5s ease;
+  will-change: transform;
+  min-width: max-content;
+}
+
+.duan-album-inner img {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.duan-album-inner img:hover {
+  transform: scale(1.05);
+}
+
+.duan-album-inner img.duan-active {
+  border-color: #f47f29;
+  transform: scale(1.1);
+}
+
+.duan-control-btn {
+  background-color: rgba(0, 0, 0, 0.6);
+
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.duan-control-btn:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.duan-image-count-overlay {
+  width: 50px;
+  height: 50px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.6);
+  
+  flex-shrink: 0;
+}
+
+.duan-image-count-overlay:hover {
+  color: #f47f29;
+}
+
+.duan-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.duan-dropdown-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.duan-dropdown-image:hover {
+  border-color: #f47f29;
+}
+
+.duan-fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.duan-fullscreen-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.duan-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #f47f29;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.duan-close-btn:hover {
+  background-color: #e07020;
+}

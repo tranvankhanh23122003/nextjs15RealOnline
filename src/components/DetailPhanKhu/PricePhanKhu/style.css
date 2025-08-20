@@ -1,0 +1,242 @@
+.price-table-container {
+  width: 100%; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  margin-bottom: 20px;
+  padding: 24px 40px; 
+  font-family: Arial, sans-serif;
+  background-color: #F7EFE4; /* Màu nền be nhạt */
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+}
+
+/* Tiêu đề bảng giá */
+.price-table-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #374151;
+  margin: 0 0 20px 0; /* Loại bỏ margin trái/phải, chỉ giữ margin dưới */
+  text-align: center;
+}
+
+/* Wrapper bảng */
+.price-table-wrapper {
+  overflow-x: auto;
+  padding: 0; /* Đảm bảo không thêm padding thừa */
+}
+
+/* Bảng giá */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.price-and-unit-title {
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto 16px auto; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+.price-and-unit-title h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #374151;
+  margin: 0;
+}
+.price-table th,
+.price-table td {
+  padding: 12px 16px; /* Đồng bộ padding với container để thẳng hàng */
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.price-table th {
+  background-color: #f9fafb;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.price-table td {
+  font-size: 0.95rem;
+}
+
+/* Button liên hệ */
+.contact-button {
+  background-color: #f59e0b;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #e58e00;
+}
+
+/* Modal liên hệ */
+.contact-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #ffffff; /* Modal giữ nền trắng để nổi bật */
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #374151;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.submit-button {
+  background-color: #f59e0b;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #e58e00;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .price-table-container {
+    padding: 16px 20px; /* Giảm padding trái/phải */
+    max-width: 100%; /* Full width trên mobile */
+    margin: 0 10px; /* Khoảng trắng nhỏ hơn */
+  }
+
+  .price-table-title {
+    font-size: 1.5rem;
+  }
+
+  .price-table th,
+  .price-table td {
+    padding: 10px 12px; /* Đồng bộ padding */
+    font-size: 0.9rem;
+  }
+
+  .contact-button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .modal-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .price-table-container {
+    padding: 12px 16px; /* Giảm padding hơn nữa */
+    margin: 0 8px; /* Khoảng trắng nhỏ hơn */
+  }
+
+  .price-table-title {
+    font-size: 1.3rem;
+  }
+
+  .price-table th,
+  .price-table td {
+    padding: 8px 10px; /* Đồng bộ padding */
+    font-size: 0.85rem;
+  }
+
+  .contact-button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+
+  .form-group input {
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+
+  .submit-button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}

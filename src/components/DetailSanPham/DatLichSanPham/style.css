@@ -1,0 +1,216 @@
+/* style.css */
+
+/* DatLichSanPham styles */
+.sanpham-content-right {
+  flex: 0 0 30%;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  height: 100%;
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.sanpham-content-right h3 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.sanpham-best-price {
+  background-color: #f3f4f6;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sanpham-best-price .label {
+  font-size: 0.9em;
+  color: #6b7280;
+}
+
+.sanpham-best-price .price {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #111827;
+}
+
+.sanpham-best-price .price-original {
+  font-size: 0.9em;
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.sanpham-date-pick {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.sanpham-date-pick button {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #cbd5e1;
+  background-color: #fff;
+  border-radius: 6px;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sanpham-date-pick button:hover {
+  background-color: #f0f9ff;
+  border-color: #3b82f6;
+  color: #2563eb;
+}
+
+.sanpham-booking-btn {
+  width: 100%;
+  background-color: #1f2937;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.95em;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.2s ease;
+}
+
+.sanpham-booking-btn:hover {
+  background-color: #111827;
+}
+
+.sanpham-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.add-to-cart,
+.buy-now {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #f47f29;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+.add-to-cart {
+  background-color: #fff;
+  color: #f47f29;
+}
+
+.add-to-cart:hover {
+  background-color: #fff7ed;
+}
+
+.buy-now {
+  background-color: #f47f29;
+  color: white;
+}
+
+.buy-now:hover {
+  background-color: #e07020;
+}
+
+/* Modal styles */
+.sanpham-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.sanpham-modal-container {
+  background-color: #ffffff; /* Nền trắng duy nhất */
+  border-radius: 16px;
+  max-width: 600px; /* Tăng từ 500px */
+  width: 90%;
+  min-height: 500px; /* Tăng từ 400px */
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.sanpham-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  max-width: 400px; /* Tăng từ 300px để chứa hình lớn hơn */
+  background-color: transparent; /* Không có nền trắng */
+}
+
+.sanpham-modal-image {
+  width: 200px; /* Tăng từ 120px để hiển thị hình lớn hơn */
+  max-width: 100%; /* Đảm bảo không vượt quá container */
+  height: auto; /* Giữ tỷ lệ hình, tránh cắt */
+  border-radius: 8px;
+}
+
+.sanpham-modal-text {
+  font-size: 1.25rem; /* Giữ 20px, nhỏ hơn 24px trước đó */
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0;
+}
+
+.sanpham-modal-login-btn {
+  width: 100%;
+  background-color: #3b82f6;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sanpham-modal-login-btn:hover {
+  background-color: #2563eb;
+}
+
+.sanpham-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sanpham-modal-close svg {
+  width: 24px;
+  height: 24px;
+  stroke: #6b7280;
+}
+
+.sanpham-modal-close:hover svg {
+  stroke: #374151;
+}

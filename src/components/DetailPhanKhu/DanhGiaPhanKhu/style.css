@@ -1,0 +1,350 @@
+/* Container chính cho form đánh giá */
+.reviews-form-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Card bao quanh toàn bộ form */
+.reviews-form-card {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header (tiêu đề + điểm 4.9) */
+.reviews-form-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #d1d5db;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Điểm đánh giá 4.9 */
+.reviews-form-rating {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #f59e0b;
+  background-color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+/* Tiêu đề chính */
+.reviews-form-title {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0;
+}
+
+/* Nội dung đánh giá */
+.reviews-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Mỗi mục đánh giá */
+.review-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 15px 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.review-item:first-child {
+  border-top: none;
+}
+
+/* Avatar */
+.review-item-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-item-avatar:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Chi tiết đánh giá */
+.review-item-details {
+  flex: 1;
+}
+
+/* Tên và mô tả khách hàng */
+.review-item-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0 0 5px;
+}
+
+.review-item-name h3 {
+  margin: 0;
+}
+
+.review-item-description {
+  font-size: 0.9em;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Đánh giá sao */
+.review-item-rating {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.star {
+  font-size: 1.2em;
+  color: #d1d5db;
+}
+
+.star.filled {
+  color: #f59e0b;
+}
+
+/* Nội dung bình luận */
+.review-item-comment {
+  font-size: 1em;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Footer (slide + nội dung) */
+.reviews-form-footer {
+  margin-top: 20px;
+}
+
+/* Slide */
+.footer-slide {
+  position: relative;
+  width: 100%;
+}
+
+.slide-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.slide-prev,
+.slide-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.2em;
+  border-radius: 4px;
+}
+
+.slide-prev {
+  left: 10px;
+}
+
+.slide-next {
+  right: 10px;
+}
+
+/* Nội dung footer (trong slide) */
+.footer-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(27, 52, 89, 0.85); /* #1B3459 với độ trong suốt */
+  padding: 20px;
+  border-radius: 0 0 8px 8px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+  max-width: 50%;
+}
+
+.footer-stats {
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+
+.stats-text {
+  font-size: 1.1em;
+  margin: 0 0 10px;
+}
+
+.stats-button {
+  background-color: #f59e0b;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.stats-button:hover {
+  background-color: #e58e00;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .reviews-form-container {
+    padding: 0 15px;
+  }
+
+  .reviews-form-card {
+    padding: 20px;
+  }
+
+  .reviews-form-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .reviews-form-rating {
+    font-size: 1.6em;
+    padding: 6px 10px;
+  }
+
+  .reviews-form-title {
+    font-size: 1.4em;
+  }
+
+  .review-item {
+    gap: 15px;
+  }
+
+  .review-item-avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .review-item-name {
+    font-size: 1.1em;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .review-item-description {
+    font-size: 0.85em;
+  }
+
+  .slide-image {
+    height: 250px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .footer-text {
+    max-width: 100%;
+    font-size: 1.1em;
+  }
+
+  .footer-stats {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-form-container {
+    padding: 0 10px;
+  }
+
+  .reviews-form-card {
+    padding: 15px;
+  }
+
+  .reviews-form-rating {
+    font-size: 1.4em;
+    padding: 5px 8px;
+  }
+
+  .reviews-form-title {
+    font-size: 1.2em;
+  }
+
+  .review-item {
+    gap: 12px;
+  }
+
+  .review-item-avatar {
+    width: 75px;
+    height: 75px;
+  }
+
+  .review-item-name {
+    font-size: 1em;
+  }
+
+  .review-item-description {
+    font-size: 0.8em;
+  }
+
+  .star {
+    font-size: 1em;
+  }
+
+  .review-item-comment {
+    font-size: 0.95em;
+  }
+
+  .slide-image {
+    height: 200px;
+  }
+
+  .footer-text {
+    font-size: 1em;
+  }
+
+  .stats-text {
+    font-size: 1em;
+  }
+
+  .stats-button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+}

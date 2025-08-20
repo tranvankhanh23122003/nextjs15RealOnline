@@ -1,0 +1,126 @@
+/* Tổng container */
+.phan-khu-amenities-list {
+    padding: 20px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+  
+  /* Một hàng tiện ích */
+  .phan-khu-amenity-row {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  
+  /* Cột trái: tên nhóm tiện ích */
+  .phan-khu-category-title {
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #374151;
+    white-space: nowrap;
+  }
+  
+  /* Ảnh nhóm tiện ích */
+  .phan-khu-category-image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  /* Cột phải: danh sách tiện ích con */
+  .phan-khu-category-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Một tiện ích con */
+  .phan-khu-category-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #374151;
+  }
+  
+  /* Ảnh tiện ích con */
+  .phan-khu-item-image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  /* Tên tiện ích con */
+  .phan-khu-item-name {
+    font-size: 1rem;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+  
+  /* Gạch phân chia giữa các nhóm */
+  .phan-khu-divider {
+    border: none;
+    border-top: 1px solid #000;
+  }
+  
+  /* Tablet */
+  @media (max-width: 768px) {
+    .phan-khu-amenity-row {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .phan-khu-category-title {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+  
+    .phan-khu-category-content {
+      align-items: center;
+    }
+  
+    .phan-khu-category-image,
+    .phan-khu-item-image {
+      width: 28px;
+      height: 28px;
+    }
+  
+    .phan-khu-item-name {
+      font-size: 0.95rem;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 480px) {
+    .phan-khu-amenities-list {
+      padding: 12px;
+      gap: 16px;
+    }
+  
+    .phan-khu-category-title {
+      font-size: 0.95rem;
+    }
+  
+    .phan-khu-item-name {
+      font-size: 0.85rem;
+    }
+  
+    .phan-khu-category-image,
+    .phan-khu-item-image {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  

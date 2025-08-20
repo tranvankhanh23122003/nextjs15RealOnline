@@ -1,0 +1,125 @@
+.sanpham-content-left {
+    flex: 0 0 70%;
+    padding: 20px;
+  
+  }
+
+  
+  .sanpham-status-tag {
+    display: inline-block;
+    background-color: #22c55e;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .sanpham-location {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.95em;
+    color: #6b7280;
+    margin: 10px 0;
+  }
+  
+  .sanpham-note {
+    font-size: 0.9em;
+    color: #374151;
+    margin-bottom: 20px;
+  }
+  
+  .sanpham-note a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+  
+  /* Box giá */
+  .sanpham-pricing-boxes {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .sanpham-price-box {
+    flex: 1;
+    border: 1px solid #d1d5db;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #f9fafb;
+  }
+  
+  .sanpham-price-box.highlight {
+    border-color: #f47f29;
+    background-color: #fff7ed;
+  }
+  
+  .sanpham-price-box .label {
+    font-size: 0.9em;
+    color: #f97316;
+    font-weight: bold;
+  }
+  
+  .sanpham-price-box .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .sanpham-price-box .note {
+    font-size: 0.85em;
+    color: #6b7280;
+  }
+  
+  /* Chiết khấu */
+  .form-discount{
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    padding: 20px;
+  }
+  .sanpham-discount-box {
+    background-color: #ecfdf5;
+    border-left: 4px solid #10b981;
+    padding: 15px;
+    border-radius: 6px;
+    color: #065f46;
+    font-size: 0.9em;
+  }
+  
+  .sanpham-discount-highlight {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .sanpham-discount-value {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ef4444;
+    margin-bottom: 5px;
+  }
+  
+  .sanpham-discounted-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .sanpham-original-price {
+    font-size: 0.85em;
+    text-decoration: line-through;
+    color: #9ca3af;
+  }
+  
+  .sanpham-discount-percentage {
+    font-size: 0.85em;
+    background-color: #22c55e;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  

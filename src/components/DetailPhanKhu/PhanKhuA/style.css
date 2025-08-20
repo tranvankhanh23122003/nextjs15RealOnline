@@ -1,0 +1,66 @@
+.phanKhuA-container {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px;
+}
+
+.phanKhuA-card {
+  width: calc((100% - 40px) / 3); 
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+  
+  .phanKhuA-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+  
+  .phanKhuA-label {
+    color: #888;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+ 
+  
+  .phanKhuA-button {
+    background-color: #f47f29;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .phanKhuA-button:hover {
+    background-color: #e56b1a;
+  }
+  
+  @media (max-width: 1024px) {
+    .phanKhuA-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .phanKhuA-card {
+      width: 45%;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .phanKhuA-card {
+      width: 100%;
+    }
+  }
+  

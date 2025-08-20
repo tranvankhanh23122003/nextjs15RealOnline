@@ -1,0 +1,222 @@
+.profile-property-grid-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.profile-property-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .profile-property-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile-property-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.profile-property-card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.profile-property-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-property-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  position: relative;
+}
+
+.profile-price-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background-color: #f97316;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.profile-favorite-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 9999px;
+  padding: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.profile-favorite-button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.profile-property-content {
+  padding: 1rem;
+}
+
+.profile-property-stars {
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.profile-property-description {
+  font-size: 0.875rem;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.profile-property-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+}
+
+.profile-property-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap; /* Không cho xuống dòng */
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
+.profile-property-address {
+  font-size: 0.75rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .profile-property-grid-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .profile-property-grid {
+    gap: 1rem;
+  }
+
+  .profile-property-image {
+    height: 10rem;
+  }
+
+  .profile-price-badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .profile-favorite-button {
+    padding: 0.2rem;
+  }
+
+  .profile-property-content {
+    padding: 0.75rem;
+  }
+
+  .profile-property-description {
+    font-size: 0.8rem;
+  }
+
+  .profile-property-details {
+    gap: 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  .profile-property-address {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-property-grid-container {
+    padding: 0.75rem 0.25rem;
+  }
+
+  .profile-property-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .profile-property-image {
+    height: 8rem;
+  }
+
+  .profile-price-badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.3rem;
+  }
+
+  .profile-favorite-button {
+    padding: 0.15rem;
+  }
+
+  .profile-property-content {
+    padding: 0.5rem;
+  }
+
+  .profile-property-description {
+    font-size: 0.75rem;
+  }
+
+  .profile-property-details {
+    gap: 0.5rem;
+    font-size: 0.65rem;
+  }
+
+  .profile-property-address {
+    font-size: 0.65rem;
+  }
+}
+
+/* Phân trang */
+.profile-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.profile-pagination-btn {
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.profile-pagination-btn:hover {
+  background-color: #cbd5e0;
+}
+
+.profile-active-page {
+  background-color: #f97316;
+  color: white;
+}
+
+.profile-pagination-btn:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+}

@@ -1,0 +1,139 @@
+.loan-estimator h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #111827;
+  }
+  
+.loan-estimator {
+    margin-top: 30px;
+  }
+  
+  /* Bọc cả hai phần inputs và summary nằm ngang */
+  .loan-flex-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Inputs bên trái */
+  .loan-inputs {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  /* Summary bên phải */
+  .loan-summary {
+    flex: 1;
+    background-color: #fefce8;
+    border: 1px solid #facc15;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    color: #374151;
+  }
+  
+  .input-group {
+    position: relative;
+  }
+  
+  .input-group label {
+    display: block;
+    font-size: 0.9em;
+    color: #374151;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 8px 35px 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.9em;
+  }
+  
+  .input-group span {
+    position: absolute;
+    right: 10px;
+    top: 32px;
+    color: #6b7280;
+    font-size: 0.9em;
+  }
+  
+  .loan-note {
+    grid-column: span 2;
+    font-size: 0.85em;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .loan-detail-btn {
+    grid-column: span 2;
+    padding: 8px 12px;
+    border: 1px solid #1e40af;
+    background-color: white;
+    color: #1e40af;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .loan-detail-btn:hover {
+    background-color: #e0f2fe;
+  }
+  
+  .loan-summary .item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  .green {
+    background-color: #22c55e;
+  }
+  
+  .blue {
+    background-color: #2563eb;
+  }
+  
+  .yellow {
+    background-color: #eab308;
+  }
+  
+  .total {
+    font-weight: bold;
+    color: #b45309;
+    margin-top: 15px;
+    font-size: 1em;
+  }
+  
+  .total .amount {
+    font-size: 1.2em;
+    color: #b91c1c;
+    margin-top: 5px;
+  }
+  
+  .first-month {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  .first-month .amount {
+    font-size: 1.1em;
+    color: #111827;
+    margin-top: 5px;
+  }
+  

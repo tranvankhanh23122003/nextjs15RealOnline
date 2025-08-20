@@ -1,0 +1,97 @@
+/* Container toàn form */
+.phankhu-form-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  background-color: #f1f5f9; /* nền nhạt */
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  font-family: sans-serif;
+}
+
+.phankhu-form-title {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.phankhu-benefit-text {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.phankhu-form input {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Chính sách */
+.phankhu-consent-text {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin: 12px 0;
+}
+
+/* Button */
+.phankhu-form button {
+  width: 100%;
+  background-color: #2563eb;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.phankhu-form button:hover {
+  background-color: #1e40af;
+}
+
+/* Hoặc */
+.phankhu-or-text {
+  text-align: center;
+  margin: 16px 0;
+  color: #9ca3af;
+}
+
+/* Phần liên hệ */
+.phankhu-form-contact {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.phankhu-call-option,
+.phankhu-chat-option {
+  flex: 1;
+  background-color: #e5e7eb;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  color: #111827;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .phankhu-form-wrapper {
+    padding: 24px 16px;
+  }
+
+  .phankhu-form-contact {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

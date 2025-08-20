@@ -1,0 +1,39 @@
+.highlight-section {
+    margin-top: 20px;
+  }
+  
+  .highlight-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .highlight-section p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .extended-content p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .view-more {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .view-more:hover {
+    text-decoration: underline;
+  }
+  

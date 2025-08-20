@@ -1,0 +1,474 @@
+.duan-slider-container {
+  width: 100vw;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.duan-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.duan-slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.duan-top-left-text {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  font-size: 1em;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.duan-back-link {
+  color: #f47f29;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.duan-back-link:hover {
+  text-decoration: underline;
+}
+
+.duan-bottom-left-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.duan-bottom-left-text h3 {
+  font-size: 1.5em;
+  margin: 0;
+  font-weight: bold;
+}
+
+.duan-bottom-left-text p {
+  font-size: 1em;
+  margin: 5px 0 0;
+  font-weight: normal;
+}
+
+/* Album ảnh nhỏ */
+.duan-album-controls {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  flex-wrap: nowrap;
+}
+
+.duan-album {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1260px;
+  position: relative;
+  flex-grow: 1;
+}
+
+.duan-album-inner {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.5s ease;
+  will-change: transform;
+  min-width: max-content;
+}
+
+.duan-album-inner img {
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.duan-album-inner img:hover {
+  transform: scale(1.05);
+}
+
+.duan-album-inner img.duan-active {
+  border-color: #f47f29;
+  transform: scale(1.1);
+}
+
+.duan-control-btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.duan-control-btn:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.duan-image-count-overlay {
+  width: 50px;
+  height: 50px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+}
+
+.duan-image-count-overlay:hover {
+  color: #f47f29;
+}
+
+.duan-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.duan-dropdown-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.duan-dropdown-image:hover {
+  border-color: #f47f29;
+}
+
+.duan-fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.duan-fullscreen-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.duan-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #f47f29;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.duan-close-btn:hover {
+  background-color: #e07020;
+}
+
+/* Slider section */
+.phankhu-slider-section {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.phankhu-slider-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  gap: 20px;
+}
+
+.phankhu-slider-container {
+  flex: 0 0 60%;
+  height: 60vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.phankhu-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.phankhu-slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+  cursor: pointer;
+}
+
+/* Text trên slider */
+.phankhu-top-left-text {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  font-size: 1em;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.phankhu-back-link {
+  color: #f47f29;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.phankhu-back-link:hover {
+  text-decoration: underline;
+}
+
+.phankhu-bottom-left-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.phankhu-bottom-left-text h3 {
+  font-size: 1.5em;
+  margin: 0;
+  font-weight: bold;
+}
+
+.phankhu-bottom-left-text p {
+  font-size: 1em;
+  margin: 5px 0 0;
+  font-weight: normal;
+}
+
+/* Nút điều khiển slider */
+.phankhu-control-btn {
+  border: 1px solid #f47f29;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  color: #f47f29;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.phankhu-control-btn.prev-btn {
+  left: 10px;
+}
+
+.phankhu-control-btn.next-btn {
+  right: 10px;
+}
+
+.phankhu-control-btn:hover {
+  color: white;
+  background-color: #f47f29;
+}
+
+/* Mini slides */
+.phankhu-mini-slides {
+  flex: 0 0 40%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  height: 60vh;
+}
+
+.phankhu-mini-slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.phankhu-mini-slide:hover {
+  border-color: #f47f29;
+}
+
+.phankhu-mini-slide.active {
+  border-color: #f47f29;
+}
+
+/* Icon section */
+.phankhu-icon-section {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.phankhu-icon-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.phankhu-icon-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.phankhu-icon-item:hover {
+  border-color: #f47f29;
+  color: #f47f29;
+}
+
+.phankhu-icon-item span {
+  font-size: 1em;
+  color: #374151;
+  text-align: center;
+}
+
+/* Thêm fullscreen overlay cho phankhu */
+.phankhu-fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.phankhu-fullscreen-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.phankhu-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #f47f29;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.phankhu-close-btn:hover {
+  background-color: #e07020;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .phankhu-slider-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .phankhu-slider-container,
+  .phankhu-mini-slides {
+    flex: none;
+    width: 100%;
+    height: 40vh;
+  }
+
+  .phankhu-mini-slides {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .phankhu-icon-wrapper {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .phankhu-icon-item {
+    flex: 0 0 calc(50% - 5px);
+  }
+}
+
+@media (max-width: 480px) {
+  .phankhu-slider-container,
+  .phankhu-mini-slides {
+    height: 30vh;
+  }
+
+  .phankhu-mini-slides {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .phankhu-control-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .phankhu-icon-item {
+    flex: 0 0 100%;
+  }
+}

@@ -1,0 +1,454 @@
+
+.profile-appointment-list {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .profile-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B3459;
+    margin-bottom: 20px;
+  }
+  
+  .profile-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Cho phép các nút filter xuống dòng trên màn hình nhỏ */
+  }
+  
+  .profile-filter-button {
+    padding: 8px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #1B3459;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .profile-filter-button:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .profile-table-container {
+    overflow-x: auto;
+  }
+  
+  .profile-appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-appointment-table th,
+  .profile-appointment-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .profile-appointment-table th {
+    background-color: #f9fafb;
+    font-weight: bold;
+    color: #1B3459;
+    font-size: 14px;
+  }
+  
+  .profile-appointment-table td {
+    font-size: 14px;
+    color: #374151;
+  }
+  
+  .profile-appointment-table tr {
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .profile-appointment-table tr:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .profile-request-detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .profile-request-detail-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .profile-request-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .profile-request-detail-header h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1B3459;
+  }
+  
+  .profile-close-button {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #374151;
+  }
+  
+  .profile-info-separator {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 16px 0;
+  }
+  
+  .profile-info-message {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #f3f4f6;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 20px;
+  }
+  
+  .profile-info-icon {
+    width: 24px;
+    height: 24px;
+    stroke: #1B3459;
+  }
+  
+  .profile-property-detail-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-property-image-container {
+    position: relative;
+    flex: 1;
+  }
+  
+  .profile-property-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .profile-price-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #1B3459;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .profile-favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .profile-property-content {
+    flex: 1;
+  }
+  
+  .profile-property-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .profile-property-description {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1B3459;
+    margin-bottom: 12px;
+  }
+  
+  .profile-property-details {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .profile-property-detail {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #374151;
+  }
+  
+  .profile-property-address {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .profile-request-detail-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .profile-contact-info,
+  .profile-general-info {
+    flex: 1;
+  }
+  
+  .profile-contact-info h3,
+  .profile-general-info h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1B3459;
+    margin-bottom: 12px;
+  }
+  
+  .profile-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .profile-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    color: #374151;
+  }
+  
+  .profile-info-item label {
+    font-weight: bold;
+    color: #1B3459;
+  }
+  
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 8px 0;
+  }
+  
+  .profile-expand-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+  }
+  
+  .profile-expand-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .profile-expand-icon {
+    width: 24px;
+    height: 24px;
+    color: #1B3459;
+    transition: transform 0.2s;
+  }
+  
+  .profile-expand-button[aria-expanded="true"] .profile-expand-icon {
+    transform: rotate(180deg);
+  }
+  
+  .profile-expanded-info {
+    margin-top: 12px;
+    padding: 12px;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profile-title {
+      font-size: 20px;
+    }
+  
+    .profile-filter-button {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  
+    .profile-appointment-table th,
+    .profile-appointment-table td {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .profile-request-detail-container {
+      width: 95%;
+      padding: 16px;
+    }
+  
+    .profile-request-detail-header h2 {
+      font-size: 18px;
+    }
+  
+    .profile-close-button {
+      font-size: 20px;
+    }
+  
+    .profile-property-detail-section {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .profile-property-image {
+      height: 150px;
+    }
+  
+    .profile-property-description {
+      font-size: 16px;
+    }
+  
+    .profile-property-details {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  
+    .profile-property-detail {
+      font-size: 12px;
+    }
+  
+    .profile-property-address {
+      font-size: 12px;
+    }
+  
+    .profile-request-detail-content {
+      flex-direction: column;
+      gap: 16px;
+    }
+  
+    .profile-contact-info h3,
+    .profile-general-info h3 {
+      font-size: 14px;
+    }
+  
+    .profile-info-item {
+      font-size: 12px;
+    }
+  
+    .profile-info-message {
+      font-size: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  
+    .profile-info-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-appointment-list {
+      padding: 10px;
+    }
+  
+    .profile-title {
+      font-size: 18px;
+    }
+  
+    .profile-filter-button {
+      font-size: 10px;
+      padding: 6px 8px;
+    }
+  
+    .profile-appointment-table th,
+    .profile-appointment-table td {
+      font-size: 10px;
+      padding: 6px;
+    }
+  
+    /* Ẩn một số cột trên mobile để bảng dễ đọc hơn */
+    .profile-appointment-table th:nth-child(3),
+    .profile-appointment-table td:nth-child(3),
+    .profile-appointment-table th:nth-child(4),
+    .profile-appointment-table td:nth-child(4) {
+      display: none;
+    }
+  
+    .profile-request-detail-container {
+      padding: 12px;
+    }
+  
+    .profile-request-detail-header h2 {
+      font-size: 16px;
+    }
+  
+    .profile-property-image {
+      height: 120px;
+    }
+  
+    .profile-price-badge {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+  
+    .profile-favorite-button {
+      padding: 4px;
+    }
+  
+    .profile-property-description {
+      font-size: 14px;
+    }
+  
+    .profile-property-address {
+      font-size: 10px;
+    }
+  
+    .profile-contact-info h3,
+    .profile-general-info h3 {
+      font-size: 12px;
+    }
+  
+    .profile-info-item {
+      font-size: 10px;
+    }
+  
+    .profile-avatar {
+      width: 32px;
+      height: 32px;
+    }
+  
+    .profile-expand-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }

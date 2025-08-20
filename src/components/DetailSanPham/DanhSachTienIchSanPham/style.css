@@ -1,0 +1,156 @@
+.san-pham-amenities-list {
+    padding: 20px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+  .san-pham-amenities-list h2 {
+    font-size: 2.0em;
+    font-weight: bold;
+  }
+  
+  /* Một hàng tiện ích */
+  .san-pham-amenity-row {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  
+  /* Cột trái: tên nhóm tiện ích */
+  .san-pham-category-title {
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #374151;
+    white-space: nowrap;
+  }
+  
+  /* Ảnh nhóm tiện ích */
+  .san-pham-category-image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  /* Cột phải: danh sách tiện ích con */
+  .san-pham-category-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Một tiện ích con */
+  .san-pham-category-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #374151;
+  }
+  
+  /* Ảnh tiện ích con */
+  .san-pham-item-image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  /* Tên tiện ích con */
+  .san-pham-item-name {
+    font-size: 1rem;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+  
+  /* Gạch phân chia giữa các nhóm */
+  .san-pham-divider {
+    border: none;
+    border-top: 1px solid #000;
+  }
+  
+  /* Nút xem thêm */
+  .san-pham-view-more {
+    padding: 0;
+    background: none;
+    color: #2563eb;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .san-pham-view-more:hover {
+    color: #1d4ed8;
+  }
+  
+  /* Tablet */
+  @media (max-width: 768px) {
+    .san-pham-amenity-row {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .san-pham-category-title {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+  
+    .san-pham-category-content {
+      align-items: center;
+    }
+  
+    .san-pham-category-image,
+    .san-pham-item-image {
+      width: 28px;
+      height: 28px;
+    }
+  
+    .san-pham-item-name {
+      font-size: 0.95rem;
+    }
+  
+    .san-pham-view-more {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 480px) {
+    .san-pham-amenities-list {
+      padding: 12px;
+      gap: 16px;
+    }
+  
+    .san-pham-category-title {
+      font-size: 0.95rem;
+    }
+  
+    .san-pham-item-name {
+      font-size: 0.85rem;
+    }
+  
+    .san-pham-category-image,
+    .san-pham-item-image {
+      width: 24px;
+      height: 24px;
+    }
+  
+    .san-pham-view-more {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+  }

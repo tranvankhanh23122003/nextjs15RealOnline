@@ -1,0 +1,401 @@
+.profile-price-info-section {
+    margin-top: 24px;
+  }
+  
+  .profile-price-info-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .profile-price-info-columns {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .profile-price-info-left,
+  .profile-price-info-right {
+    flex: 0 0 48%;
+  }
+  
+  .profile-price-info-left p,
+  .profile-price-info-right p {
+    margin: 5px 0;
+    font-size: 0.9em;
+  }
+  
+  .profile-price-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .profile-price-info-label {
+    font-weight: normal;
+    color: #000;
+  }
+  
+  .profile-price-info-value {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .profile-price-info-note {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 5px 0;
+  }
+  
+  .profile-price-info-note p {
+    margin: 2px 0;
+  }
+  
+  .profile-sanpham-content-right {
+    flex: 0 0 30%;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    height: 100%;
+    max-height: 450px;
+    overflow-y: auto;
+  }
+  
+  .profile-sanpham-content-right h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #1f2937;
+  }
+  
+  .profile-sanpham-best-price {
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-sanpham-best-price .label {
+    font-size: 0.9em;
+    color: #6b7280;
+  }
+  
+  .profile-sanpham-best-price .price {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #111827;
+  }
+  
+  .profile-sanpham-best-price .price-original {
+    font-size: 0.9em;
+    text-decoration: line-through;
+    color: #9ca3af;
+  }
+  
+  .profile-sanpham-date-pick {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .profile-sanpham-date-pick button {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #fff;
+    border-radius: 6px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .profile-sanpham-date-pick button:hover {
+    background-color: #f0f9ff;
+    border-color: #3b82f6;
+    color: #2563eb;
+  }
+  
+  .profile-sanpham-booking-btn {
+    width: 100%;
+    background-color: #1f2937;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.95em;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .profile-sanpham-booking-btn:hover {
+    background-color: #111827;
+  }
+  
+  .profile-sanpham-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .profile-add-to-cart,
+  .profile-buy-now {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #f47f29;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.95em;
+  }
+  
+  .profile-add-to-cart {
+    background-color: #fff;
+    color: #f47f29;
+  }
+  
+  .profile-add-to-cart:hover {
+    background-color: #fff7ed;
+  }
+  
+  .profile-buy-now {
+    background-color: #f47f29;
+    color: white;
+  }
+  
+  .profile-buy-now:hover {
+    background-color: #e07020;
+  }
+  
+  .profile-sanpham-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+  }
+  
+  .profile-sanpham-modal-container {
+    background-color: #ffffff;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 90%;
+    min-height: 500px;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .profile-sanpham-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+    max-width: 400px;
+    background-color: transparent;
+  }
+  
+  .profile-sanpham-modal-image {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .profile-sanpham-modal-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin: 0;
+  }
+  
+  .profile-sanpham-modal-login-btn {
+    width: 100%;
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .profile-sanpham-modal-login-btn:hover {
+    background-color: #2563eb;
+  }
+  
+  .profile-sanpham-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-sanpham-modal-close svg {
+    width: 24px;
+    height: 24px;
+    stroke: #6b7280;
+  }
+  
+  .profile-sanpham-modal-close:hover svg {
+    stroke: #374151;
+  }
+  
+  .profile-order-detail-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .profile-order-detail-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 16px;
+  }
+  
+  .profile-order-detail-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 24px;
+  }
+  
+  .profile-order-detail-content {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+  
+  .profile-order-detail-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .profile-order-detail-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .profile-order-detail-image-container {
+    position: sticky;
+    top: 0;
+    overflow: visible;
+  }
+  
+  .profile-order-detail-image {
+    max-width: 100%;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-order-detail-customer-content {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+    border: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 24px;
+    padding: 16px;
+  }
+  
+  .profile-order-detail-customer-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .profile-order-detail-customer-right {
+    flex: 1;
+  }
+  
+  .profile-order-detail-item {
+    display: flex;
+    gap: 4px;
+    font-size: 1rem;
+    color: #374151;
+  }
+  
+  .profile-order-detail-label {
+    font-weight: bold;
+    color: #1f2937;
+    min-width: 100px;
+  }
+  
+  .profile-order-detail-value {
+    margin: 0 auto;
+  }
+  
+  .profile-order-detail-more-btn {
+    margin-top: 16px;
+    font-size: 1rem;
+    color: #3b82f6;
+    text-decoration: underline;
+    cursor: pointer;
+    align-self: flex-start;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+  }
+  
+  .profile-order-detail-more-btn:hover {
+    color: #2563eb;
+  }
+  
+  .profile-pagination-btn {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #374151;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .profile-pagination-btn:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .profile-active-page {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
+  }
+  
+  .profile-pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

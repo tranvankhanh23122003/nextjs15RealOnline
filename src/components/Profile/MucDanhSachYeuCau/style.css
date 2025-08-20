@@ -1,0 +1,302 @@
+.profile-new-list {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profile-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1B3459;
+  margin-bottom: 20px;
+}
+
+.profile-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.profile-filter-button {
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #1B3459;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.profile-filter-button:hover {
+  background-color: #f3f4f6;
+}
+
+.profile-table-container {
+  overflow-x: auto;
+}
+
+.profile-request-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-request-table th,
+.profile-request-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-request-table th {
+  background-color: #f9fafb;
+  font-weight: bold;
+  color: #1B3459;
+  font-size: 14px;
+}
+
+.profile-request-table td {
+  font-size: 14px;
+  color: #374151;
+}
+
+.profile-request-table tr {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.profile-request-table tr:hover {
+  background-color: #f3f4f6;
+}
+
+.profile-request-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.profile-request-detail-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-request-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.profile-request-detail-header h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1B3459;
+}
+
+.profile-close-button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #374151;
+}
+
+.profile-request-detail-content {
+  display: flex;
+  gap: 20px;
+}
+
+.profile-contact-info,
+.profile-general-info {
+  flex: 1;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.profile-contact-info h3,
+.profile-general-info h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1B3459;
+  margin-bottom: 12px;
+}
+
+.profile-contact-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.profile-contact-item {
+  flex: 1;
+}
+
+.profile-contact-item label,
+.profile-info-item label {
+  display: block;
+  font-weight: bold;
+  color: #1B3459;
+  margin-bottom: 5px;
+}
+
+.profile-contact-item span,
+.profile-info-item span {
+  display: block;
+  padding: 5px;
+  border-radius: 4px;
+  color: #374151;
+}
+
+.profile-consultation-info {
+  margin-top: 15px;
+}
+
+.profile-consultation-info label {
+  display: block;
+  font-weight: bold;
+  color: #1B3459;
+}
+
+.profile-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-info-item {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .profile-new-list {
+    padding: 15px;
+  }
+
+  .profile-title {
+    font-size: 20px;
+  }
+
+  .profile-filter-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .profile-request-table th,
+  .profile-request-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .profile-request-detail-container {
+    width: 95%;
+    padding: 16px;
+  }
+
+  .profile-request-detail-header h2 {
+    font-size: 18px;
+  }
+
+  .profile-close-button {
+    font-size: 20px;
+  }
+
+  .profile-request-detail-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .profile-contact-info,
+  .profile-general-info {
+    padding: 12px;
+  }
+
+  .profile-contact-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .profile-contact-info h3,
+  .profile-general-info h3 {
+    font-size: 14px;
+  }
+
+  .profile-contact-item,
+  .profile-consultation-info,
+  .profile-info-item {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-new-list {
+    padding: 10px;
+  }
+
+  .profile-title {
+    font-size: 18px;
+  }
+
+  .profile-filter-button {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+
+  .profile-request-table th,
+  .profile-request-table td {
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  /* Ẩn cột "Loại yêu cầu" và "Thời gian tạo" trên mobile */
+  .profile-request-table th:nth-child(3),
+  .profile-request-table td:nth-child(3),
+  .profile-request-table th:nth-child(4),
+  .profile-request-table td:nth-child(4) {
+    display: none;
+  }
+
+  .profile-request-detail-container {
+    padding: 12px;
+  }
+
+  .profile-request-detail-header h2 {
+    font-size: 16px;
+  }
+
+  .profile-close-button {
+    font-size: 18px;
+  }
+
+  .profile-contact-info h3,
+  .profile-general-info h3 {
+    font-size: 12px;
+  }
+
+  .profile-contact-item,
+  .profile-consultation-info,
+  .profile-info-item {
+    font-size: 10px;
+  }
+}

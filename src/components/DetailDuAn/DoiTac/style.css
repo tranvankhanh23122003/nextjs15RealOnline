@@ -1,0 +1,139 @@
+.partner-section {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: Arial, sans-serif;
+    width: 100%; 
+  }
+  
+  .partner-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #374151;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .partner-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .partner-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 15px;
+    width: 100%;
+    max-width: 300px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .partner-card-title {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #374151;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .partner-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .partner-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .partner-name {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #374151;
+  }
+  
+  /* Gạch ngang */
+  .partner-divider {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 16px 0;
+  }
+  
+  /* Tablet */
+  @media (max-width: 768px) {
+    .partner-section {
+      padding: 12px;
+      gap: 12px;
+    }
+  
+    .partner-title {
+      font-size: 2em;
+    }
+  
+    .partner-card {
+      padding: 12px;
+      max-width: 250px;
+    }
+  
+    .partner-card-title {
+      font-size: 1.15em;
+    }
+  
+    .partner-image {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .partner-name {
+      font-size: 0.95rem;
+    }
+  
+    .partner-divider {
+      margin: 10px 0;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 480px) {
+    .partner-section {
+      padding: 10px;
+      gap: 10px;
+    }
+  
+    .partner-title {
+      font-size: 1.5em;
+    }
+  
+    .partner-card {
+      padding: 10px;
+      max-width: 100%;
+    }
+  
+    .partner-card-title {
+      font-size: 1em;
+    }
+  
+    .partner-image {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .partner-name {
+      font-size: 0.85rem;
+    }
+  
+    .partner-divider {
+      margin: 8px 0;
+    }
+  }

@@ -1,0 +1,227 @@
+/* Slider section */
+.sanpham-slider-section {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  
+  .sanpham-slider-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .sanpham-slider-container {
+    flex: 0 0 60%;
+    height: 60vh;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .sanpham-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .sanpham-slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+  }
+  
+  /* Text trên slider */
+  .sanpham-top-left-text {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 1em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .sanpham-back-link {
+    color: #f47f29;
+    text-decoration: none;
+    font-size: 0.9em;
+  }
+  
+  .sanpham-back-link:hover {
+    text-decoration: underline;
+  }
+  
+  .sanpham-bottom-left-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .sanpham-bottom-left-text h3 {
+    font-size: 1.5em;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .sanpham-bottom-left-text p {
+    font-size: 1em;
+    margin: 5px 0 0;
+    font-weight: normal;
+  }
+  
+  /* Nút điều khiển slider */
+  .sanpham-control-btn {
+    border: 1px solid #f47f29;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    color: #f47f29;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  
+  .sanpham-control-btn.prev-btn {
+    left: 10px;
+  }
+  
+  .sanpham-control-btn.next-btn {
+    right: 10px;
+  }
+  
+  .sanpham-control-btn:hover {
+    color: white;
+    background-color: #f47f29;
+  }
+  
+  /* Mini slides */
+  .sanpham-mini-slides {
+    flex: 0 0 40%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    height: 60vh;
+  }
+  
+  .sanpham-mini-slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  
+  .sanpham-mini-slide:hover {
+    border-color: #f47f29;
+  }
+  
+  .sanpham-mini-slide.active {
+    border-color: #f47f29;
+  }
+  
+  /* Icon section */
+  .sanpham-icon-section {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .sanpham-icon-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .sanpham-icon-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .sanpham-icon-item:hover {
+    border-color: #f47f29;
+    color: #f47f29;
+  }
+  
+  .sanpham-icon-item span {
+    font-size: 1em;
+    color: #374151;
+    text-align: center;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sanpham-slider-wrapper {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .sanpham-slider-container,
+    .sanpham-mini-slides {
+      flex: none;
+      width: 100%;
+      height: 40vh;
+    }
+  
+    .sanpham-mini-slides {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+    }
+  
+    .sanpham-icon-wrapper {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .sanpham-icon-item {
+      flex: 0 0 calc(50% - 5px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sanpham-slider-container,
+    .sanpham-mini-slides {
+      height: 30vh;
+    }
+  
+    .sanpham-mini-slides {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr 1fr;
+    }
+  
+    .sanpham-control-btn {
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
+    }
+  
+    .sanpham-icon-item {
+      flex: 0 0 100%;
+    }
+  }
