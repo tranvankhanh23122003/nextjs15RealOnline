@@ -30,6 +30,11 @@ const Header_menu = () => {
   const [isSearchLoading, setIsSearchLoading] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Thay đổi thành true để hiển thị UI đã đăng nhập
+  const [userInfo, setUserInfo] = useState({
+    name: "Nguyễn Văn A",
+    email: "user@example.com"
+  });
   const router = useRouter();
 
   useEffect(() => {
@@ -105,6 +110,20 @@ const Header_menu = () => {
     setIsMobileSearchOpen(!isMobileSearchOpen);
   };
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUserInfo({ name: "", email: "" });
+    // Có thể thêm logic xóa token, redirect, etc.
+  };
+
+  const handleLoginSuccess = (userData: { name: string; email: string }) => {
+    setIsLoggedIn(true);
+    setUserInfo(userData);
+    setIsLoginOpen(false);
+    setIsSignUpOpen(false);
+    // Có thể thêm logic lưu token, redirect, etc.
+  };
+
   if (!isClient) {
     return (
       <div className="w-full bg-[#1B3459]">
@@ -137,7 +156,7 @@ const Header_menu = () => {
               </span>
             </div>
             <div className="flex items-center space-x-4 text-white">
-              <span className="flex items-center space-x-1">
+              <span className="flex items-center space-x-1 cursor-pointer hover:text-orange-400">
                 <img
                   src={notificationIcon.src}
                   alt="Notification"
@@ -146,41 +165,113 @@ const Header_menu = () => {
                 <span>Thông báo</span>
               </span>
               <span>|</span>
-              <span className="flex items-center space-x-1">
+              <span className="flex items-center space-x-1 cursor-pointer hover:text-orange-400">
                 <img src={questionIcon.src} alt="Help" className="w-5 h-5" />
                 <span>Hỗ trợ</span>
               </span>
               <span>|</span>
-              <span className="flex items-center space-x-1">
+              <span className="flex items-center space-x-1 cursor-pointer hover:text-orange-400">
                 <img src={colorBgIcon.src} alt="Theme" className="w-5 h-5" />
                 <span>Màu nền</span>
               </span>
-              <span>|</span>
-              <span className="flex items-center space-x-1 relative">
-                <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
-                <span
-                  className="text-red-400 cursor-pointer"
-                  onClick={() => setIsSignUpOpen(true)}
-                >
-                  Đăng ký
-                </span>
-                <SignUp_Components
-                  isOpen={isSignUpOpen}
-                  onClose={() => setIsSignUpOpen(false)}
-                  onSwitchToLogin={() => {
-                    setIsSignUpOpen(false);
-                    setIsLoginOpen(true);
-                  }}
-                />
-                <span>/</span>
-                <div className="relative cursor-pointer">
-                  <span onClick={() => setIsLoginOpen(true)}>Đăng nhập</span>
-                  <Auth_Components
-                    isOpen={isLoginOpen}
-                    onClose={() => setIsLoginOpen(false)}
-                  />
-                </div>
-              </span>
+              
+              {!isLoggedIn ? (
+                <>
+                  <span>|</span>
+                  <span className="flex items-center space-x-1 relative">
+                    <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
+                    <span
+                      className="text-red-400 cursor-pointer hover:text-red-300"
+                      onClick={() => setIsSignUpOpen(true)}
+                    >
+                      Đăng ký
+                    </span>
+                    <SignUp_Components
+                      isOpen={isSignUpOpen}
+                      onClose={() => setIsSignUpOpen(false)}
+                      onSwitchToLogin={() => {
+                        setIsSignUpOpen(false);
+                        setIsLoginOpen(true);
+                      }}
+                    />
+                    <span>/</span>
+                    <div className="relative cursor-pointer">
+                      <span 
+                        className="hover:text-orange-400"
+                        onClick={() => setIsLoginOpen(true)}
+                      >
+                        Đăng nhập
+                      </span>
+                      <Auth_Components
+                        isOpen={isLoginOpen}
+                        onClose={() => setIsLoginOpen(false)}
+                        onLoginSuccess={handleLoginSuccess}
+                      />
+                    </div>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>|</span>
+                  <div className="flex items-center space-x-2">
+                    {/* Heart icon for favorites */}
+                    <button 
+                      className="p-1 hover:text-red-400 transition-colors"
+                      onClick={() => router.push("/profile")}
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    </button>
+                    
+                    {/* User info dropdown */}
+                    <div className="relative group">
+                      <div className="flex items-center space-x-2 cursor-pointer hover:text-orange-400">
+                        <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
+                        <span className="max-w-[150px] truncate">{userInfo.name}</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                      
+                      {/* Dropdown menu */}
+                      <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <div className="py-2">
+                          <div className="px-4 py-2 border-b border-gray-200">
+                            <p className="text-sm font-semibold text-gray-900">{userInfo.name}</p>
+                            <p className="text-xs text-gray-500 truncate">{userInfo.email}</p>
+                          </div>
+                          <button
+                            onClick={() => router.push("/profile")}
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            Thông tin tài khoản
+                          </button>
+                          <button
+                            onClick={() => router.push("/profile")}
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            Quản lý đơn hàng
+                          </button>
+                          <button
+                            onClick={() => router.push("/profile")}
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            Yêu thích
+                          </button>
+                          <div className="border-t border-gray-200"></div>
+                          <button
+                            onClick={handleLogout}
+                            className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                          >
+                            Đăng xuất
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>  x
@@ -608,35 +699,88 @@ const Header_menu = () => {
           <div className="container mx-auto px-4 py-4">
             {/* Mobile Account Section */}
             <div className="border-b border-gray-600 pb-4 mb-4">
-              <div className="flex items-center space-x-2 text-white mb-3">
-                <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
-                <div className="relative cursor-pointer">
-                  <span
-                    className="text-red-400 cursor-pointer"
-                    onClick={() => setIsSignUpOpen(true)}
-                  >
-                    Đăng ký
-                  </span>
-                  <SignUp_Components
-                    isOpen={isSignUpOpen}
-                    onClose={() => setIsSignUpOpen(false)}
-                    onSwitchToLogin={() => {
-                      setIsSignUpOpen(false);
-                      setIsLoginOpen(true);
-                    }}
-                  />
-                  <span>/</span>
-                </div>
-                <div className="relative cursor-pointer">
-                  <span onClick={() => setIsLoginOpen(true)}>Đăng nhập</span>
-                  <Auth_Components
-                    isOpen={isLoginOpen}
-                    onClose={() => setIsLoginOpen(false)}
-                  />
-                </div>
-              </div>
+              {!isLoggedIn ? (
+                <>
+                  <div className="flex items-center space-x-2 text-white mb-3">
+                    <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
+                    <div className="relative cursor-pointer">
+                      <span
+                        className="text-red-400 cursor-pointer"
+                        onClick={() => setIsSignUpOpen(true)}
+                      >
+                        Đăng ký
+                      </span>
+                      <SignUp_Components
+                        isOpen={isSignUpOpen}
+                        onClose={() => setIsSignUpOpen(false)}
+                        onSwitchToLogin={() => {
+                          setIsSignUpOpen(false);
+                          setIsLoginOpen(true);
+                        }}
+                      />
+                      <span>/</span>
+                    </div>
+                    <div className="relative cursor-pointer">
+                      <span onClick={() => setIsLoginOpen(true)}>Đăng nhập</span>
+                      <Auth_Components
+                        isOpen={isLoginOpen}
+                        onClose={() => setIsLoginOpen(false)}
+                        onLoginSuccess={handleLoginSuccess}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-center justify-between text-white mb-3">
+                    <div className="flex items-center space-x-2">
+                      <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
+                      <div>
+                        <p className="font-semibold">{userInfo.name}</p>
+                        <p className="text-xs text-gray-300">{userInfo.email}</p>
+                      </div>
+                    </div>
+                    <button 
+                      className="p-2 hover:text-red-400 transition-colors"
+                      onClick={() => router.push("/profile")}
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    </button>
+                  </div>
+                  
+                  <div className="space-y-2 mb-3">
+                    <button
+                      onClick={() => router.push("/profile")}
+                      className="w-full text-left text-white hover:text-orange-400 py-1"
+                    >
+                      Thông tin tài khoản
+                    </button>
+                    <button
+                      onClick={() => router.push("/profile")}
+                      className="w-full text-left text-white hover:text-orange-400 py-1"
+                    >
+                      Quản lý đơn hàng
+                    </button>
+                    <button
+                      onClick={() => router.push("/profile")}
+                      className="w-full text-left text-white hover:text-orange-400 py-1"
+                    >
+                      Yêu thích
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left text-red-400 hover:text-red-300 py-1"
+                    >
+                      Đăng xuất
+                    </button>
+                  </div>
+                </>
+              )}
+              
               <div className="flex items-center space-x-4 text-white text-sm">
-                <span className="flex items-center space-x-1">
+                <span className="flex items-center space-x-1 cursor-pointer hover:text-orange-400">
                   <img
                     src={notificationIcon.src}
                     alt="Notification"
@@ -644,7 +788,7 @@ const Header_menu = () => {
                   />
                   <span>Thông báo</span>
                 </span>
-                <span className="flex items-center space-x-1">
+                <span className="flex items-center space-x-1 cursor-pointer hover:text-orange-400">
                   <img src={questionIcon.src} alt="Help" className="w-4 h-4" />
                   <span>Hỗ trợ</span>
                 </span>

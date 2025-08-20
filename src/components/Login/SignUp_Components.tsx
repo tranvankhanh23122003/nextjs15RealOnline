@@ -225,7 +225,7 @@ const SignUp_Components = ({
                       className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-200"
                     >
                       <img
-                        src={google}
+                        src={google.src}
                         alt="Google"
                         className="w-4 h-4 md:w-5 md:h-5"
                       />
@@ -247,7 +247,7 @@ const SignUp_Components = ({
                       className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-200"
                     >
                       <img
-                        src={mail}
+                        src={mail.src}
                         alt="Mail"
                         className="w-4 h-4 md:w-5 md:h-5"
                       />

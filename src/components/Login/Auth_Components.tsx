@@ -2,7 +2,11 @@ import { useState } from "react"
 import Login_Components from "./Login_Components"
 import SignUp_Components from "./SignUp_Components"
 
-const Auth_Components = ({isOpen, onClose}: {isOpen: boolean, onClose: () => void}) => {
+const Auth_Components = ({isOpen, onClose, onLoginSuccess}: {
+  isOpen: boolean, 
+  onClose: () => void,
+  onLoginSuccess: (userData: { name: string; email: string }) => void
+}) => {
   const [isSignUpMode, setIsSignUpMode] = useState(false)
 
   const handleSwitchToSignUp = () => {
@@ -33,6 +37,7 @@ const Auth_Components = ({isOpen, onClose}: {isOpen: boolean, onClose: () => voi
       isOpen={isOpen} 
       onClose={handleClose} 
       onSwitchToSignUp={handleSwitchToSignUp}
+      onLoginSuccess={onLoginSuccess}
     />
   )
 }

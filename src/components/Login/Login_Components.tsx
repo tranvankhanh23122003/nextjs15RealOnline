@@ -1,18 +1,44 @@
 import type React from "react"
 import { useState } from "react"
 
-const Login_Components = ({isOpen, onClose, onSwitchToSignUp}: {
+const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
   isOpen: boolean, 
   onClose: () => void,
-  onSwitchToSignUp: () => void
+  onSwitchToSignUp: () => void,
+  onLoginSuccess: (userData: { name: string; email: string }) => void
 }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Login:", { email, password })
+    setIsLoading(true)
+    
+    try {
+      // Giả lập API call đăng nhập
+      console.log("Login:", { email, password })
+      
+      // Giả lập delay API
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      // Giả lập đăng nhập thành công
+      if (email && password) {
+        const userData = {
+          name: email.includes('@') ? email.split('@')[0] : email,
+          email: email
+        }
+        
+        // Gọi callback để cập nhật trạng thái đăng nhập
+        onLoginSuccess(userData)
+      }
+    } catch (error) {
+      console.error("Login error:", error)
+      // Có thể thêm xử lý lỗi ở đây
+    } finally {
+      setIsLoading(false)
+    }
   }
   
   if(!isOpen) return null;
@@ -153,9 +179,21 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp}: {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-700 text-white py-3 px-4 rounded-lg hover:bg-blue-800 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 font-medium transition duration-200"
+                  disabled={isLoading}
+                  className={`w-full py-3 px-4 rounded-lg font-medium transition duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                    isLoading 
+                      ? 'bg-blue-400 cursor-not-allowed' 
+                      : 'bg-blue-700 hover:bg-blue-800'
+                  } text-white`}
                 >
-                  Đăng nhập
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Đang đăng nhập...
+                    </div>
+                  ) : (
+                    'Đăng nhập'
+                  )}
                 </button>
 
                 <div className="text-center mt-4">
