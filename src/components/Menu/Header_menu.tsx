@@ -33,9 +33,9 @@ const Header_menu = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Thay đổi thành true để hiển thị UI đã đăng nhập
   const [userInfo, setUserInfo] = useState({
     name: "Nguyễn Văn A",
-    email: "user@example.com"
+    email: "user@example.com",
   });
-  
+
   // States for selected filter options
   const [selectedLoaiHinh, setSelectedLoaiHinh] = useState<string[]>([]);
   const [selectedKhoangGia, setSelectedKhoangGia] = useState<string>("");
@@ -43,7 +43,7 @@ const Header_menu = () => {
   const [selectedPhongNgu, setSelectedPhongNgu] = useState<string>(""); // "" means "Bất kỳ"
   const [selectedToilet, setSelectedToilet] = useState<string>(""); // "" means "Bất kỳ"
   const [selectedHuong, setSelectedHuong] = useState<string>("");
-  
+
   const router = useRouter();
 
   useEffect(() => {
@@ -135,31 +135,31 @@ const Header_menu = () => {
 
   // Filter handlers
   const handleLoaiHinhChange = (value: string) => {
-    setSelectedLoaiHinh(prev => 
-      prev.includes(value) 
-        ? prev.filter(item => item !== value)
+    setSelectedLoaiHinh((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
         : [...prev, value]
     );
   };
 
   const handleKhoangGiaSelect = (value: string) => {
-    setSelectedKhoangGia(prev => prev === value ? "" : value);
+    setSelectedKhoangGia((prev) => (prev === value ? "" : value));
   };
 
   const handleDienTichSelect = (value: string) => {
-    setSelectedDienTich(prev => prev === value ? "" : value);
+    setSelectedDienTich((prev) => (prev === value ? "" : value));
   };
 
   const handlePhongNguSelect = (value: string) => {
-    setSelectedPhongNgu(prev => prev === value ? "" : value);
+    setSelectedPhongNgu((prev) => (prev === value ? "" : value));
   };
 
   const handleToiletSelect = (value: string) => {
-    setSelectedToilet(prev => prev === value ? "" : value);
+    setSelectedToilet((prev) => (prev === value ? "" : value));
   };
 
   const handleHuongSelect = (value: string) => {
-    setSelectedHuong(prev => prev === value ? "" : value);
+    setSelectedHuong((prev) => (prev === value ? "" : value));
   };
 
   const handleResetFilters = () => {
@@ -177,7 +177,11 @@ const Header_menu = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <div className="flex items-center">
-              <img src={logoImage.src} alt="TDC Logo" className="h-10 lg:h-[68px]" />
+              <img
+                src={logoImage.src}
+                alt="TDC Logo"
+                className="h-10 lg:h-[68px]"
+              />
             </div>
           </div>
         </div>
@@ -198,7 +202,11 @@ const Header_menu = () => {
               <span>|</span>
               <span className="flex items-center space-x-2">
                 <span>Kết nối</span>
-                <img src={facebookIcon.src} alt="Facebook" className="w-5 h-5" />
+                <img
+                  src={facebookIcon.src}
+                  alt="Facebook"
+                  className="w-5 h-5"
+                />
                 <img src={youtubeIcon.src} alt="YouTube" className="w-5 h-5" />
               </span>
             </div>
@@ -221,12 +229,16 @@ const Header_menu = () => {
                 <img src={colorBgIcon.src} alt="Theme" className="w-5 h-5" />
                 <span>Màu nền</span>
               </span>
-              
+
               {!isLoggedIn ? (
                 <>
                   <span>|</span>
                   <span className="flex items-center space-x-1 relative">
-                    <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
+                    <img
+                      src={accountIcon.src}
+                      alt="Account"
+                      className="w-5 h-5"
+                    />
                     <span
                       className="text-red-400 cursor-pointer hover:text-red-300"
                       onClick={() => setIsSignUpOpen(true)}
@@ -243,7 +255,7 @@ const Header_menu = () => {
                     />
                     <span>/</span>
                     <div className="relative cursor-pointer">
-                      <span 
+                      <span
                         className="hover:text-orange-400"
                         onClick={() => setIsLoginOpen(true)}
                       >
@@ -262,27 +274,49 @@ const Header_menu = () => {
                   <span>|</span>
                   <div className="flex items-center space-x-2">
                     {/* Heart icon for favorites */}
-                    <button 
+                    <button
                       className="p-1 hover:text-red-400 transition-colors"
                       onClick={() => router.push("/profile")}
                     >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                        />
                       </svg>
                     </button>
-                    
+
                     {/* User info dropdown */}
                     <div className="relative group">
                       <div className="flex items-center space-x-2 cursor-pointer hover:text-orange-400">
                         <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm font-sans">
                           {userInfo.name.charAt(0).toUpperCase()}
                         </div>
-                        <span className="max-w-[150px] truncate">{userInfo.name}</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        <span className="max-w-[150px] truncate">
+                          {userInfo.name}
+                        </span>
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
                         </svg>
                       </div>
-                      
+
                       {/* Dropdown menu */}
                       <div className="absolute right-0 top-full mt-2 w-52 bg-white rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
                         <div className="py-3">
@@ -292,13 +326,17 @@ const Header_menu = () => {
                               <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-sans">
                                 {userInfo.name.charAt(0).toUpperCase()}
                               </div>
-                              <div >
-                                <p className="text-sm font-sans text-gray-900">{userInfo.name}</p>
-                                <p className="text-xs text-gray-500">Người dùng</p>
+                              <div>
+                                <p className="text-sm font-sans text-gray-900">
+                                  {userInfo.name}
+                                </p>
+                                <p className="text-xs text-gray-500">
+                                  Người dùng
+                                </p>
                               </div>
                             </div>
                           </div>
-                          
+
                           {/* Menu items */}
                           <div className="py-2">
                             <button
@@ -338,7 +376,7 @@ const Header_menu = () => {
                               Danh sách yêu cầu
                             </button>
                           </div>
-                          
+
                           {/* Account settings */}
                           <div className="border-t border-gray-100 py-2">
                             <button
@@ -354,7 +392,7 @@ const Header_menu = () => {
                               Thay đổi mật khẩu
                             </button>
                           </div>
-                          
+
                           {/* Logout */}
                           <div className="border-t border-gray-100 py-2">
                             <button
@@ -372,12 +410,20 @@ const Header_menu = () => {
               )}
             </div>
           </div>
-        </div>  x
+        </div>{" "}
+        x
       </div>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <div className="flex items-center cursor-pointer" onClick={() => router.push("/")}>
-            <img src={logoImage.src} alt="TDC Logo" className="h-10 lg:h-[68px]" />
+          <div
+            className="flex items-center cursor-pointer"
+            onClick={() => router.push("/")}
+          >
+            <img
+              src={logoImage.src}
+              alt="TDC Logo"
+              className="h-10 lg:h-[68px]"
+            />
           </div>
           <div className="hidden lg:flex flex-1 max-w-2xl mx-8">
             <div className="relative w-full">
@@ -482,7 +528,10 @@ const Header_menu = () => {
             </button>
 
             {/* Mobile Cart */}
-            <button className="relative p-2" onClick={() => router.push("/gio-hang")}>
+            <button
+              className="relative p-2"
+              onClick={() => router.push("/gio-hang")}
+            >
               <img src={shopIcon.src} alt="Shopping Cart" className="w-8 h-8" />
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
                 0
@@ -521,8 +570,15 @@ const Header_menu = () => {
 
           {/* Desktop Right Side */}
           <div className="hidden lg:flex items-center pr-16">
-            <button className="relative p-2" onClick={() => router.push("/gio-hang")}>
-              <img src={shopIcon.src} alt="Shopping Cart" className="w-12 h-12" />
+            <button
+              className="relative p-2"
+              onClick={() => router.push("/gio-hang")}
+            >
+              <img
+                src={shopIcon.src}
+                alt="Shopping Cart"
+                className="w-12 h-12"
+              />
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
@@ -598,20 +654,29 @@ const Header_menu = () => {
                 <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
                   <div className="p-4">
                     <div className="space-y-2">
-                      {["Shophouse", "Mặt đằng hàng", "Căn hộ", "Chung cư", "Tất cả"].map((type) => (
-                        <label key={type} className="flex items-center cursor-pointer">
-                          <input 
-                            type="checkbox" 
+                      {[
+                        "Shophouse",
+                        "Mặt đằng hàng",
+                        "Căn hộ",
+                        "Chung cư",
+                        "Tất cả",
+                      ].map((type) => (
+                        <label
+                          key={type}
+                          className="flex items-center cursor-pointer"
+                        >
+                          <input
+                            type="checkbox"
                             checked={selectedLoaiHinh.includes(type)}
                             onChange={() => handleLoaiHinhChange(type)}
-                            className="mr-3 w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" 
+                            className="mr-3 w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                           />
                           <span className="text-sm text-gray-700">{type}</span>
                         </label>
                       ))}
                     </div>
                     <div className="flex justify-between mt-4 pt-3 border-t border-gray-200">
-                      <button 
+                      <button
                         onClick={handleResetFilters}
                         className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
                       >
@@ -651,9 +716,18 @@ const Header_menu = () => {
               {isKhoangGiaDropdownOpen && (
                 <div className="absolute top-full left-0 mt-1 w-80 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
                   <div className="p-4">
-                    <h3 className="text-xl font-sans text-gray-900 mb-3">Khoảng giá</h3>
+                    <h3 className="text-xl font-sans text-gray-900 mb-3">
+                      Khoảng giá
+                    </h3>
                     <div className="grid grid-cols-3 gap-2 mb-4 text-[#184482]">
-                      {["Dưới 3 tỷ", "3-5 tỷ", "5-7 tỷ", "7-10 tỷ", "10-20 tỷ", "Trên 20 tỷ"].map((price) => (
+                      {[
+                        "Dưới 3 tỷ",
+                        "3-5 tỷ",
+                        "5-7 tỷ",
+                        "7-10 tỷ",
+                        "10-20 tỷ",
+                        "Trên 20 tỷ",
+                      ].map((price) => (
                         <button
                           key={price}
                           onClick={() => handleKhoangGiaSelect(price)}
@@ -667,34 +741,40 @@ const Header_menu = () => {
                         </button>
                       ))}
                     </div>
-                    
+
                     <div className="mb-4">
                       <label className="flex items-center">
-                        <span className="text-sm text-gray-700">Hoặc nhập khoảng (đơn vị VNĐ)</span>
+                        <span className="text-sm text-gray-700">
+                          Hoặc nhập khoảng (đơn vị VNĐ)
+                        </span>
                       </label>
                       <div className="flex items-center mt-2 space-x-2">
                         <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">Giá từ</label>
-                          <input 
-                            type="text" 
+                          <label className="block text-xs text-gray-500 mb-1">
+                            Giá từ
+                          </label>
+                          <input
+                            type="text"
                             placeholder="Giá thấp nhất"
                             className="w-full px-3 py-2 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           />
                         </div>
                         <span className="text-gray-400 mt-6">-</span>
                         <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">Giá đến</label>
-                          <input 
-                            type="text" 
+                          <label className="block text-xs text-gray-500 mb-1">
+                            Giá đến
+                          </label>
+                          <input
+                            type="text"
                             placeholder="Giá cao nhất"
                             className="w-full px-3 py-2 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           />
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex justify-between mt-4 pt-3 border-t border-gray-200">
-                      <button 
+                      <button
                         onClick={handleResetFilters}
                         className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
                       >
@@ -734,9 +814,18 @@ const Header_menu = () => {
               {isDienTichDropdownOpen && (
                 <div className="absolute top-full left-0 mt-1 w-80 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
                   <div className="p-4">
-                    <h3 className="text-xl font-sans text-gray-900 mb-3">Diện tích</h3>
+                    <h3 className="text-xl font-sans text-gray-900 mb-3">
+                      Diện tích
+                    </h3>
                     <div className="grid grid-cols-3 gap-2 mb-4 text-[#184482]">
-                      {["Dưới 50 m²", "50-100 m²", "100-150 m²", "150-300 m²", "300-500 m²", "Trên 500 m²"].map((area) => (
+                      {[
+                        "Dưới 50 m²",
+                        "50-100 m²",
+                        "100-150 m²",
+                        "150-300 m²",
+                        "300-500 m²",
+                        "Trên 500 m²",
+                      ].map((area) => (
                         <button
                           key={area}
                           onClick={() => handleDienTichSelect(area)}
@@ -750,34 +839,40 @@ const Header_menu = () => {
                         </button>
                       ))}
                     </div>
-                    
+
                     <div className="mb-4">
                       <label className="flex items-center">
-                        <span className="text-sm text-gray-700">Hoặc nhập khoảng (đơn vị m²)</span>
+                        <span className="text-sm text-gray-700">
+                          Hoặc nhập khoảng (đơn vị m²)
+                        </span>
                       </label>
                       <div className="flex items-center mt-2 space-x-2">
                         <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">Diện tích từ</label>
-                          <input 
-                            type="text" 
+                          <label className="block text-xs text-gray-500 mb-1">
+                            Diện tích từ
+                          </label>
+                          <input
+                            type="text"
                             placeholder="Diện tích thấp nhất"
                             className="w-full px-3 py-2 text-xs border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           />
                         </div>
                         <span className="text-gray-400 mt-6">-</span>
                         <div className="flex-1">
-                          <label className="block text-xs text-gray-500 mb-1">Diện tích đến</label>
-                          <input 
-                            type="text" 
+                          <label className="block text-xs text-gray-500 mb-1">
+                            Diện tích đến
+                          </label>
+                          <input
+                            type="text"
                             placeholder="Diện tích cao nhất"
                             className="w-full px-3 py-2 text-xs border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           />
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex justify-between mt-4 pt-3 border-t border-gray-200">
-                      <button 
+                      <button
                         onClick={handleResetFilters}
                         className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
                       >
@@ -816,13 +911,17 @@ const Header_menu = () => {
 
               {isThemBoLocDropdownOpen && (
                 <div className="absolute top-full left-0 mt-1 w-80 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
-                  <div className="p-4">                   
+                  <div className="p-4">
                     {/* Phòng ngủ và toilet */}
                     <div className="mb-4">
-                      <h4 className="text-xl font-sans text-gray-900 mb-3">Phòng ngủ và toilet</h4>
+                      <h4 className="text-xl font-sans text-gray-900 mb-3">
+                        Phòng ngủ và toilet
+                      </h4>
                       <div className="space-y-2">
                         <div className=" items-center justify-between">
-                          <span className="text-sm text-gray-700">Phòng ngủ</span>
+                          <span className="text-sm text-gray-700">
+                            Phòng ngủ
+                          </span>
                           <div className="flex items-center space-x-1">
                             <button
                               onClick={() => handlePhongNguSelect("")}
@@ -835,10 +934,12 @@ const Header_menu = () => {
                               Bất kỳ
                             </button>
                             <div className="flex space-x-1 ">
-                              {[1, 2, 3, 4, '5+'].map((num) => (
+                              {[1, 2, 3, 4, "5+"].map((num) => (
                                 <button
                                   key={num}
-                                  onClick={() => handlePhongNguSelect(num.toString())}
+                                  onClick={() =>
+                                    handlePhongNguSelect(num.toString())
+                                  }
                                   className={`w-6 h-6 text-xs border rounded transition-colors ${
                                     selectedPhongNgu === num.toString()
                                       ? "bg-[#1B3459] text-white border-blue-600"
@@ -865,10 +966,12 @@ const Header_menu = () => {
                               Bất kỳ
                             </button>
                             <div className="flex space-x-1">
-                              {[1, 2, 3, 4, '5+'].map((num) => (
+                              {[1, 2, 3, 4, "5+"].map((num) => (
                                 <button
                                   key={num}
-                                  onClick={() => handleToiletSelect(num.toString())}
+                                  onClick={() =>
+                                    handleToiletSelect(num.toString())
+                                  }
                                   className={`w-6 h-6 text-xs border rounded transition-colors ${
                                     selectedToilet === num.toString()
                                       ? "bg-[#1B3459] text-white border-blue-600"
@@ -883,10 +986,12 @@ const Header_menu = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Hướng */}
                     <div className="mb-4">
-                      <h4 className="text-sm font-medium text-gray-800 mb-2">Hướng</h4>
+                      <h4 className="text-sm font-medium text-gray-800 mb-2">
+                        Hướng
+                      </h4>
                       <div className="flex items-center justify-between">
                         <div className="flex space-x-2">
                           {["Tất cả", "Đông"].map((direction) => (
@@ -905,9 +1010,9 @@ const Header_menu = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex justify-between mt-4 pt-3 border-t border-gray-200">
-                      <button 
+                      <button
                         onClick={handleResetFilters}
                         className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
                       >
@@ -934,7 +1039,11 @@ const Header_menu = () => {
               {!isLoggedIn ? (
                 <>
                   <div className="flex items-center space-x-2 text-white mb-3">
-                    <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
+                    <img
+                      src={accountIcon.src}
+                      alt="Account"
+                      className="w-5 h-5"
+                    />
                     <div className="relative cursor-pointer">
                       <span
                         className="text-red-400 cursor-pointer"
@@ -953,7 +1062,9 @@ const Header_menu = () => {
                       <span>/</span>
                     </div>
                     <div className="relative cursor-pointer">
-                      <span onClick={() => setIsLoginOpen(true)}>Đăng nhập</span>
+                      <span onClick={() => setIsLoginOpen(true)}>
+                        Đăng nhập
+                      </span>
                       <Auth_Components
                         isOpen={isLoginOpen}
                         onClose={() => setIsLoginOpen(false)}
@@ -974,16 +1085,26 @@ const Header_menu = () => {
                         <p className="text-xs text-gray-300">Quản lý</p>
                       </div>
                     </div>
-                    <button 
+                    <button
                       className="p-2 hover:text-red-400 transition-colors"
                       onClick={() => router.push("/profile")}
                     >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                        />
                       </svg>
                     </button>
                   </div>
-                  
+
                   <div className="space-y-1 mb-4">
                     <button
                       onClick={() => router.push("/profile")}
@@ -1046,7 +1167,7 @@ const Header_menu = () => {
                   </div>
                 </>
               )}
-              
+
               <div className="flex items-center space-x-4 text-white text-sm">
                 <span className="flex items-center space-x-1 cursor-pointer hover:text-orange-400">
                   <img
@@ -1286,7 +1407,11 @@ const Header_menu = () => {
             <div className="border-t border-gray-600 pt-4 mt-4">
               <div className="flex items-center space-x-4 text-white text-sm">
                 <span>Kết nối:</span>
-                <img src={facebookIcon.src} alt="Facebook" className="w-5 h-5" />
+                <img
+                  src={facebookIcon.src}
+                  alt="Facebook"
+                  className="w-5 h-5"
+                />
                 <img src={youtubeIcon.src} alt="YouTube" className="w-5 h-5" />
               </div>
             </div>
