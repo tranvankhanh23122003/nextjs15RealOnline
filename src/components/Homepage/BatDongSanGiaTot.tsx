@@ -2,9 +2,63 @@
 
 import { useState } from "react";
 import ImageTest from "../../assets/images/ImageTest.png";
+import { Bounce, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 const BatDongSanGiaTot = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [favoriteItems, setFavoriteItems] = useState<number[]>([]);
+  const router = useRouter();
+  const notify = (propertyId: number) => {
+    const isFavorited = favoriteItems.includes(propertyId);
 
+    if (!isFavorited) {
+      // Thêm vào danh sách yêu thích
+      setFavoriteItems((prev) => [...prev, propertyId]);
+      toast.success(
+        <div className="flex items-center justify-center">
+          <h1 className="mr-2">Đã thêm vào danh sách yêu thích!</h1>
+          <button className="border-2 border-gray-300 rounded-md px-4 py-2 underline ml-2" onClick={() => router.push("/profile")}>Xem danh sách yêu thích</button>
+        </div>,
+        {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+        style:{
+          width: "560px",
+          maxWidth: "none",
+        }
+      });
+    } else {
+      // Xóa khỏi danh sách yêu thích
+      setFavoriteItems((prev) => prev.filter((id) => id !== propertyId));
+      toast.success(
+        <div className="flex items-center justify-center">
+          <h1 className="mr-2">Đã xóa khỏi danh sách yêu thích!</h1>
+          <button className="border-2 border-gray-300 rounded-md px-4 py-2 underline ml-2" onClick={() => router.push("/profile")}>Xem danh sách yêu thích</button>
+        </div>,
+        {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+        style:{
+          width: "560px",
+          maxWidth: "none",
+        }
+      });
+    }
+  };
   const properties = [
     {
       id: 1,
@@ -201,10 +255,21 @@ const BatDongSanGiaTot = () => {
 
                 <div className="absolute bg-opacity-10 group-hover:bg-opacity-5 transition-all duration-300"></div>
                 <div className="absolute top-4 right-4">
-                  <button className="w-8 h-8 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-white transition-colors duration-300">
+                  <button
+                    className="w-8 h-8 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-white transition-colors duration-300"
+                    onClick={() => notify(property.id)}
+                  >
                     <svg
-                      className="w-4 h-4 text-gray-600 hover:text-red-500"
-                      fill="none"
+                      className={`w-4 h-4 transition-colors duration-300 ${
+                        favoriteItems.includes(property.id)
+                          ? "text-red-500 fill-red-500"
+                          : "text-gray-600 hover:text-red-500"
+                      }`}
+                      fill={
+                        favoriteItems.includes(property.id)
+                          ? "currentColor"
+                          : "none"
+                      }
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
