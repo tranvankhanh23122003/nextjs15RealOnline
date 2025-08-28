@@ -1,131 +1,150 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa";
 import Slide1 from "../../../assets/images/baner1.png";
-import "./style.css";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface MenuProps {
   categories: string[];
+
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Menu: React.FC<MenuProps> = ({ selectedCategory, setSelectedCategory }) => {
+const Menu: React.FC<MenuProps> = ({
+  selectedCategory,
+  setSelectedCategory,
+  isMenuOpen,
+  setIsMenuOpen,
+}) => {
+  const pathname = usePathname();
   const [expanded, setExpanded] = useState<{ [key: string]: boolean }>({
     "Quản lý căn": false,
-    "Cập nhật đơn hàng & khuyến mãi": false,
+    "Thông báo": false,
     "Quản lý yêu cầu": false,
     "Quản lý thông tin tài khoản": false,
   });
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // Sync menu open state with localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem("isMenuOpen");
+    if (saved !== null) setIsMenuOpen(saved === "true");
+  }, [setIsMenuOpen]);
+
+  useEffect(() => {
+    localStorage.setItem("isMenuOpen", isMenuOpen.toString());
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) setIsMenuOpen(true);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [setIsMenuOpen]);
+
+  // Mở submenu chứa selectedCategory
+  useEffect(() => {
+    setExpanded({
+      "Quản lý căn": ["Đơn hàng", "Đã xem", "Yêu thích"].includes(selectedCategory),
+      "Thông báo": ["Cập nhật đơn hàng", "Khuyến mãi"].includes(selectedCategory),
+      "Quản lý yêu cầu": ["Danh sách lịch hẹn", "Danh sách yêu cầu"].includes(selectedCategory),
+      "Quản lý thông tin tài khoản": ["Thông tin tài khoản", "Thay đổi mật khẩu"].includes(selectedCategory),
+    });
+  }, [selectedCategory]);
 
   const toggleExpand = (category: string) => {
     setExpanded((prev) => ({ ...prev, [category]: !prev[category] }));
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const handleSelectCategory = (item: string) => {
+    setSelectedCategory(item);
+    if (isMobile) setIsMenuOpen(false);
+  };
+
   return (
-    <div className="profile-menu-container">
+    <div className={`profile-menu-container ${isMenuOpen ? "" : "collapsed"}`}>
       <div className="profile-menu-header">
-        <img
-          src={Slide1.src}
-          alt="User"
-          className="profile-menu-avatar"
-        />
-        <h2 className="profile-menu-title">Trần Văn Khánh</h2>
+        {isMobile && <FaBars className="hamburger-icon" onClick={toggleMenu} />}
+        {isMenuOpen && (
+          <>
+            <Image src={Slide1} alt="User" className="profile-menu-avatar profile-menu-avatar-small" />
+            <div>
+              <h2 className="profile-menu-title">Trần Văn Khánh</h2>
+              <span className="profile-menu-position">Member</span>
+            </div>
+          </>
+        )}
       </div>
-      <div className="profile-menu-section">
-        <div className="profile-menu-item" onClick={() => toggleExpand("Quản lý căn")}>
-          Quản lý căn
-        </div>
-        {expanded["Quản lý căn"] && (
-          <div className="profile-submenu">
-            <div
-              className={`profile-submenu-item ${selectedCategory === "Bất động sản" ? "active" : ""}`}
-              onClick={() => setSelectedCategory("Bất động sản")}
-            >
-              Đơn Hàng
-            </div>
-            <div
-              className={`profile-submenu-item ${selectedCategory === "Đã xem" ? "active" : ""}`}
-              onClick={() => setSelectedCategory("Đã xem")}
-            >
-              Đã xem
-            </div>
-            <div
-              className={`profile-submenu-item ${selectedCategory === "Yêu thích" ? "active" : ""}`}
-              onClick={() => setSelectedCategory("Yêu thích")}
-            >
-              Yêu thích
-            </div>
+
+      {isMenuOpen && (
+        <div className="profile-menu-section">
+          {/* Quản lý căn */}
+          <div className="profile-menu-item" onClick={() => toggleExpand("Quản lý căn")}>
+            <span className="profile-menu-item-text">Quản lý căn</span>
+            {expanded["Quản lý căn"] ? <FaChevronDown /> : <FaChevronRight />}
           </div>
-        )}
-        <div
-          className="profile-menu-item"
-          onClick={() => toggleExpand("Cập nhật đơn hàng & khuyến mãi")}
-        >
-          Cập nhật đơn hàng & khuyến mãi
-        </div>
-        {expanded["Cập nhật đơn hàng & khuyến mãi"] && (
-          <div className="profile-submenu">
-            <div
-              className={`profile-submenu-item ${selectedCategory === "Cập nhật đơn hàng" ? "active" : ""}`}
-              onClick={() => setSelectedCategory("Cập nhật đơn hàng")}
-            >
-              Cập nhật đơn hàng
+          {expanded["Quản lý căn"] && (
+            <div className="profile-submenu">
+              <Link href="/profile/don-hang" className={`profile-submenu-item ${selectedCategory === "Đơn hàng" ? "active" : ""}`} onClick={() => handleSelectCategory("Đơn hàng")}>Đơn hàng</Link>
+              <Link href="/profile/da-xem" className={`profile-submenu-item ${selectedCategory === "Đã xem" ? "active" : ""}`} onClick={() => handleSelectCategory("Đã xem")}>Đã xem</Link>
+              <Link href="/profile/yeu-thich" className={`profile-submenu-item ${selectedCategory === "Yêu thích" ? "active" : ""}`} onClick={() => handleSelectCategory("Yêu thích")}>Yêu thích</Link>
             </div>
-            <div
-              className={`profile-submenu-item ${selectedCategory === "Khuyến mãi" ? "active" : ""}`}
-              onClick={() => setSelectedCategory("Khuyến mãi")}
-            >
-              Khuyến mãi
-            </div>
+          )}
+
+          {/* Thông báo */}
+          <div className="profile-menu-item" onClick={() => toggleExpand("Thông báo")}>
+            <span className="profile-menu-item-text">Thông báo</span>
+            {expanded["Thông báo"] ? <FaChevronDown /> : <FaChevronRight />}
           </div>
-        )}
-        <div className="profile-menu-item" onClick={() => toggleExpand("Quản lý yêu cầu")}>
-          Quản lý yêu cầu
-        </div>
-        {expanded["Quản lý yêu cầu"] && (
-          <div className="profile-submenu">
-            <div
-              className={`profile-submenu-item ${selectedCategory === "Danh sách lịch hẹn" ? "active" : ""}`}
-              onClick={() => setSelectedCategory("Danh sách lịch hẹn")}
-            >
-              Danh sách lịch hẹn
+          {expanded["Thông báo"] && (
+            <div className="profile-submenu">
+              {["Cập nhật đơn hàng", "Khuyến mãi"].map((item) => (
+                <div key={item} className={`profile-submenu-item ${selectedCategory === item ? "active" : ""}`} onClick={() => handleSelectCategory(item)}>{item}</div>
+              ))}
             </div>
-            <div
-              className={`profile-submenu-item ${selectedCategory === "Danh sách yêu cầu" ? "active" : ""}`}
-              onClick={() => setSelectedCategory("Danh sách yêu cầu")}
-            >
-              Danh sách yêu cầu
-            </div>
+          )}
+
+          {/* Quản lý yêu cầu */}
+          <div className="profile-menu-item" onClick={() => toggleExpand("Quản lý yêu cầu")}>
+            <span className="profile-menu-item-text">Quản lý yêu cầu</span>
+            {expanded["Quản lý yêu cầu"] ? <FaChevronDown /> : <FaChevronRight />}
           </div>
-        )}
-        <div
-          className="profile-menu-item"
-          onClick={() => toggleExpand("Quản lý thông tin tài khoản")}
-        >
-          Quản lý thông tin tài khoản
-        </div>
-        {expanded["Quản lý thông tin tài khoản"] && (
-          <div className="profile-submenu">
-            <div
-              className={`profile-submenu-item ${selectedCategory === "Thông tin tài khoản" ? "active" : ""}`}
-              onClick={() => setSelectedCategory("Thông tin tài khoản")}
-            >
-              Thông tin tài khoản
+          {expanded["Quản lý yêu cầu"] && (
+            <div className="profile-submenu">
+              {["Danh sách lịch hẹn", "Danh sách yêu cầu"].map((item) => (
+                <div key={item} className={`profile-submenu-item ${selectedCategory === item ? "active" : ""}`} onClick={() => handleSelectCategory(item)}>{item}</div>
+              ))}
             </div>
-            <div
-              className={`profile-submenu-item ${selectedCategory === "Thay đổi mật khẩu" ? "active" : ""}`}
-              onClick={() => setSelectedCategory("Thay đổi mật khẩu")}
-            >
-              Thay đổi mật khẩu
-            </div>
+          )}
+
+          {/* Quản lý thông tin tài khoản */}
+          <div className="profile-menu-item" onClick={() => toggleExpand("Quản lý thông tin tài khoản")}>
+            <span className="profile-menu-item-text">Quản lý thông tin tài khoản</span>
+            {expanded["Quản lý thông tin tài khoản"] ? <FaChevronDown /> : <FaChevronRight />}
           </div>
-        )}
-        <hr className="profile-menu-divider" />
-        <div className="profile-menu-logout" onClick={() => alert("Đăng xuất")}>
-          Đăng xuất
+          {expanded["Quản lý thông tin tài khoản"] && (
+            <div className="profile-submenu">
+              <Link href="/profile/thong-tin-tai-khoan" className={`profile-submenu-item ${selectedCategory === "Thông tin tài khoản" ? "active" : ""}`} onClick={() => handleSelectCategory("Thông tin tài khoản")}>Thông tin tài khoản</Link>
+              <Link href="/profile/thay-doi-mat-khau" className={`profile-submenu-item ${selectedCategory === "Thay đổi mật khẩu" ? "active" : ""}`} onClick={() => handleSelectCategory("Thay đổi mật khẩu")}>Thay đổi mật khẩu</Link>
+            </div>
+          )}
+
+          <div className="profile-menu-logout" onClick={() => alert("Đăng xuất")}>Đăng xuất</div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

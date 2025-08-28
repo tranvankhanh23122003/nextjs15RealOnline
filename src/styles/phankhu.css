@@ -17,6 +17,14 @@
   position: relative;
 }
 
+.matbang3d-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* căn giữa */
+  margin-bottom: 2rem;
+}
+
+
 .slider-image {
   width: 100%;
   height: 100%;

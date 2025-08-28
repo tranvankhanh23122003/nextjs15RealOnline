@@ -5,7 +5,6 @@ const ListTDC = () => {
   return (
     <div>
       <List_TDC />
-      {/* H1 */}
     </div>
   );
 };

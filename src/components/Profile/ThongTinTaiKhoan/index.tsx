@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import React, { useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import "./style.css";
@@ -10,16 +9,8 @@ const InfoAccount = () => {
     birthDate: "",
     gender: "",
     address: "",
-    idNumber: "",
-    idAttachment: null as File | null,
-    issuedPlace: "",
-    issuedDate: "",
-    permanentAddress: "",
-    contactAddress: "",
-    city: "",
-    district: "",
     phone: "",
-    email: "",
+    email : "",
   });
 
   const handleChange = (
@@ -29,15 +20,20 @@ const InfoAccount = () => {
     setAccountInfo({ ...accountInfo, [name]: value });
   };
 
-
   const handleSave = () => {
     console.log("Thông tin đã lưu:", accountInfo);
     alert("Thông tin đã được lưu!");
   };
 
+  // Check tất cả các field trong accountInfo phải có dữ liệu
+  const isFormValid = Object.values(accountInfo).every(
+    (value) => value.trim() !== ""
+  );
+
   return (
     <div className="profile-info-account">
       <h1 className="profile-info-account__title">Thông tin tài khoản</h1>
+
       <h2 className="profile-info-account__section-title">Thông tin cá nhân</h2>
       <div className="profile-info-account__grid">
         <div>
@@ -117,9 +113,12 @@ const InfoAccount = () => {
         </div>
         <button
           onClick={handleSave}
-          className="profile-info-account__save-button"
+          disabled={!isFormValid}
+          className={`profile-info-account__save-button ${
+            !isFormValid ? "disabled" : ""
+          }`}
         >
-          Lưu thông tin
+          Lưu thông tin 
         </button>
       </div>
     </div>

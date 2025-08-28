@@ -1,0 +1,180 @@
+/* Bảng chung */
+.profile-table {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .profile-table-header {
+    display: flex;
+    background-color: #1B3459;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .profile-table-row {
+    display: flex;
+    background-color: #DDE1E6;
+    color: #000000;
+    padding: 10px;
+  }
+  
+  .profile-table-header span,
+  .profile-table-row span {
+    text-align: center;
+    position: relative;
+  }
+  
+  .profile-table-header span:not(:last-child) {
+    border-right: 1px solid #ffffff;
+  }
+  
+  .profile-table-row a {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+  
+  .profile-table-row a:hover {
+    text-decoration: underline;
+  }
+  
+  .profile-contract-table-header span,
+  .profile-contract-table-row span {
+    flex: 1;
+  }
+  
+  .profile-payment-progress-table-header span:nth-child(1),
+  .profile-payment-progress-table-row span:nth-child(1) {
+    flex: 0.5;
+    min-width: 50px;
+  }
+  
+  .profile-payment-progress-table-header span:nth-child(2),
+  .profile-payment-progress-table-row span:nth-child(2) {
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  .profile-payment-progress-table-header span:nth-child(3),
+  .profile-payment-progress-table-row span:nth-child(3) {
+    flex: 1.2;
+    min-width: 120px;
+  }
+  
+  .profile-payment-progress-table-header span:nth-child(4),
+  .profile-payment-progress-table-row span:nth-child(4) {
+    flex: 0.8;
+    min-width: 100px;
+  }
+  
+  .profile-payment-progress-table-header span:nth-child(5),
+  .profile-payment-progress-table-row span:nth-child(5) {
+    flex: 1.2;
+    min-width: 120px;
+  }
+  
+  .profile-payment-progress-table-header span:nth-child(6),
+  .profile-payment-progress-table-row span:nth-child(6) {
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  .profile-payment-progress-table-header span:nth-child(7),
+  .profile-payment-progress-table-row span:nth-child(7) {
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  /* Bảng Lịch sử thanh toán */
+  .profile-payment-history-table-header span:nth-child(1),
+  .profile-payment-history-table-row span:nth-child(1) {
+    flex: 0.8;
+    min-width: 80px;
+  }
+  
+  .profile-payment-history-table-header span:nth-child(2),
+  .profile-payment-history-table-row span:nth-child(2) {
+    flex: 1.5;
+    min-width: 150px;
+  }
+  
+  .profile-payment-history-table-header span:nth-child(3),
+  .profile-payment-history-table-row span:nth-child(3) {
+    flex: 1.2;
+    min-width: 120px;
+  }
+  
+  .profile-payment-history-table-header span:nth-child(4),
+  .profile-payment-history-table-row span:nth-child(4) {
+    flex: 1.2;
+    min-width: 120px;
+  }
+  
+  .profile-payment-history-table-header span:nth-child(5),
+  .profile-payment-history-table-row span:nth-child(5) {
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  .profile-payment-history-table-header span:nth-child(6),
+  .profile-payment-history-table-row span:nth-child(6) {
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  .profile-payment-history-table-header span:nth-child(7),
+  .profile-payment-history-table-row span:nth-child(7) {
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  /* Trạng thái */
+  .profile-contract-status-Đã-ký {
+    color: #16a34a;
+  }
+  
+  .profile-contract-status-Hoàn-tất {
+    color: #2563eb;
+  }
+  
+  .profile-contract-status-Đang-xử-lý {
+    color: #f59e0b;
+  }
+  
+  .profile-contract-status-Đã-hủy {
+    color: #dc2626;
+  }
+  
+  .profile-contract-status-Chưa-thanh-toán {
+    color: #6b7280;
+  }
+  
+  /* Responsive: Tablet (768px - 1024px) */
+  @media (max-width: 1024px) {
+    .profile-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .profile-table-header span,
+    .profile-table-row span {
+      font-size: 0.85rem;
+      min-width: 100px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .profile-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .profile-table-header span,
+    .profile-table-row span {
+      font-size: 0.8rem;
+      padding: 6px;
+      min-width: 80px;
+    }
+  }
