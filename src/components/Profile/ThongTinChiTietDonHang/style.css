@@ -1,0 +1,224 @@
+.info-order-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .info-order-title {
+    font-size: 2rem;
+    font-weight: bold;  
+    color: #1f2937;
+    margin-bottom: 16px;
+  }
+  
+  .info-order-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 24px;
+  }
+  
+  .info-order-content {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+  
+  .info-order-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  .info-order-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .info-order-image-container {
+    position: sticky;
+    top: 0;
+    overflow: visible;
+  }
+  
+  .info-order-image {
+    max-width: 100%;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info-order-item {
+    display: flex;
+    gap: 4px;
+    font-size: 1rem;
+    color: #374151;
+  }
+  
+  .info-order-label {
+    font-weight: bold;
+    color: #1f2937;
+    min-width: 100px;
+  }
+  
+  .info-order-value {
+    margin: 0 auto;
+  }
+  
+  .info-order-more-btn {
+    margin-top: 16px;
+    font-size: 1rem;
+    color: #3b82f6;
+    text-decoration: underline;
+    cursor: pointer;
+    align-self: flex-start;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+  }
+  
+  .info-order-more-btn:hover {
+    color: #2563eb;
+  }
+  
+  .info-order-price-section {
+    margin-top: 24px;
+  }
+  
+  .info-order-price-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .info-order-price-columns {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .info-order-price-left,
+  .info-order-price-right {
+    flex: 0 0 48%;
+  }
+  
+  .info-order-price-left p,
+  .info-order-price-right p {
+    margin: 5px 0;
+    font-size: 0.9em;
+  }
+  
+  .info-order-price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .info-order-price-label {
+    font-weight: normal;
+    color: #000;
+  }
+  
+  .info-order-price-value {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .info-order-price-note {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 5px 0;
+  }
+  
+  .info-order-price-note p {
+    margin: 2px 0;
+  }
+  
+  .info-order-price-divider {
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+    margin: 10px auto;
+    width: 90%;
+  }
+  
+  .info-order-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .info-order-review-btn,
+  .info-order-cancel-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+  }
+  
+  .info-order-review-btn {
+    border: 1px solid #1B3459;
+    background-color: #ffffff;
+    color: #1B3459;
+  }
+  
+  .info-order-review-btn:hover {
+    background-color: #d1d5db;
+  }
+  
+  .info-order-cancel-btn {
+    border: none;
+    background-color: #DF1313;
+    color: white;
+  }
+  
+  .info-order-cancel-btn:hover {
+    background-color: #c11212;
+  }
+  
+  .info-order-timeline-section {
+    margin-top: 24px;
+  }
+  
+  .info-order-timeline-header {
+    position: relative;
+    padding-left: 20px;
+  }
+  
+  .info-order-timeline-description { 
+    position: relative;
+    padding-left: 24px;
+    margin-left: 105px; 
+  }
+  
+  .description-align {
+    display: inline-block;
+  }
+  .info-order-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+  }
+  
+  .info-order-reserve-btn {
+    padding-right: 4%; 
+  }
+  
+  .info-order-remaining-time {
+    color: #dc2626; 
+    font-size: 0.875rem; 
+  }
+  
+  .info-order-reserve-btn {
+    color: #16a34a; 
+    font-size: 0.875rem; 
+  }

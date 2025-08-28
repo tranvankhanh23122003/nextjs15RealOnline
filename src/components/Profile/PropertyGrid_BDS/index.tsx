@@ -1,24 +1,10 @@
-"use client";
-
+"use client"
 import { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Slide1 from "../../../assets/images/baner1.png";
+import Image from "next/image";
 import "./style.css";
-
-interface PropertyCard {
-  id: number;
-  price: string;
-  rating: number;
-  description: string;
-  bedrooms: number;
-  area: string;
-  address: string;
-  image: string;
-}
-
-interface PropertyGridProps {
-  properties: PropertyCard[];
-}
+import {  PropertyGridProps } from "../../../types/Property";
 
 const PropertyGridBDS: React.FC<PropertyGridProps> = ({ properties }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,8 +48,8 @@ const PropertyGridBDS: React.FC<PropertyGridProps> = ({ properties }) => {
         {currentProperties.map((property) => (
           <div key={property.id} className="profile-property-card">
             <div className="relative">
-              <img
-                src={Slide1.src}
+              <Image
+                src={Slide1}
                 alt={`Property ${property.id}`}
                 className="profile-property-image"
               />

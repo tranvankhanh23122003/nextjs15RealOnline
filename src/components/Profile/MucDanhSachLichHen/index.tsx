@@ -1,8 +1,8 @@
-"use client";
-
+"use client"
 import { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Slide1 from "../../../assets/images/baner1.png";
+import Image, { StaticImageData } from "next/image";
 import "./style.css";
 
 type AppointmentItem = {
@@ -22,7 +22,7 @@ type PropertyCard = {
   bedrooms: number;
   area: string;
   address: string;
-  image: string;
+  image: StaticImageData;
 };
 
 const AppointmentList = () => {
@@ -35,11 +35,11 @@ const AppointmentList = () => {
   ];
 
   const propertyData: PropertyCard[] = [
-    { id: 1, price: "18.42 tỷ", rating: 5, description: "Sổ hồng riêng xây dựng", bedrooms: 5, area: "84.00 m²", address: "Căn 01, Nhà liền kề, Khu A, Dự án Concorde", image: Slide1.src },
-    { id: 2, price: "20.00 tỷ", rating: 4, description: "Nhà phố hiện đại", bedrooms: 4, area: "100.00 m²", address: "Chi nhánh Hà Nội", image: Slide1.src },
-    { id: 3, price: "15.50 tỷ", rating: 5, description: "Căn hộ cao cấp", bedrooms: 3, area: "70.00 m²", address: "Văn phòng TP.HCM", image: Slide1.src },
-    { id: 4, price: "22.00 tỷ", rating: 3, description: "Biệt thự biển", bedrooms: 6, area: "150.00 m²", address: "Chi nhánh Đà Nẵng", image: Slide1.src },
-    { id: 5, price: "17.80 tỷ", rating: 4, description: "Nhà phố thương mại", bedrooms: 5, area: "90.00 m²", address: "Trụ sở phụ", image: Slide1.src },
+    { id: 1, price: "18.42 tỷ", rating: 5, description: "Sổ hồng riêng xây dựng", bedrooms: 5, area: "84.00 m²", address: "Căn 01, Nhà liền kề, Khu A, Dự án Concorde", image: Slide1 },
+    { id: 2, price: "20.00 tỷ", rating: 4, description: "Nhà phố hiện đại", bedrooms: 4, area: "100.00 m²", address: "Chi nhánh Hà Nội", image: Slide1 },
+    { id: 3, price: "15.50 tỷ", rating: 5, description: "Căn hộ cao cấp", bedrooms: 3, area: "70.00 m²", address: "Văn phòng TP.HCM", image: Slide1 },
+    { id: 4, price: "22.00 tỷ", rating: 3, description: "Biệt thự biển", bedrooms: 6, area: "150.00 m²", address: "Chi nhánh Đà Nẵng", image: Slide1 },
+    { id: 5, price: "17.80 tỷ", rating: 4, description: "Nhà phố thương mại", bedrooms: 5, area: "90.00 m²", address: "Trụ sở phụ", image: Slide1 },
   ];
 
   const [showDetail, setShowDetail] = useState(false);
@@ -132,7 +132,7 @@ const AppointmentList = () => {
 
             <div className="profile-property-detail-section">
               <div className="profile-property-image-container">
-                <img src={getProperty(selectedItem).image} alt="Property" className="profile-property-image" />
+                <Image src={getProperty(selectedItem).image} alt="Property" className="profile-property-image" />
                 <div className="profile-price-badge">{getProperty(selectedItem).price}</div>
                 <div className="profile-favorite-button">
                   <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

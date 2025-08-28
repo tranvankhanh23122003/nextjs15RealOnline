@@ -1,9 +1,6 @@
-"use client";
-
+"use client"
 import { useState } from "react";
 import "./style.css";
-
-// Định nghĩa type
 type RequestItem = {
   id: number;
   requestCode: string;

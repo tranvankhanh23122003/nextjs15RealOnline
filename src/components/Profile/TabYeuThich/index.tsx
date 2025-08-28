@@ -1,7 +1,6 @@
 import React from "react";
 import ProjectGridTDC from "../PropertyGrid_TDS";
 import PropertyGridBDS from "../PropertyGrid_BDS";
-import './style.css'
 
 interface FavoriteTabsProps {
   selectedTab: string;

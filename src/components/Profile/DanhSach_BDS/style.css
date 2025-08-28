@@ -1,219 +1,218 @@
 .profile-table__container {
-    width: 100%;
-    height: auto;
-  }
-  
+  width: 100%;
+  height: auto;
+}
+
+.profile-table__item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.profile-table__item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile-table__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.profile-table__project-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.profile-table__status {
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background-color: #fff4e5;
+  color: #d35400;
+  border: 1px solid #f5c29f;
+}
+
+.status-completed {
+  background-color: #e6f9f0;
+  color: #27ae60;
+  border: 1px solid #8ee4b6;
+}
+
+.status-processing {
+  background-color: #e8f1ff;
+  color: #2d7efc;
+  border: 1px solid #9dc0fc;
+}
+
+.status-cancelled {
+  background-color: #ffeaea;
+  color: #e74c3c;
+  border: 1px solid #f5b5b5;
+}
+
+.status-default {
+  background-color: #f0f0f0;
+  color: #888;
+  border: 1px solid #ccc;
+}
+
+
+.profile-table__divider {
+  border: 0;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 12px 0;
+}
+
+.profile-table__details {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.profile-table__image {
+  font-weight: bold;
+  color: #444;
+  width: 300px;
+  height: auto;
+}
+
+.profile-table__content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.profile-table__price,
+.profile-table__block,
+.profile-table__area,
+.profile-table__type,
+.profile-table__paid,
+.profile-table__remaining {
+  font-size: 14px;
+  color: #444;
+}
+
+.profile-table__price {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.profile-table__block {
+  color: #7f8c8d;
+}
+
+.profile-table__area,
+.profile-table__type {
+  color: #34495e;
+}
+
+.profile-table__paid {
+  color: #27ae60;
+}
+
+.profile-table__remaining {
+  color: #e74c3c;
+}
+
+@media (max-width: 768px) {
   .profile-table__item {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 16px;
-    padding: 16px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 12px;
   }
-  
-  .profile-table__item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
+
   .profile-table__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .profile-table__project-name {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .profile-table__status {
-    font-size: 14px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: 500;
-    text-transform: capitalize;
-  }
-  
-  .status-pending {
-    background-color: #fff4e5;
-    color: #d35400;
-    border: 1px solid #f5c29f;
-  }
-  
-  .status-completed {
-    background-color: #e6f9f0;
-    color: #27ae60;
-    border: 1px solid #8ee4b6;
-  }
-  
-  .status-processing {
-    background-color: #e8f1ff;
-    color: #2d7efc;
-    border: 1px solid #9dc0fc;
-  }
-  
-  .status-cancelled {
-    background-color: #ffeaea;
-    color: #e74c3c;
-    border: 1px solid #f5b5b5;
-  }
-  
-  .status-default {
-    background-color: #f0f0f0;
-    color: #888;
-    border: 1px solid #ccc;
-  }
-  
-  
-  .profile-table__divider {
-    border: 0;
-    height: 1px;
-    background-color: #e0e0e0;
-    margin: 12px 0;
-  }
-  
-  .profile-table__details {
-    display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
-  }
-  
-  .profile-table__image {
-    font-weight: bold;
-    color: #444;
-    width: 300px;
-    height: auto;
-  }
-  
-  .profile-table__content {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
-  
+
+  .profile-table__project-name {
+    font-size: 14px;
+  }
+
+  .profile-table__status {
+    font-size: 12px;
+  }
+
+  .profile-table__details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-table__image {
+    margin-bottom: 8px;
+  }
+
+  .profile-table__content {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
   .profile-table__price,
   .profile-table__block,
   .profile-table__area,
   .profile-table__type,
   .profile-table__paid,
   .profile-table__remaining {
-    font-size: 14px;
-    color: #444;
+    font-size: 12px;
   }
-  
-  .profile-table__price {
-    font-weight: bold;
-    color: #2c3e50;
+}
+.profile-table__action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.profile-table__button {
+  background-color: #DC4405;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;  
+  transition: background-color 0.2s;
+}
+
+.profile-table__button:hover {
+  background-color: #b83604;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profile-table__item {
+    padding: 14px;
   }
-  
-  .profile-table__block {
-    color: #7f8c8d;
+
+  .profile-table__details {
+    gap: 12px;
   }
-  
+
+  .profile-table__content {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .profile-table__price,
+  .profile-table__block,
   .profile-table__area,
-  .profile-table__type {
-    color: #34495e;
-  }
-  
-  .profile-table__paid {
-    color: #27ae60;
-  }
-  
+  .profile-table__type,
+  .profile-table__paid,
   .profile-table__remaining {
-    color: #e74c3c;
+    font-size: 13px;
   }
-  
-  @media (max-width: 768px) {
-    .profile-table__item {
-      padding: 12px;
-    }
-  
-    .profile-table__header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-  
-    .profile-table__project-name {
-      font-size: 14px;
-    }
-  
-    .profile-table__status {
-      font-size: 12px;
-    }
-  
-    .profile-table__details {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .profile-table__image {
-      margin-bottom: 8px;
-    }
-  
-    .profile-table__content {
-      grid-template-columns: 1fr;
-      gap: 6px;
-    }
-  
-    .profile-table__price,
-    .profile-table__block,
-    .profile-table__area,
-    .profile-table__type,
-    .profile-table__paid,
-    .profile-table__remaining {
-      font-size: 12px;
-    }
-  }
-  .profile-table__action {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 12px;
-  }
-  
-  .profile-table__button {
-    background-color: #DC4405;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 16px;
-    font-size: 14px;
-    cursor: pointer;  
-    transition: background-color 0.2s;
-  }
-  
-  .profile-table__button:hover {
-    background-color: #b83604;
-  }
-  
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .profile-table__item {
-      padding: 14px;
-    }
-  
-    .profile-table__details {
-      gap: 12px;
-    }
-  
-    .profile-table__content {
-      grid-template-columns: 1fr;
-      gap: 6px;
-    }
-  
-    .profile-table__price,
-    .profile-table__block,
-    .profile-table__area,
-    .profile-table__type,
-    .profile-table__paid,
-    .profile-table__remaining {
-      font-size: 13px;
-    }
-  }
-  
+}

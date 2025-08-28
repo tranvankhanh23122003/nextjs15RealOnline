@@ -1,0 +1,272 @@
+/* Style cho form hủy đặt chỗ */
+.info-order-cancel-form {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .info-order-cancel-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: #374151;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .info-order-cancel-icon {
+    color: #DF1313;
+    font-size: 1.25rem;
+  }
+  
+  .info-order-cancel-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .info-order-cancel-content {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .info-order-cancel-left,
+  .info-order-cancel-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .info-order-cancel-item {
+    display: flex;
+    gap: 8px;
+    font-size: 1rem;
+    color: #374151;
+  }
+  
+  .info-order-cancel-label {
+    font-weight: bold;
+    color: #1f2937;
+    min-width: 120px;
+  }
+  
+  .info-order-cancel-value {
+    flex: 1;
+  }
+  
+  .info-order-cancel-subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 12px;
+  }
+  
+  .info-order-cancel-customer {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .info-order-cancel-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #374151;
+  }
+  
+  .info-order-cancel-input:focus {
+    outline: none;
+    border-color: #1B3459;
+    box-shadow: 0 0 0 2px rgba(27, 52, 89, 0.2);
+  }
+  
+  .info-order-cancel-divider {
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+    margin: 16px 0;
+  }
+  
+  .info-order-cancel-reason {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  
+  .info-order-cancel-select,
+  .info-order-cancel-textarea {
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #374151;
+    width: 100%;
+  }
+  
+  .info-order-cancel-textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .info-order-cancel-select:focus,
+  .info-order-cancel-textarea:focus {
+    outline: none;
+    border-color: #1B3459;
+    box-shadow: 0 0 0 2px rgba(27, 52, 89, 0.2);
+  }
+  
+  .info-order-cancel-refund-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 8px;
+  }
+  
+  .info-order-cancel-refund-icon {
+    color: #1B3459;
+    font-size: 1.25rem;
+  }
+  
+  .info-order-cancel-refund {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .info-order-cancel-confirm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  
+  .info-order-cancel-checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .info-order-cancel-checkbox-label {
+    font-size: 0.95rem;
+    color: #374151;
+  }
+  
+  .info-order-cancel-submit {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #1B3459;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease;
+  }
+  
+  .info-order-cancel-submit:hover {
+    background-color: #142a4a;
+  }
+  
+  /* Responsive: Tablet (768px - 1024px) */
+  @media (max-width: 1024px) {
+    .info-order-cancel-form {
+      padding: 16px;
+      max-width: 100%;
+    }
+  
+    .info-order-cancel-title {
+      font-size: 1.5rem;
+    }
+  
+    .info-order-cancel-content {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .info-order-cancel-customer {
+      flex-direction: column;
+      gap: 8px;
+    }
+  
+    .info-order-cancel-refund {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .info-order-cancel-input,
+    .info-order-cancel-select,
+    .info-order-cancel-textarea {
+      font-size: 0.9rem;
+      padding: 8px;
+    }
+  }
+  
+  /* Responsive: Mobile (<768px) */
+  @media (max-width: 767px) {
+    .info-order-cancel-form {
+      padding: 12px;
+    }
+  
+    .info-order-cancel-header {
+      font-size: 0.9rem;
+      flex-direction: column;
+      gap: 8px;
+    }
+  
+    .info-order-cancel-icon {
+      font-size: 1.1rem;
+    }
+  
+    .info-order-cancel-title {
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+  
+    .info-order-cancel-subtitle {
+      font-size: 1.1rem;
+    }
+  
+    .info-order-cancel-item {
+      font-size: 0.85rem;
+    }
+  
+    .info-order-cancel-label {
+      min-width: 100px;
+    }
+  
+    .info-order-cancel-input,
+    .info-order-cancel-select,
+    .info-order-cancel-textarea {
+      font-size: 0.85rem;
+      padding: 6px;
+    }
+  
+    .info-order-cancel-textarea {
+      min-height: 80px;
+    }
+  
+    .info-order-cancel-refund-note {
+      font-size: 0.8rem;
+    }
+  
+    .info-order-cancel-checkbox-label {
+      font-size: 0.85rem;
+    }
+  
+    .info-order-cancel-submit {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  }
