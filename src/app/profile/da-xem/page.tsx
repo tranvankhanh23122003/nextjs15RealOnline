@@ -15,3 +15,4 @@ const viewedProperties : Property[]  = Array.from({ length: 16 }, (_, index) => 
 export default function DaXem() {
   return <ViewedSection  properties = {viewedProperties} />;
 }
+
