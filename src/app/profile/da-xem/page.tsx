@@ -1,5 +1,5 @@
 import ViewedSection from "@/components/Profile/TabDaXem";
-import {Property}  from "../../../types/Property";
+import {Property}  from "../../../types/property";
 
 const viewedProperties : Property[]  = Array.from({ length: 16 }, (_, index) => ({
   id: index + 1,

@@ -1,21 +1,20 @@
-import React from 'react';
-import { Property } from '../../../types/Property';
-import FavoriteTabs from '@/components/Profile/TabYeuThich';
+"use client";
 
-// import ProjectGridBDS from "../../../components/Profile/PropertyGrid_BDS"; // Ensure the filename matches exactly
-
+import React, { useState } from "react";
+import { Property } from "../../../types/property";
+import FavoriteTabs from "@/components/Profile/TabYeuThich";
 
 interface PropertyCard {
   id: number;
-name: string;
-area: string;
-price: string;
-address: string;
-image: string;
-isHot: boolean;
-  }
-  
-const viewedProperties : Property[]  = Array.from({ length: 16 }, (_, index) => ({
+  name: string;
+  area: string;
+  price: string;
+  address: string;
+  image: string;
+  isHot: boolean;
+}
+
+const viewedProperties: Property[] = Array.from({ length: 16 }, (_, index) => ({
   id: index + 1,
   price: "18.42 tỷ",
   rating: 5,
@@ -25,17 +24,31 @@ const viewedProperties : Property[]  = Array.from({ length: 16 }, (_, index) => 
   address: "Căn 01, Nhà liền kề, Khu A, Dự án Concorde",
   image: "https://via.placeholder.com/300",
 }));
- const cjsndasjd : PropertyCard[]  = Array.from({ length: 16 }, (_, index) => ({
-  id: index + 1,
-  name: "Bất động sản " + (index + 1),
-  area: "100 m²",
-  price: "5 tỷ",
-  address: "123 Đường ABC, Quận XYZ",
-  image: "https://via.placeholder.com/300",
-  isHot: index % 2 === 0,
- }));
+
+const projectProperties: PropertyCard[] = Array.from(
+  { length: 16 },
+  (_, index) => ({
+    id: index + 1,
+    name: "Bất động sản " + (index + 1),
+    area: "100 m²",
+    price: "5 tỷ",
+    address: "123 Đường ABC, Quận XYZ",
+    image: "https://via.placeholder.com/300",
+    isHot: index % 2 === 0,
+  })
+);
 
 export default function YeuThich() {
-  // return <FavoriteTabs properties = {viewedProperties} />;
-  <h1>test</h1>
+  const [selectedTab, setSelectedTab] = useState("Bất động sản");
+
+  return (
+    <div className="profile-favorite">
+      <FavoriteTabs
+        selectedTab={selectedTab}
+        setSelectedTab={setSelectedTab}
+        viewedProperties={viewedProperties}
+        projectProperties={projectProperties}
+      />
+    </div>
+  );
 }

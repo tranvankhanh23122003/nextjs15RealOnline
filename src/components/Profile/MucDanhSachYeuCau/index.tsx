@@ -1,6 +1,5 @@
 "use client"
 import { useState } from "react";
-import "./style.css";
 type RequestItem = {
   id: number;
   requestCode: string;

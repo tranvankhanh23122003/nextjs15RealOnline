@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import Table from "@/components/Profile/DanhSach_BDS";
 import SearchBar from "@/components/Profile/TimKiem";
 import Header from "@/components/Profile/Header";
@@ -12,10 +13,9 @@ import AppointmentList from "@/components/Profile/MucDanhSachLichHen";
 import OrderDetail from "@/components/Profile/CapNhatDonHang";
 import InfoOrderDetails from "@/components/Profile/ThongTinChiTietDonHang";
 import NotificationManager from "@/components/Profile/QuanLyThongBao";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "@heroicons/react/24/outline";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import Slide1 from "@/assets/images/baner1.png";
+import { StaticImageData } from "next/image";
 
 const Profile = () => {
   type CanItem = {
@@ -29,6 +29,33 @@ const Profile = () => {
     dateTime?: string;
   };
 
+  type AppointmentItem = {
+    id: number;
+    appointment: string;
+    location: string;
+    createdTime: string;
+    consultationTime: string;
+    status: string;
+  };
+
+  type PropertyCard = {
+    id: number;
+    price: string;
+    rating: number;
+    description: string;
+    bedrooms: number;
+    area: string;
+    address: string;
+    image: StaticImageData;
+  };
+
+  type Notification = {
+    id: number;
+    message: string;
+    date: string;
+    isRead: boolean;
+  };
+
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState<CanItem | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -37,22 +64,19 @@ const Profile = () => {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const itemsPerPage = 3;
 
+  const [accountInfo] = useState({
+    fullName: "Trần Văn Khánh",
+    birthDate: "2003-12-23",
+    gender: "Nam",
+    address: "123 Đường Láng, Đống Đa, Hà Nội",
+    phone: "0901234567",
+    email: "khantran12232003@gmail.com",
+  });
+
   const [data, setData] = useState<CanItem[]>(() =>
     [
       { id: 1, management: "Quản lý căn 1", code: "A5-02: Block A", project: "GreenLand Riverside", price: "2.500.000", status: "Đang giữ chỗ", dateTime: "2025-07-20 14:00" },
       { id: 2, management: "Quản lý căn 2", code: "A5-03: Block B", project: "Sunshine City", price: "3.000.000", status: "Đã hủy", dateTime: "2025-07-19 09:30" },
-      { id: 3, management: "Quản lý căn 3", code: "A6-01: Block C", project: "Riverfront Park", price: "2.800.000", status: "Đã gia hạn", dateTime: "2025-07-21 11:15" },
-      { id: 4, management: "Quản lý căn 4", code: "B1-02: Block D", project: "Golden Tower", price: "3.500.000", status: "Đang cọc", dateTime: "2025-07-18 16:45" },
-      { id: 5, management: "Quản lý căn 5", code: "B2-03: Block E", project: "Sky Garden", price: "2.700.000", status: "Chờ duyệt", dateTime: "2025-07-22 08:20" },
-      { id: 6, management: "Quản lý căn 6", code: "C1-01: Block F", project: "Ocean View", price: "3.200.000", status: "Đã ký HĐMB", dateTime: "2025-07-17 13:10" },
-      { id: 7, management: "Quản lý căn 7", code: "C2-02: Block G", project: "Mountain Retreat", price: "2.900.000", status: "Đã bàn giao", dateTime: "2025-07-16 15:30" },
-      { id: 8, management: "Quản lý căn 8", code: "D1-03: Block H", project: "City Heights", price: "3.100.000", status: "Đã mua", dateTime: "2025-07-15 10:00", paymentProgress: "1/3" },
-      { id: 9, management: "Quản lý căn 9", code: "D2-01: Block I", project: "Lakefront Villa", price: "2.600.000", status: "Đã mua", dateTime: "2025-07-14 12:45", paymentProgress: "3/3" },
-      { id: 10, management: "Quản lý căn 10", code: "A5-04: Block A", project: "GreenLand Riverside", price: "2.600.000", status: "Đang giữ chỗ", dateTime: "2025-07-20 15:00" },
-      { id: 11, management: "Quản lý căn 11", code: "A5-05: Block B", project: "Sunshine City", price: "3.100.000", status: "Đã gia hạn", dateTime: "2025-07-19 10:30" },
-      { id: 12, management: "Quản lý căn 12", code: "B1-03: Block D", project: "Golden Tower", price: "3.600.000", status: "Đang cọc", dateTime: "2025-07-18 17:45" },
-      { id: 13, management: "Quản lý căn 13", code: "A5-06: Block A", project: "GreenLand Riverside", price: "2.550.000", status: "Đang giữ chỗ", dateTime: "2025-07-20 16:00" },
-      { id: 14, management: "Quản lý căn 14", code: "B1-04: Block D", project: "Golden Tower", price: "3.520.000", status: "Đang cọc", dateTime: "2025-07-18 18:00" },
     ].map((item) => ({
       ...item,
       paymentProgress:
@@ -61,6 +85,28 @@ const Profile = () => {
           : undefined,
     }))
   );
+
+  const [appointmentData] = useState<AppointmentItem[]>([
+    { id: 1, appointment: "LH001", location: "Trụ sở chính", createdTime: "2025-07-25 14:00", consultationTime: "2025-07-26 10:00", status: "Chờ xác nhận" },
+    { id: 2, appointment: "LH002", location: "Chi nhánh Hà Nội", createdTime: "2025-07-24 09:30", consultationTime: "2025-07-25 14:00", status: "Đã hoàn thành" },
+    { id: 3, appointment: "LH003", location: "Văn phòng TP.HCM", createdTime: "2025-07-23 11:15", consultationTime: "2025-07-24 15:00", status: "Đã xác nhận" },
+    { id: 4, appointment: "LH004", location: "Chi nhánh Đà Nẵng", createdTime: "2025-07-22 16:45", consultationTime: "2025-07-23 09:00", status: "Đã hủy" },
+    { id: 5, appointment: "LH005", location: "Trụ sở phụ", createdTime: "2025-07-21 08:20", consultationTime: "2025-07-22 13:00", status: "Đã hoàn thành" },
+  ]);
+
+  const [propertyData] = useState<PropertyCard[]>([
+    { id: 1, price: "18.42 tỷ", rating: 5, description: "Sổ hồng riêng xây dựng", bedrooms: 5, area: "84.00 m²", address: "Trụ sở chính", image: Slide1 },
+    { id: 2, price: "20.00 tỷ", rating: 4, description: "Nhà phố hiện đại", bedrooms: 4, area: "100.00 m²", address: "Chi nhánh Hà Nội", image: Slide1 },
+    { id: 3, price: "15.50 tỷ", rating: 5, description: "Căn hộ cao cấp", bedrooms: 3, area: "70.00 m²", address: "Văn phòng TP.HCM", image: Slide1 },
+    { id: 4, price: "22.00 tỷ", rating: 3, description: "Biệt thự biển", bedrooms: 6, area: "150.00 m²", address: "Chi nhánh Đà Nẵng", image: Slide1 },
+    { id: 5, price: "17.80 tỷ", rating: 4, description: "Nhà phố thương mại", bedrooms: 5, area: "90.00 m²", address: "Trụ sở phụ", image: Slide1 },
+  ]);
+
+  const [notifications] = useState<Notification[]>([
+    { id: 1, message: "Khuyến mãi 10% cho căn hộ mới!", date: "2025-07-25", isRead: false },
+    { id: 2, message: "Lịch hẹn của bạn đã được xác nhận.", date: "2025-07-24", isRead: true },
+    { id: 3, message: "Cập nhật chính sách thanh toán mới.", date: "2025-07-23", isRead: false },
+  ]);
 
   const filteredData = data.filter(
     (item) =>
@@ -156,15 +202,15 @@ const Profile = () => {
               )}
             </>
           ) : selectedCategory === "Thông tin tài khoản" ? (
-            <InfoAccount />
+            <InfoAccount initialAccountInfo={accountInfo} />
           ) : selectedCategory === "Thay đổi mật khẩu" ? (
             <ChangePassword />
           ) : selectedCategory === "Danh sách yêu cầu" ? (
             <RequestList />
           ) : selectedCategory === "Danh sách lịch hẹn" ? (
-            <AppointmentList />
+            <AppointmentList data={appointmentData} propertyData={propertyData} />
           ) : selectedCategory === "Khuyến mãi" ? (
-            <NotificationManager />
+            <NotificationManager notifications={notifications} />
           ) : (
             <>
               <Header
@@ -185,6 +231,7 @@ const Profile = () => {
                 setSelectedItem={setSelectedItem}
                 selectedCategory={selectedCategory}
                 onReviewClick={handleReviewClick}
+                onViewDetails={() => {}}
               />
               <div className="profile-pagination-container">
                 <button

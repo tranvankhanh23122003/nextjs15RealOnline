@@ -176,6 +176,7 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 12px;
+  gap: 10px ;
 }
 
 .profile-table__button {
@@ -193,6 +194,32 @@
   background-color: #b83604;
 }
 
+.profile-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.profile-pagination-btn {
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.profile-pagination-btn:hover {
+  background-color: #cbd5e0;
+}
+
+.profile-active-page {
+  background-color: #f97316;
+  color: white;
+}
 @media (min-width: 769px) and (max-width: 1024px) {
   .profile-table__item {
     padding: 14px;

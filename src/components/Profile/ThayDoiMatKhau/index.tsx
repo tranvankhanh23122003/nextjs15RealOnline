@@ -1,12 +1,19 @@
-"use client"
+"use client";
 import React, { useState } from "react";
-import './style.css';
 
-const ChangePassword = () => {
-  const [passwordData, setPasswordData] = useState({
-    currentPassword: "",
-    newPassword: "",
-  });
+interface PasswordData {
+  currentPassword: string;
+  newPassword: string;
+}
+
+interface ChangePasswordProps {
+  initialPasswordData?: PasswordData; // optional, có thể truyền từ page
+}
+
+const ChangePassword: React.FC<ChangePasswordProps> = ({ initialPasswordData }) => {
+  const [passwordData, setPasswordData] = useState<PasswordData>(
+    initialPasswordData || { currentPassword: "", newPassword: "" }
+  );
 
   const [error, setError] = useState<string>("");
 
@@ -17,26 +24,29 @@ const ChangePassword = () => {
   };
 
   const validatePassword = (password: string) => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&\-=#])[A-Za-z\d@$!%*?&\-=#]{8,128}$/;
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&\-=#])[A-Za-z\d@$!%*?&\-=#]{8,128}$/;
     return regex.test(password);
   };
 
   const handleSave = () => {
     const { currentPassword, newPassword } = passwordData;
 
-    if (!currentPassword || !newPassword ) {
+    if (!currentPassword || !newPassword) {
       setError("Vui lòng điền đầy đủ tất cả các trường.");
       return;
     }
 
     if (!validatePassword(newPassword)) {
-      setError("Mật khẩu mới phải có ít nhất 1 ký tự in hoa, 1 ký tự in thường, 1 ký tự đặc biệt (@$!%*?&-=#), 1 ký tự số và có độ dài từ 8 đến 128 ký tự.");
+      setError(
+        "Mật khẩu mới phải có ít nhất 1 ký tự in hoa, 1 ký tự in thường, 1 ký tự đặc biệt (@$!%*?&-=#), 1 ký tự số và có độ dài từ 8 đến 128 ký tự."
+      );
       return;
     }
 
     console.log("Thông tin mật khẩu:", passwordData);
     alert("Mật khẩu đã được thay đổi!");
-    setError(""); 
+    setError("");
   };
 
   return (
@@ -65,6 +75,7 @@ const ChangePassword = () => {
           className="profile-input"
         />
       </div>
+
       {error && <p className="profile-error-message">{error}</p>}
 
       <button onClick={handleSave} className="profile-btn-save-password">

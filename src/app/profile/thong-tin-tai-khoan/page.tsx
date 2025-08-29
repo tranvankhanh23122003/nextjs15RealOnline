@@ -1,24 +1,23 @@
-import React from 'react';
-// import ProjectGridBDS from "../../../components/Profile/PropertyGrid_BDS"; // Ensure the filename matches exactly
 
+"use client";
 
-// interface PropertyCard {
-//     id: number;
-//     price: string;
-//     rating: number;
-//     description: string;
-//     bedrooms: number;
-//     area: string;
-//     address: string;
-//     image: string;
-//   }
-  
+import React, { useState } from "react";
+import InfoAccount from "@/components/Profile/ThongTinTaiKhoan";
 
-export default function ThayDoiMatKhau() {
+export default function ThongTinTaiKhoan() {
+  // Dữ liệu giả lập tương tự customerInfo từ OrderDetail
+  const [accountInfo] = useState({
+    fullName: "Trần Văn Khánh",
+    birthDate: "2003-12-23",
+    gender: "Nam",
+    address: "123 Đường Láng, Đống Đa, Hà Nội",
+    phone: "0901234567",
+    email: "khantran12232003@gmail.com",
+  });
+
   return (
     <div>
-
-      <h1>thông tin</h1>
+      <InfoAccount initialAccountInfo={accountInfo} />
     </div>
   );
 }

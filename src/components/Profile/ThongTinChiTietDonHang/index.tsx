@@ -1,12 +1,14 @@
-"use client"
-import React, { useState } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
+"use client";
+
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FaCheckCircle } from "react-icons/fa";
 import { MdWarning } from "react-icons/md";
-import { GiNotebook } from 'react-icons/gi';
+import { GiNotebook } from "react-icons/gi";
 import Slide1 from "../../../assets/images/baner1.png";
 import "./style.css";
-import ContractTables from '../BangHopDong';
-import Image from 'next/image';
+import ContractTables from "../BangHopDong";
+import Image from "next/image";
 
 type CanItem = {
   id: number;
@@ -67,7 +69,7 @@ const timelineData: TimelineItem[] = [
     title: "[Xác nhận] Đặt cọc thành công",
     description:
       "Chúng tôi đã nhận 50.000.000 VND tiền cọc cho căn B257. Quý khách hàng có thể tải hợp đồng hoàn chỉnh tại đây",
-    link: "#"
+    link: "#",
   },
   {
     time: "13:36 26-07-2025",
@@ -75,7 +77,7 @@ const timelineData: TimelineItem[] = [
     title: "[Nhắc nhở] Chưa hoàn tất thủ tục đặt cọc",
     description:
       "Yêu cầu đặt cọc căn B257 của bạn đã được duyệt. Vui lòng hoàn tất quy trình thanh toán tiền cọc và ký hợp đồng trước 17:00 hôm nay để giữ quyền ưu tiên.",
-    link: "#"
+    link: "#",
   },
   {
     time: "13:36 26-07-2025",
@@ -83,29 +85,29 @@ const timelineData: TimelineItem[] = [
     title: "[Xác nhận] Đã duyệt hợp đồng đặt cọc",
     description:
       "Hợp đồng của bạn đã được duyệt bởi TĐC. Vui lòng đọc và thực hiện các điều khoản có trong hợp đồng được đính kèm dưới đây",
-    link: "#"
+    link: "#",
   },
   {
     time: "13:36 26-07-2025",
     type: "info",
     title: "[Thông báo] Đang chờ duyệt hợp đồng đặt cọc",
     description:
-      "Yêu cầu đặt cọc của bạn đã được gửi cho chủ đầu tư. Chúng tôi sẽ phản hồi sẽ gửi trong vòng 2 ngày tiếp theo"
+      "Yêu cầu đặt cọc của bạn đã được gửi cho chủ đầu tư. Chúng tôi sẽ phản hồi sẽ gửi trong vòng 2 ngày tiếp theo",
   },
   {
     time: "13:36 26-07-2025",
     type: "alert",
     title: "[Cảnh báo] Sắp hết hạn giữ chỗ",
     description:
-      "Căn A725 của bạn sẽ được giữ đến 21h hôm nay. Sau thời gian này hệ thống sẽ tự động huỷ giữ chỗ nếu chưa đặt cọc"
+      "Căn A725 của bạn sẽ được giữ đến 21h hôm nay. Sau thời gian này hệ thống sẽ tự động huỷ giữ chỗ nếu chưa đặt cọc",
   },
   {
     time: "13:36 26-07-2025",
     type: "success",
     title: "[Xác nhận] Đặt mua thành công",
     description:
-      "Bạn đã giữ chỗ căn A725 thành công với số tiền đặt chỗ tạm tính là 50.000.000 VND. BĐS đang được giữ chỗ trong vòng 24h"
-  }
+      "Bạn đã giữ chỗ căn A725 thành công với số tiền đặt chỗ tạm tính là 50.000.000 VND. BĐS đang được giữ chỗ trong vòng 24h",
+  },
 ];
 
 const contractData: Contract[] = [
@@ -271,6 +273,7 @@ const OrderTitle: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 };
 
 const InfoOrderDetails: React.FC<InfoOrderDetailsProps> = ({ selectedItem, onBack }) => {
+  const router = useRouter();
   const item = selectedItem || {
     id: 0,
     management: "",
@@ -290,6 +293,14 @@ const InfoOrderDetails: React.FC<InfoOrderDetailsProps> = ({ selectedItem, onBac
     remainingDebt: "1,904,000,000 VNĐ",
   };
 
+  const customerInfo = {
+    fullName: "Trần Văn Khánh",
+    cccd: "285501035",
+    phone: "0966233290",
+    email: "khantran12232003@gmail.com",
+    address: "Ấp 8 Nghĩa Trung, huyện Bù Đăng, tỉnh Bình Phước",
+  };
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedButton, setSelectedButton] = useState<string | null>(null);
 
@@ -306,7 +317,7 @@ const InfoOrderDetails: React.FC<InfoOrderDetailsProps> = ({ selectedItem, onBac
   };
 
   const handleCancelBooking = () => {
-    alert("Chức năng Hủy đặt chỗ đang được phát triển!");
+    router.push(`/profile/don-hang/${item.id}/huy`);
   };
 
   return (
@@ -386,14 +397,14 @@ const InfoOrderDetails: React.FC<InfoOrderDetailsProps> = ({ selectedItem, onBac
         <h3>Giá bán và thanh toán</h3>
         <div className="info-order-price-columns">
           <div className="info-order-price-left">
-            <p>
+            <div>
               <div className="info-order-price-item">
                 <span className="info-order-price-label">Giá gốc:</span>
                 <span className="info-order-price-value">{priceInfo.originalPrice}</span>
               </div>
-            </p>
+            </div>
             <hr className="info-order-price-divider" />
-            <p>
+            <div>
               <div className="info-order-price-item">
                 <span className="info-order-price-label">Tổng chiết khấu:</span>
                 <span className="info-order-price-value">{priceInfo.totalDiscount}</span>
@@ -402,9 +413,9 @@ const InfoOrderDetails: React.FC<InfoOrderDetailsProps> = ({ selectedItem, onBac
                 <p>Ưu đãi 11% khi khách hàng chọn thanh toán sớm</p>
                 <p>Ưu đãi 3,5% chương trình “Quà Tặng Tân Gia”</p>
               </div>
-            </p>
+            </div>
             <hr className="info-order-price-divider" />
-            <p>
+            <div>
               <div className="info-order-price-item">
                 <span className="info-order-price-label">Giá sau chiết khấu:</span>
                 <span className="info-order-price-value">{priceInfo.discountedPrice}</span>
@@ -412,11 +423,11 @@ const InfoOrderDetails: React.FC<InfoOrderDetailsProps> = ({ selectedItem, onBac
               <div className="info-order-price-note">
                 <p>Giá sau chiết khấu (chưa bao gồm VAT & KPBT)</p>
               </div>
-            </p>
+            </div>
             <hr className="info-order-price-divider" />
           </div>
           <div className="info-order-price-right">
-            <p>
+            <div>
               <div className="info-order-price-item">
                 <span className="info-order-price-label">Tổng giá:</span>
                 <span className="info-order-price-value">{priceInfo.totalPrice}</span>
@@ -424,9 +435,9 @@ const InfoOrderDetails: React.FC<InfoOrderDetailsProps> = ({ selectedItem, onBac
               <div className="info-order-price-note">
                 <p>Tổng giá đã bao gồm VAT & KPBT</p>
               </div>
-            </p>
+            </div>
             <hr className="info-order-price-divider" />
-            <p>
+            <div>
               <div className="info-order-price-item">
                 <span className="info-order-price-label">Đã thanh toán:</span>
                 <span className="info-order-price-value">{priceInfo.paidAmount}</span>
@@ -434,14 +445,14 @@ const InfoOrderDetails: React.FC<InfoOrderDetailsProps> = ({ selectedItem, onBac
               <div className="info-order-price-note">
                 <p>Đã thanh toán (đợt 1 & 2)</p>
               </div>
-            </p>
+            </div>
             <hr className="info-order-price-divider" />
-            <p>
+            <div>
               <div className="info-order-price-item">
                 <span className="info-order-price-label">Dư nợ còn:</span>
                 <span className="info-order-price-value">{priceInfo.remainingDebt}</span>
               </div>
-            </p>
+            </div>
             <hr className="info-order-price-divider" />
           </div>
         </div>
@@ -453,13 +464,11 @@ const InfoOrderDetails: React.FC<InfoOrderDetailsProps> = ({ selectedItem, onBac
           {/* Left Panel */}
           <div className="w-1/3 text-sm">
             <h2 className="text-xl font-bold mb-4">Thông tin đơn hàng</h2>
-            <p className="font-semibold">Trần Văn Khánh</p>
-            <p>285501035</p>
-            <p>0966233290</p>
-            <p>khanhtran12232003@gmail.com</p>
-            <p>
-              Ấp 8 Nghĩa Trung, huyện Bù Đăng, <br /> tỉnh Bình Phước
-            </p>
+            <p className="font-semibold">{customerInfo.fullName}</p>
+            <p>{customerInfo.cccd}</p>
+            <p>{customerInfo.phone}</p>
+            <p>{customerInfo.email}</p>
+            <p>{customerInfo.address}</p>
           </div>
 
           {/* Right Panel */}

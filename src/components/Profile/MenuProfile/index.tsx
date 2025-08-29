@@ -111,9 +111,10 @@ const Menu: React.FC<MenuProps> = ({
           </div>
           {expanded["Thông báo"] && (
             <div className="profile-submenu">
-              {["Cập nhật đơn hàng", "Khuyến mãi"].map((item) => (
-                <div key={item} className={`profile-submenu-item ${selectedCategory === item ? "active" : ""}`} onClick={() => handleSelectCategory(item)}>{item}</div>
-              ))}
+              <Link href="/profile/cap-nhat-don-hang " className={`profile-submenu-item ${selectedCategory === "Cập nhật đơn hàng" ? "active" :""}`} onClick={()=> handleSelectCategory("Cập nhật đơn hàng")}>Cập nhật đơn hàng</Link>
+              <Link href="/profile/khuyen-mai " className={`profile-submenu-item ${selectedCategory === "Khuyến mãi" ? "active" :""}`} onClick={()=> handleSelectCategory("Khuyến mãi")}>Khuyến mãi</Link>
+
+          
             </div>
           )}
 
@@ -124,9 +125,8 @@ const Menu: React.FC<MenuProps> = ({
           </div>
           {expanded["Quản lý yêu cầu"] && (
             <div className="profile-submenu">
-              {["Danh sách lịch hẹn", "Danh sách yêu cầu"].map((item) => (
-                <div key={item} className={`profile-submenu-item ${selectedCategory === item ? "active" : ""}`} onClick={() => handleSelectCategory(item)}>{item}</div>
-              ))}
+              <Link href="/profile/danh-sach-lich-hen" className={`profile-submenu-item ${selectedCategory === "Danh sách lịch hẹn" ? "active" :""}`} onClick={()=>handleSelectCategory("Danh sách lịch hẹn")}>Danh sách lịch hẹn</Link>
+              <Link href="/profile/danh-sach-yeu-cau" className={`profile-submenu-item ${selectedCategory === "Danh sách yêu cầu" ? "active" :""}`} onClick={()=>handleSelectCategory("Danh sách yêu cầu")}>Danh sách yêu cầu</Link>
             </div>
           )}
 

@@ -6,6 +6,9 @@ import "../../components/Profile/MenuProfile/MenuProfile.css";
 import "../../components/Profile/TabDaXem/TabDaXem.css";
 import "../../components/Profile/TabYeuThich/TabYeuThich.css";
 import "../../components/Profile/QuanLyThongBao/QuanLyThongBao.css"
+import "../../components/Profile/ThongTinTaiKhoan/ThongTinTaiKhoan.css"
+import "../../components/Profile/ThayDoiMatKhau/ThayDoiMatKhau.css"
+import "../../components/Profile/MucDanhSachLichHen/DanhSachLichHen.css"
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(true);
