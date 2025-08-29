@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import PropertyGridBDS from "../PropertyGrid_BDS";
-import {Property, PropertyGridProps } from "../../../types/Property";
+import {Property, PropertyGridProps } from "../../../types/property";
 
 
 const ViewedSection = ({ properties }: PropertyGridProps) => {

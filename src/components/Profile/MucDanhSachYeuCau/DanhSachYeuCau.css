@@ -16,9 +16,12 @@
   gap: 10px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .profile-filter-button {
+  display: inline-flex; 
+  align-items: center; 
   padding: 8px 16px;
   border: 1px solid #d1d5db;
   border-radius: 4px;
@@ -32,9 +35,10 @@
 .profile-filter-button:hover {
   background-color: #f3f4f6;
 }
-
-.profile-table-container {
-  overflow-x: auto;
+/* // kích thước icon trong nút lọc // */
+.profile-filter-button svg {
+  margin-right: 8px; 
+  font-size: 16px;
 }
 
 .profile-request-table {

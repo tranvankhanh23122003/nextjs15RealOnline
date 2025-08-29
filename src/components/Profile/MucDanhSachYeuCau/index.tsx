@@ -1,23 +1,36 @@
-"use client"
+"use client";
+import { FaLayerGroup, FaTasks, FaCalendarAlt, FaClock } from "react-icons/fa";
+import { MdCancel, MdCheckCircle, MdPendingActions, MdAutorenew } from "react-icons/md";
+
 import { useState } from "react";
-type RequestItem = {
+import { StaticImageData } from "next/image";
+
+interface RequestItem {
   id: number;
   requestCode: string;
   requestType: string;
   createdTime: string;
   consultationTime: string;
   status: string;
-};
+}
 
-const RequestList = () => {
-  const data: RequestItem[] = [
-    { id: 1, requestCode: "23844", requestType: "Hỗ trợ kỹ thuật", createdTime: "2025-07-25 14:00", consultationTime: "2025-07-26 10:00", status: "Đang xử lý" },
-    { id: 2, requestCode: "23845", requestType: "Khiếu nại", createdTime: "2025-07-24 09:30", consultationTime: "2025-07-25 14:00", status: "Đã hủy" },
-    { id: 3, requestCode: "23846", requestType: "Tư vấn sản phẩm", createdTime: "2025-07-23 11:15", consultationTime: "2025-07-24 15:00", status: "Chưa xử lý" },
-    { id: 4, requestCode: "23847", requestType: "Hỗ trợ thanh toán", createdTime: "2025-07-22 16:45", consultationTime: "2025-07-23 09:00", status: "Đã xử lý" },
-    { id: 5, requestCode: "23848", requestType: "Đăng ký dịch vụ", createdTime: "2025-07-21 08:20", consultationTime: "2025-07-22 13:00", status: "Hoàn thành" },
-  ];
+interface PropertyCard {
+  id: number;
+  price: string;
+  rating: number;
+  description: string;
+  bedrooms: number;
+  area: string;
+  address: string;
+  image: StaticImageData;
+}
 
+interface RequestListProps {
+  data: RequestItem[];
+  propertyData?: PropertyCard[]; 
+}
+
+const RequestList = ({ data, propertyData }: RequestListProps) => {
   const [showDetail, setShowDetail] = useState(false);
   const [selectedItem, setSelectedItem] = useState<RequestItem | null>(null);
 
@@ -50,21 +63,20 @@ const RequestList = () => {
   return (
     <div className="profile-new-list">
       <h1 className="profile-title">Danh sách yêu cầu</h1>
-      <div className="profile-filters">
-  <button className="profile-filter-button">
-    <i className="fas fa-layer-group" style={{ marginRight: "8px" }}></i>
-    Loại yêu cầu
-  </button>
-  <button className="profile-filter-button">
-    <i className="fas fa-tasks" style={{ marginRight: "8px" }}></i>
-    Trạng thái
-  </button>
-  <button className="profile-filter-button">
-    <i className="fas fa-calendar-alt" style={{ marginRight: "8px" }}></i>
-    Thời gian tạo
-  </button>
-</div>
-
+     <div className="profile-filters">
+        <button className="profile-filter-button">
+          <FaLayerGroup style={{ marginRight: "8px" }} />
+          Loại yêu cầu
+        </button>
+        <button className="profile-filter-button">
+          <MdCheckCircle style={{ marginRight: "8px" }} />
+          Trạng thái
+        </button>
+        <button className="profile-filter-button">
+          <FaCalendarAlt style={{ marginRight: "8px" }} />
+          Thời gian tạo
+        </button>
+      </div>
       <div className="profile-table-container">
         <table className="profile-request-table">
           <thead>
@@ -85,7 +97,10 @@ const RequestList = () => {
                 <td className="profile-text-center">{item.requestType}</td>
                 <td className="profile-text-center">{item.createdTime}</td>
                 <td className="profile-text-center">{item.consultationTime}</td>
-                <td className="profile-text-center" style={{ color: getStatusColor(item.status) }}>
+                <td
+                  className="profile-text-center"
+                  style={{ color: getStatusColor(item.status) }}
+                >
                   {item.status}
                 </td>
               </tr>
@@ -94,11 +109,20 @@ const RequestList = () => {
         </table>
       </div>
       {showDetail && selectedItem && (
-        <div className="profile-request-detail-overlay" onClick={handleCloseDetail}>
-          <div className="profile-request-detail-container" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="profile-request-detail-overlay"
+          onClick={handleCloseDetail}
+        >
+          <div
+            className="profile-request-detail-container"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="profile-request-detail-header">
               <h2>Mã yêu cầu: #{selectedItem.requestCode}</h2>
-              <button className="profile-close-button" onClick={handleCloseDetail}>
+              <button
+                className="profile-close-button"
+                onClick={handleCloseDetail}
+              >
                 &times;
               </button>
             </div>
@@ -130,7 +154,7 @@ const RequestList = () => {
                   </div>
                   <div className="profile-info-item">
                     <label>Khu:</label>
-                    <span>Khu A</span>  
+                    <span>Khu A</span>
                   </div>
                   <div className="profile-info-item">
                     <label>Bất động sản:</label>

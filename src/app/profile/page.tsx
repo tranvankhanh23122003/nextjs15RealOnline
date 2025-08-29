@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Table from "@/components/Profile/DanhSach_BDS";
 import SearchBar from "@/components/Profile/TimKiem";
 import Header from "@/components/Profile/Header";
@@ -38,6 +38,15 @@ const Profile = () => {
     status: string;
   };
 
+  type RequestItem = {
+    id: number;
+    requestCode: string;
+    requestType: string;
+    createdTime: string;
+    consultationTime: string;
+    status: string;
+  };
+
   type PropertyCard = {
     id: number;
     price: string;
@@ -50,10 +59,12 @@ const Profile = () => {
   };
 
   type Notification = {
-    id: number;
-    message: string;
+    id: string;
+    title: string;
+    description: string;
     date: string;
-    isRead: boolean;
+    status: "active" | "expired";
+    image: StaticImageData;
   };
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -62,6 +73,8 @@ const Profile = () => {
   const [selectedStatus, setSelectedStatus] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [showReviewForm, setShowReviewForm] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const itemsPerPage = 3;
 
   const [accountInfo] = useState({
@@ -94,6 +107,49 @@ const Profile = () => {
     { id: 5, appointment: "LH005", location: "Trụ sở phụ", createdTime: "2025-07-21 08:20", consultationTime: "2025-07-22 13:00", status: "Đã hoàn thành" },
   ]);
 
+  const [requestData, setRequestData] = useState<RequestItem[]>([
+    {
+      id: 1,
+      requestCode: "23844",
+      requestType: "Hỗ trợ kỹ thuật",
+      createdTime: "2025-07-25 14:00",
+      consultationTime: "2025-07-26 10:00",
+      status: "Đang xử lý",
+    },
+    {
+      id: 2,
+      requestCode: "23845",
+      requestType: "Khiếu nại",
+      createdTime: "2025-07-24 09:30",
+      consultationTime: "2025-07-25 14:00",
+      status: "Đã hủy",
+    },
+    {
+      id: 3,
+      requestCode: "23846",
+      requestType: "Tư vấn sản phẩm",
+      createdTime: "2025-07-23 11:15",
+      consultationTime: "2025-07-24 15:00",
+      status: "Chưa xử lý",
+    },
+    {
+      id: 4,
+      requestCode: "23847",
+      requestType: "Hỗ trợ thanh toán",
+      createdTime: "2025-07-22 16:45",
+      consultationTime: "2025-07-23 09:00",
+      status: "Đã xử lý",
+    },
+    {
+      id: 5,
+      requestCode: "23848",
+      requestType: "Đăng ký dịch vụ",
+      createdTime: "2025-07-21 08:20",
+      consultationTime: "2025-07-22 13:00",
+      status: "Hoàn thành",
+    },
+  ]);
+
   const [propertyData] = useState<PropertyCard[]>([
     { id: 1, price: "18.42 tỷ", rating: 5, description: "Sổ hồng riêng xây dựng", bedrooms: 5, area: "84.00 m²", address: "Trụ sở chính", image: Slide1 },
     { id: 2, price: "20.00 tỷ", rating: 4, description: "Nhà phố hiện đại", bedrooms: 4, area: "100.00 m²", address: "Chi nhánh Hà Nội", image: Slide1 },
@@ -103,10 +159,53 @@ const Profile = () => {
   ]);
 
   const [notifications] = useState<Notification[]>([
-    { id: 1, message: "Khuyến mãi 10% cho căn hộ mới!", date: "2025-07-25", isRead: false },
-    { id: 2, message: "Lịch hẹn của bạn đã được xác nhận.", date: "2025-07-24", isRead: true },
-    { id: 3, message: "Cập nhật chính sách thanh toán mới.", date: "2025-07-23", isRead: false },
+    {
+      id: "KM001",
+      title: "Ưu đãi 10% cho căn hộ mới",
+      description: "Giảm 10% giá trị căn hộ nếu thanh toán trong vòng 7 ngày. Đặt mua ngay!",
+      date: "2025-07-25",
+      status: "active",
+      image: Slide1,
+    },
+    {
+      id: "KM002",
+      title: "Lịch hẹn xác nhận",
+      description: "Lịch hẹn của bạn đã được xác nhận. Vui lòng kiểm tra chi tiết.",
+      date: "2025-07-24",
+      status: "active",
+      image: Slide1,
+    },
+    {
+      id: "KM003",
+      title: "Cập nhật chính sách",
+      description: "Chính sách thanh toán mới đã được cập nhật. Xem chi tiết ngay!",
+      date: "2025-07-23",
+      status: "expired",
+      image: Slide1,
+    },
   ]);
+
+  // Gọi API khi component mount
+  useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await fetch("/api/requests");
+  //       if (!response.ok) {
+  //         throw new Error("Không thể lấy dữ liệu yêu cầu");
+  //       }
+  //       const apiRequestData: RequestItem[] = await response.json();
+  //       setRequestData(apiRequestData);
+
+  //       setLoading(false);
+  //     } catch (err) {
+  //       setError(err instanceof Error ? err.message : "Đã xảy ra lỗi");
+  //       setLoading(false);s
+  //     }
+  //   }
+
+  //   fetchData();
+    setLoading(false);
+  }, []);
 
   const filteredData = data.filter(
     (item) =>
@@ -157,6 +256,14 @@ const Profile = () => {
 
   const [toggleState, setToggleState] = useState("Bất động sản");
 
+  if (loading) {
+    return <div>Đang tải...</div>;
+  }
+
+  if (error) {
+    return <div>Lỗi: {error}</div>;
+  }
+
   return (
     <div className="profile-content">
       {selectedCategory === "" && (
@@ -206,7 +313,7 @@ const Profile = () => {
           ) : selectedCategory === "Thay đổi mật khẩu" ? (
             <ChangePassword />
           ) : selectedCategory === "Danh sách yêu cầu" ? (
-            <RequestList />
+            <RequestList data={requestData} propertyData={propertyData} />
           ) : selectedCategory === "Danh sách lịch hẹn" ? (
             <AppointmentList data={appointmentData} propertyData={propertyData} />
           ) : selectedCategory === "Khuyến mãi" ? (
