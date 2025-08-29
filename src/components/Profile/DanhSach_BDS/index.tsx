@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Slider1 from "../../../assets/images/baner1.png";
 import Image from 'next/image';
 import './style.css';
@@ -19,6 +20,7 @@ interface TableProps {
   setSelectedItem: (item: CanItem) => void;
   selectedCategory: string;
   onReviewClick: (item: CanItem) => void;
+  onViewDetails: (item: CanItem) => void; 
 }
 
 const getStatusClass = (status: string) => {
@@ -36,10 +38,28 @@ const getStatusClass = (status: string) => {
   }
 };
 
-const Table: React.FC<TableProps> = ({ data, setSelectedItem, selectedCategory, onReviewClick }) => {
+const Table: React.FC<TableProps> = ({ data, setSelectedItem, selectedCategory, onReviewClick, onViewDetails }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5; 
+
+  // Tính toán phân trang
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Tổng số trang
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  // Xử lý chuyển trang
+  const handlePageChange = (page: number) => {
+    if (page > 0 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
   return (
     <div className="profile-table__container">
-      {data.map((item) => (
+      {currentItems.map((item) => (
         <div
           key={item.id}
           className="profile-table__item"
@@ -76,9 +96,46 @@ const Table: React.FC<TableProps> = ({ data, setSelectedItem, selectedCategory, 
             >
               Đánh giá / Khiếu nại
             </button>
+            <button
+              className="profile-table__button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onViewDetails(item);
+              }}
+            >
+              Xem chi tiết
+            </button>
           </div>
         </div>
       ))}
+      {/* Phân trang */}
+      <div className="profile-pagination">
+        <button
+          className="profile-pagination-btn"
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <ChevronLeftIcon className="w-5 h-5" />
+        </button>
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <button
+            key={page}
+            className={`profile-pagination-btn ${
+              currentPage === page ? "profile-active-page" : ""
+            }`}
+            onClick={() => handlePageChange(page)}
+          >
+            {page}
+          </button>
+        ))}
+        <button
+          className="profile-pagination-btn"
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <ChevronRightIcon className="w-5 h-5" />
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,17 +1,23 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import "./style.css";
 
-const InfoAccount = () => {
-  const [accountInfo, setAccountInfo] = useState({
-    fullName: "",
-    birthDate: "",
-    gender: "",
-    address: "",
-    phone: "",
-    email : "",
-  });
+// 1. Khai báo interface cho prop
+interface AccountInfo {
+  fullName: string;
+  birthDate: string;
+  gender: string;
+  address: string;
+  phone: string;
+  email: string;
+}
+
+interface InfoAccountProps {
+  initialAccountInfo: AccountInfo;
+}
+
+const InfoAccount: React.FC<InfoAccountProps> = ({ initialAccountInfo }) => {
+  const [accountInfo, setAccountInfo] = useState<AccountInfo>(initialAccountInfo);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -25,7 +31,7 @@ const InfoAccount = () => {
     alert("Thông tin đã được lưu!");
   };
 
-  // Check tất cả các field trong accountInfo phải có dữ liệu
+  // Check tất cả các field phải có dữ liệu
   const isFormValid = Object.values(accountInfo).every(
     (value) => value.trim() !== ""
   );
@@ -118,7 +124,7 @@ const InfoAccount = () => {
             !isFormValid ? "disabled" : ""
           }`}
         >
-          Lưu thông tin 
+          Lưu thông tin
         </button>
       </div>
     </div>

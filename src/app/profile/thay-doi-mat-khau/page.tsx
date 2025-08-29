@@ -1,24 +1,18 @@
-import React from 'react';
-// import ProjectGridBDS from "../../../components/Profile/PropertyGrid_BDS"; // Ensure the filename matches exactly
+"use client";
 
-
-// interface PropertyCard {
-//     id: number;
-//     price: string;
-//     rating: number;
-//     description: string;
-//     bedrooms: number;
-//     area: string;
-//     address: string;
-//     image: string;
-//   }
-  
+import React, { useState } from "react";
+import ChangePassword from "@/components/Profile/ThayDoiMatKhau";
 
 export default function ThayDoiMatKhau() {
+  // Dữ liệu giả lập cho passwordData
+  const [passwordData] = useState({
+    currentPassword: "OldPass123!",
+    newPassword: "NewPass123!",
+  });
+
   return (
     <div>
-
-      <h1>thay đổi mật khẩu</h1>
+      <ChangePassword initialPasswordData={passwordData} />
     </div>
   );
 }
