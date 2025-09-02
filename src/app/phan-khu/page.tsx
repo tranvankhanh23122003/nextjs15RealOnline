@@ -71,7 +71,6 @@ const PhanKhu = () => {
 
   return (
     <>
-      {/* Slider hình ảnh */}
       <SliderWithMiniSlides
         images={images}
         currentSlide={currentSlide}
@@ -81,7 +80,6 @@ const PhanKhu = () => {
         subtitle="Khám phá thiết kế và chi tiết hình ảnh"
       />
 
-      {/* Mục lục icon */}
       <div className="phankhu-icon-section">
         <div className="phankhu-icon-wrapper">
           <div className="phankhu-icon-item">
