@@ -1,49 +1,94 @@
 "use client";
-import type React from "react"
-import { useState } from "react"
+import type React from "react";
+import { useState } from "react";
+import { toast, Bounce } from "react-toastify";
+import UserService from "../../services/UserService";
 
-const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
-  isOpen: boolean, 
-  onClose: () => void,
-  onSwitchToSignUp: () => void,
-  onLoginSuccess: (userData: { name: string; email: string }) => void
+const Login_Components = ({
+  isOpen,
+  onClose,
+  onSwitchToSignUp,
+  onLoginSuccess,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onSwitchToSignUp: () => void;
+  onLoginSuccess: (userData: { name: string; email: string }) => void;
 }) => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    
+    e.preventDefault();
+    setIsLoading(true);
+
     try {
-      // Giả lập API call đăng nhập
-      console.log("Login:", { email, password })
-      
-      // Giả lập delay API
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      // Giả lập đăng nhập thành công
-      if (email && password) {
-        const userData = {
-          name: email.includes('@') ? email.split('@')[0] : email,
-          email: email
+      // Gọi API login với format đúng theo Swagger
+      const response = await UserService.login({
+        username: email,
+        password: password,
+      });
+
+      console.log("API Response:", response);
+
+      // Xử lý response thành công
+      if (response.data) {
+        // Lưu token nếu có
+        const token = response.data.token;
+        if (token) {
+          localStorage.setItem("accessToken", token);
         }
-        
-        // Gọi callback để cập nhật trạng thái đăng nhập
-        onLoginSuccess(userData)
+
+        // Hiển thị toast thành công
+        toast.success("Đăng nhập thành công!", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+          transition: Bounce,
+        });
+
+        // Gọi callback với thông tin user
+        const user = response.data.user || {};
+        onLoginSuccess({
+          name: user.fullName || user.username || email,
+          email: user.email || email,
+        });
+
+        // Đóng modal sau 1 giây
+        setTimeout(() => {
+          onClose();
+        }, 1000);
       }
-    } catch (error) {
-      console.error("Login error:", error)
-      // Có thể thêm xử lý lỗi ở đây
+    } catch (error: any) {
+      console.error("Login error:", error);
+
+      // Hiển thị toast lỗi
+      const errorMessage =
+        error.response?.data?.message ||
+        "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.";
+      toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        transition: Bounce,
+      });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
-  
-  if(!isOpen) return null;
-  
+  };
+
+  if (!isOpen) return null;
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 backdrop-blur-sm">
       <div className="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full mx-4 max-h-[95vh] overflow-hidden">
@@ -52,8 +97,18 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
           onClick={onClose}
           className="absolute top-4 right-4 z-10 text-gray-500 hover:text-gray-700 bg-white rounded-full p-2 shadow-md"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
 
@@ -62,47 +117,68 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
           <div className="w-1/2 p-8 flex flex-col justify-center bg-gradient-to-br from-blue-50 to-blue-100">
             <div className="max-w-md">
               <div className="mb-6">
-                <p className="text-blue-600 text-sm font-medium mb-1">Giải pháp giao dịch Bất động sản trực tuyến</p>
-                <h2 className="text-gray-900 text-2xl font-bold mb-2">Sàn giao dịch BDS TDC</h2>
+                <p className="text-blue-600 text-sm font-medium mb-1">
+                  Giải pháp giao dịch Bất động sản trực tuyến
+                </p>
+                <h2 className="text-gray-900 text-2xl font-bold mb-2">
+                  Sàn giao dịch BDS TDC
+                </h2>
                 <p className="text-gray-700 text-sm">
-                  Đăng nhập ngay để khám phá toàn bộ thông tin và tận hưởng mọi tính năng tuyệt vời trên Sàn giao dịch
+                  Đăng nhập ngay để khám phá toàn bộ thông tin và tận hưởng mọi
+                  tính năng tuyệt vời trên Sàn giao dịch
                 </p>
               </div>
-              
+
               <div className="mb-6">
-                <h3 className="text-gray-900 font-semibold mb-3 text-sm">Khách đã đăng nhập</h3>
+                <h3 className="text-gray-900 font-semibold mb-3 text-sm">
+                  Khách đã đăng nhập
+                </h3>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2">•</span>
                     <span className="text-gray-700 text-xs">
-                      Thông tin, tài liệu chi tiết, chuyên sâu về các dự án và quỹ căn của Sàn giao dịch TDC
+                      Thông tin, tài liệu chi tiết, chuyên sâu về các dự án và
+                      quỹ căn của Sàn giao dịch TDC
                     </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2">•</span>
-                    <span className="text-gray-700 text-xs">Công cụ tính giá, chiết khấu và dòng tiền</span>
+                    <span className="text-gray-700 text-xs">
+                      Công cụ tính giá, chiết khấu và dòng tiền
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2">•</span>
-                    <span className="text-gray-700 text-xs">Cập nhật sớm những thông tin về dự án mới</span>
+                    <span className="text-gray-700 text-xs">
+                      Cập nhật sớm những thông tin về dự án mới
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2">•</span>
-                    <span className="text-gray-700 text-xs">Cập nhật biến động kinh tế vĩ mô, đề xuất bất động sản phù hợp</span>
+                    <span className="text-gray-700 text-xs">
+                      Cập nhật biến động kinh tế vĩ mô, đề xuất bất động sản phù
+                      hợp
+                    </span>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-gray-900 font-semibold mb-3 text-sm">Khách chưa đăng nhập</h3>
+                <h3 className="text-gray-900 font-semibold mb-3 text-sm">
+                  Khách chưa đăng nhập
+                </h3>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <span className="text-orange-500 mr-2">•</span>
-                    <span className="text-gray-700 text-xs">Xem thông tin về các dự án của TDC</span>
+                    <span className="text-gray-700 text-xs">
+                      Xem thông tin về các dự án của TDC
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-orange-500 mr-2">•</span>
-                    <span className="text-gray-700 text-xs">Chuyến tham quan ảo TDC 360</span>
+                    <span className="text-gray-700 text-xs">
+                      Chuyến tham quan ảo TDC 360
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -113,9 +189,7 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
           <div className="w-1/2 flex items-center justify-center p-8 bg-white overflow-y-auto">
             <div className="max-w-sm w-full">
               <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">
-                  Đăng nhập
-                </h2>
+                <h2 className="text-2xl font-bold text-gray-900">Đăng nhập</h2>
               </div>
 
               <form className="space-y-4" onSubmit={handleSubmit}>
@@ -145,7 +219,12 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                   >
                     {showPassword ? (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -154,7 +233,12 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
                         />
                       </svg>
                     ) : (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -173,7 +257,10 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
                 </div>
 
                 <div className="flex items-center justify-end">
-                  <a href="#" className="text-sm text-blue-600 hover:text-blue-500">
+                  <a
+                    href="#"
+                    className="text-sm text-blue-600 hover:text-blue-500"
+                  >
                     Quên mật khẩu?
                   </a>
                 </div>
@@ -182,9 +269,9 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
                   type="submit"
                   disabled={isLoading}
                   className={`w-full py-3 px-4 rounded-lg font-medium transition duration-200 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                    isLoading 
-                      ? 'bg-blue-400 cursor-not-allowed' 
-                      : 'bg-blue-700 hover:bg-blue-800'
+                    isLoading
+                      ? "bg-blue-400 cursor-not-allowed"
+                      : "bg-blue-700 hover:bg-blue-800"
                   } text-white`}
                 >
                   {isLoading ? (
@@ -193,7 +280,7 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
                       Đang đăng nhập...
                     </div>
                   ) : (
-                    'Đăng nhập'
+                    "Đăng nhập"
                   )}
                 </button>
 
@@ -215,7 +302,7 @@ const Login_Components = ({isOpen, onClose, onSwitchToSignUp, onLoginSuccess}: {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login_Components
+export default Login_Components;

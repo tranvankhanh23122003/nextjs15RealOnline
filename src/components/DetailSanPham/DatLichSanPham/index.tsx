@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Login_Components from "../../Login/Login_Components"; 
+import Login_Components from "../../Login/Login_Components";
 import login from "../../../assets/images/login.png";
 import "./style.css";
 
@@ -28,6 +28,12 @@ const DatLichSanPham: React.FC = () => {
     alert("Chuyển sang form đăng ký"); // Giả lập, thay bằng logic thật nếu có
   };
 
+  const handleLoginSuccess = (userData: { name: string; email: string }) => {
+    console.log("Đăng nhập thành công:", userData);
+    setShowLoginForm(false);
+    // Add your success logic here
+  };
+
   return (
     <div className="sanpham-content">
       <h3>Đặt lịch xem nhà ngay hôm nay để nhận ưu đãi tốt nhất</h3>
@@ -39,9 +45,21 @@ const DatLichSanPham: React.FC = () => {
       </div>
 
       <div className="sanpham-date-pick">
-        <button>Thứ hai<br />7/7</button>
-        <button>Thứ ba<br />8/7</button>
-        <button>Thứ tư<br />9/7</button>
+        <button>
+          Thứ hai
+          <br />
+          7/7
+        </button>
+        <button>
+          Thứ ba
+          <br />
+          8/7
+        </button>
+        <button>
+          Thứ tư
+          <br />
+          9/7
+        </button>
       </div>
 
       <button className="sanpham-booking-btn">Đặt lịch ngay</button>
@@ -60,13 +78,23 @@ const DatLichSanPham: React.FC = () => {
               onClick={handleCloseEmptyForm}
               className="sanpham-modal-close"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
             <div className="sanpham-modal-content">
               <img
-                src={login}
+                src={login.src}
                 alt="Login Prompt"
                 className="sanpham-modal-image"
               />
@@ -88,6 +116,7 @@ const DatLichSanPham: React.FC = () => {
         isOpen={showLoginForm}
         onClose={handleCloseLoginForm}
         onSwitchToSignUp={handleSwitchToSignUp}
+        onLoginSuccess={handleLoginSuccess}
       />
     </div>
   );

@@ -46,7 +46,7 @@ export default function InFoChiTietSanPham() {
         <div className="highlight-columns">
           <div className="highlight-left">
             <img
-              src={Slider1}
+              src={Slider1.src}
               alt="Highlight Image"
               className="highlight-image"
             />
