@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from "react";
-import Slide1 from "../../../assets/images/baner1.png";
+import Slide1 from "../../../../public/images/baner1.png";
 import ContractTables from "../BangHopDong";
 import Image from "next/image";
 import "./style.css";

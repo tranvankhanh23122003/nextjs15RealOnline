@@ -16,7 +16,7 @@ const MaCanSanPham: React.FC = () => {
    
       <div className="sanpham-pricing-boxes">
         <div className="sanpham-price-box highlight">
-          <div className="label">Giá tốt nhất</div>
+          <div className="label">Giá tốt nhất </div>
           <div className="price">15,45 tỷ</div>
           <span className="sanpham-discounted-price">
             <span className="sanpham-original-price">15,45 tỷ</span>

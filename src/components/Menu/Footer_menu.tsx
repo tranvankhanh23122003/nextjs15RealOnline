@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from "react";
 
 // Import images
-import logoImage from "../../assets/images/Logo.png";
-import youtubeIcon from "../../assets/images/Icon_ytb.png";
-import sendIcon from "../../assets/images/Icon_send.png";
-
+import logoImage from "../../../public/images/Logo.png";
+import youtubeIcon from "../../../public/images/Icon_ytb.png";
+import sendIcon from "../../../public/images/Icon_send.png";
+import Image from "next/image";
 const Footer_menu = () => {
   const [isClient, setIsClient] = useState(false);
   const [email, setEmail] = useState("");
@@ -26,8 +26,16 @@ const Footer_menu = () => {
       <footer className="bg-gray-100 py-12">
         <div className="container mx-auto px-4">
           <div className="text-center py-8">
-            <img src={logoImage.src} alt="TDC Logo" className="h-12 mx-auto mb-4" />
-            <p className="text-gray-600">© 2025 TDC. Tất cả các quyền được bảo lưu.</p>
+            <Image
+              src={logoImage}
+              alt="TDC Logo"
+              width={150} // đặt theo nhu cầu
+              height={68}
+              className="h-12 mx-auto mb-4"
+            />
+            <p className="text-gray-600">
+              © 2025 TDC. Tất cả các quyền được bảo lưu.
+            </p>
           </div>
         </div>
       </footer>
@@ -40,7 +48,13 @@ const Footer_menu = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <img src={logoImage.src} alt="TDC Logo" className="h-12 mb-4" />
+              <Image
+                src={logoImage}
+                alt="TDC Logo"
+                width={150} // đặt theo nhu cầu
+                height={68}
+                className="h-12 mb-4"
+              />
               <h3 className="text-xl font-bold text-gray-800 mb-2">TDC</h3>
               <p className="text-gray-600 text-sm mb-2">
                 Công Ty CP Kinh Doanh Và Phát Triển Bình Dương
@@ -95,7 +109,13 @@ const Footer_menu = () => {
                 href="#"
                 className="text-gray-400 hover:text-gray-600 transition-colors"
               >
-                <img src={youtubeIcon.src} alt="YouTube" className="w-6 h-6" />
+                <Image
+                  src={youtubeIcon}
+                  alt="YouTube"
+                  width={150} // đặt theo nhu cầu
+                  height={68}
+                  className="w-6 h-6"
+                />
               </a>
             </div>
           </div>
@@ -196,32 +216,37 @@ const Footer_menu = () => {
                   type="submit"
                   className="px-6 py-3 text-white rounded-r-lg transition-colors focus:outline-none focus:ring-2"
                 >
-                  <img src={sendIcon.src} alt="send" className="w-5 h-5" />
+                  <Image
+                    src={sendIcon}
+                    alt="send"
+                    width={150} // đặt theo nhu cầu
+                    height={68}
+                    className="w-5 h-5"
+                  />
                 </button>
               </div>
             </form>
             <div className="mt-12 mb-8">
-          <h4 className="text-lg font-semibold text-gray-800 mb-4">
-            Vị trí của chúng tôi
-          </h4>
-          <div className="flex justify-center">
-            <div className="w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.7854166057823!2d106.68467841146614!3d11.054708689066056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d120a79ca57f%3A0xae6359c1a8c60d14!2zQ8O0bmcgVHkgQ-G7lSBQaOG6p24gS2luaCBEb2FuaCBWw6AgUGjDoXQgVHJp4buDbiBCw6xuaCBExrDGoW5nIChUREMp!5e0!3m2!1sen!2s!4v1751614956266!5m2!1sen!2s"
-                width="100%"
-                height="350"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-150px h-150px md:h-[400px] lg:h-[450px]"
-              />
+              <h4 className="text-lg font-semibold text-gray-800 mb-4">
+                Vị trí của chúng tôi
+              </h4>
+              <div className="flex justify-center">
+                <div className="w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.7854166057823!2d106.68467841146614!3d11.054708689066056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d120a79ca57f%3A0xae6359c1a8c60d14!2zQ8O0bmcgVHkgQ-G7lSBQaOG6p24gS2luaCBEb2FuaCBWw6AgUGjDoXQgVHJp4buDbiBCw6xuaCBExrDGoW5nIChUREMp!5e0!3m2!1sen!2s!4v1751614956266!5m2!1sen!2s"
+                    width="100%"
+                    height="350"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-150px h-150px md:h-[400px] lg:h-[450px]"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-          </div>
-        </div>  
-       
 
         <div className="border-t border-gray-300 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">

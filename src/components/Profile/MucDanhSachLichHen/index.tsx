@@ -164,7 +164,7 @@ const AppointmentList: React.FC<AppointmentListProps> = ({ data, propertyData })
                   </div>
                   <div className="profile-info-item">
                     <label>Số người tham dự - 2 người:</label>
-                    <img src="https://via.placeholder.com/40" alt="Avatar" className="profile-avatar" />
+                    <Image src="https://via.placeholder.com/40" alt="Avatar" className="profile-avatar" />
                     <span style={{ fontWeight: "bold" }}>Đặng Phương Thảo</span>
                   </div>
                 </div>

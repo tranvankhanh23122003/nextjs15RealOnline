@@ -2,15 +2,24 @@
 
 import { useState } from "react";
 
-import Slide1 from "@/assets/images/baner1.png";
-import Slide2 from "@/assets/images/khu-cong-nghiep.png";
-import Slide3 from "@/assets/images/baner1.png";
-import Slide4 from "@/assets/images/khu-cong-nghiep.png";
-import Slide5 from "@/assets/images/baner1.png";
-import Slide6 from "@/assets/images/khu-cong-nghiep.png";
-import Slide7 from "@/assets/images/baner1.png";
-import Slide8 from "@/assets/images/khu-cong-nghiep.png";
-import Slide9 from "@/assets/images/baner1.png";
+import Slide1 from "../../../public/images/baner1.png";
+import Slide2 from "../../../public/images/khu-cong-nghiep.png";
+import Slide3 from "../../../public/images/baner1.png";
+import Slide4 from "../../../public/images/khu-cong-nghiep.png";
+import Slide5 from "../../../public/images/baner1.png";
+import Slide6 from "../../../public/images/khu-cong-nghiep.png";
+import Slide7 from "../../../public/images/baner1.png";
+import Slide8 from "../../../public/images/khu-cong-nghiep.png";
+import Slide9 from "../../../public/images/baner1.png";
+import {
+  MdDashboard,
+  MdMiscellaneousServices,
+} from "react-icons/md";
+import { FaProjectDiagram } from "react-icons/fa";
+import { GoLocation } from "react-icons/go";
+import { GiTreeGrowth } from "react-icons/gi";
+import { HiDocumentText } from "react-icons/hi";
+import Image from "next/image";
 
 import SliderWithAlbumSanPham from "@/components/DetailSanPham/SlideAlbumSanPham";
 import DatLichSanPham from "@/components/DetailSanPham/DatLichSanPham";
@@ -61,16 +70,45 @@ export default function SanPhamPage() {
         title="Bộ sưu tập sản phẩm"
         subtitle="Khám phá thiết kế và chi tiết hình ảnh"
       />
-
+ <div className="sanpham-icon-section">
+        <div className="sanpham-icon-wrapper">
+          <div className="sanpham-icon-item">
+            <MdDashboard className="sanpham-icon" />
+            <span className="sanpham-icon-label">Tổng quan</span>
+          </div>
+          <div className="sanpham-icon-item">
+            <FaProjectDiagram className="sanpham-icon" />
+            <span className="sanpham-icon-label">Phân khu</span>
+          </div>
+          <div className="sanpham-icon-item">
+            <GoLocation className="sanpham-icon" />
+            <span className="sanpham-icon-label">Vị trí</span>
+          </div>
+          <div className="sanpham-icon-item">
+            <MdMiscellaneousServices className="sanpham-icon" />
+            <span className="sanpham-icon-label">Tiện ích</span>
+          </div>
+          <div className="sanpham-icon-item">
+            <GiTreeGrowth className="sanpham-icon" />
+            <span className="sanpham-icon-label">Cảnh quan</span>
+          </div>
+          <div className="sanpham-icon-item">
+            <HiDocumentText className="sanpham-icon" />
+            <span className="sanpham-icon-label">Tài liệu tổng mặt bằng</span>
+          </div>
+        </div>
+      </div>
       {isFullscreen && selectedImage && (
         <div className="sanpham-fullscreen-overlay" onClick={closeFullscreen}>
           <div
             className="sanpham-fullscreen-content"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
+            <Image
               src={selectedImage}
               alt="Ảnh phóng to"
+              width={150}
+              height={68}
               className="sanpham-fullscreen-image"
             />
             <button className="sanpham-close-btn" onClick={closeFullscreen}>

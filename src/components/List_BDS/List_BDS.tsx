@@ -8,8 +8,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 // Import images - using placeholder since we don't have actual property images
-import testImage from "../../assets/images/ImageTest.png";
-
+import testImage from "../../../public/images/ImageTest.png";
+import Image from "next/image";
 interface PropertyCard {
   id: number;
   price: string;
@@ -190,7 +190,7 @@ const List_BDS = () => {
             >
               {/* Property image */}
               <div className="relative">
-                <img
+                <Image
                   src={property.image}
                   alt={`Property ${property.id}`}
                   className="w-full h-48 object-cover"

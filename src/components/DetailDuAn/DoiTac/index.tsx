@@ -1,12 +1,31 @@
-import Slide1 from '../../../assets/images/baner1.png';
-import Slide2 from '../../../assets/images/khu-cong-nghiep.png';
-import './style.css';
+import Slide1 from "../../../../public/images/baner1.png";
+import Slide2 from "../../../../public/images/khu-cong-nghiep.png";
+import Image from "next/image";
+import "./style.css";
 
 export default function DoiTac() {
   const partners = [
-    { id: 1, name: 'Đối tác 1', title:'Thương hiệu phát triển chủ lực kinh doanh bất động sản, sản xuất vật liệu và xây dựng.', image: Slide1 },
-    { id: 2, name: 'Đối tác 2', title:'Thương hiệu phát triển chủ lực kinh doanh bất động sản, sản xuất vật liệu và xây dựng.', image: Slide2 },
-    { id: 3, name: 'Đối tác 3', title:'Thương hiệu phát triển chủ lực kinh doanh bất động sản, sản xuất vật liệu và xây dựng.', image: Slide1 },
+    {
+      id: 1,
+      name: "Đối tác 1",
+      title:
+        "Thương hiệu phát triển chủ lực kinh doanh bất động sản, sản xuất vật liệu và xây dựng.",
+      image: Slide1,
+    },
+    {
+      id: 2,
+      name: "Đối tác 2",
+      title:
+        "Thương hiệu phát triển chủ lực kinh doanh bất động sản, sản xuất vật liệu và xây dựng.",
+      image: Slide2,
+    },
+    {
+      id: 3,
+      name: "Đối tác 3",
+      title:
+        "Thương hiệu phát triển chủ lực kinh doanh bất động sản, sản xuất vật liệu và xây dựng.",
+      image: Slide1,
+    },
   ];
 
   return (
@@ -19,7 +38,13 @@ export default function DoiTac() {
           <div key={partner.id} className="partner-card">
             <h3 className="partner-card-title">{partner.name}</h3>
             <div className="partner-content">
-              <img src={partner.image.src} alt={partner.name} className="partner-image" />
+              <Image
+                src={partner.image.src}
+                alt={partner.name}
+                width={150}
+                height={68}
+                className="partner-image"
+              />
               <span className="partner-name">{partner.title}</span>
             </div>
           </div>

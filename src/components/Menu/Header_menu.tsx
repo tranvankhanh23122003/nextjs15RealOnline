@@ -4,20 +4,20 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 // Import images
-import logoImage from "../../assets/images/Logo.png";
-import facebookIcon from "../../assets/images/Icon_fb.png";
-import youtubeIcon from "../../assets/images/Icon_ytb.png";
-import notificationIcon from "../../assets/images/Icon_noti.png";
-import questionIcon from "../../assets/images/icon_question.png";
-import colorBgIcon from "../../assets/images/Icon_color_bg.png";
-import accountIcon from "../../assets/images/Icon_account.png";
-import searchIcon from "../../assets/images/Icon_search.png";
-import shopIcon from "../../assets/images/Icon_shop.png";
-import trellIcon from "../../assets/images/Icon_trello.png";
+import logoImage from "../../../public/images/login.png";
+import facebookIcon from "../../../public/images/Icon_fb.png";
+import youtubeIcon from "../../../public/images/Icon_ytb.png";
+import notificationIcon from "../../../public/images/Icon_noti.png";
+import questionIcon from "../../../public/images/icon_question.png";
+import colorBgIcon from "../../../public/images/Icon_color_bg.png";
+import accountIcon from "../../../public/images/Icon_account.png";
+import searchIcon from "../../../public/images/Icon_search.png";
+import shopIcon from "../../../public/images/Icon_shop.png";
+import trellIcon from "../../../public/images/Icon_trello.png";
 // Removed react-router-dom import - using Next.js router instead
 import Auth_Components from "../Login/Auth_Components";
 import SignUp_Components from "../Login/SignUp_Components";
-
+import Image from "next/image";
 const Header_menu = () => {
   const [isClient, setIsClient] = useState(false);
   const [isProjectDropdownOpen, setIsProjectDropdownOpen] = useState(false);
@@ -33,7 +33,7 @@ const Header_menu = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Thay đổi thành true để hiển thị UI đã đăng nhập
   const [userInfo, setUserInfo] = useState({
     name: "Nguyễn Văn A",
-    email: "user@example.com"
+    email: "user@example.com",
   });
   const router = useRouter();
 
@@ -130,7 +130,13 @@ const Header_menu = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <div className="flex items-center">
-              <img src={logoImage.src} alt="TDC Logo" className="h-10 lg:h-[68px]" />
+              <Image
+                src={logoImage.src}
+                alt="TDC Logo"
+                width={150}
+                height={68}
+                className="h-10 lg:h-[68px]"
+              />
             </div>
           </div>
         </div>
@@ -151,7 +157,11 @@ const Header_menu = () => {
               <span>|</span>
               <span className="flex items-center space-x-2">
                 <span>Kết nối</span>
-                <img src={facebookIcon.src} alt="Facebook" className="w-5 h-5" />
+                <img
+                  src={facebookIcon.src}
+                  alt="Facebook"
+                  className="w-5 h-5"
+                />
                 <img src={youtubeIcon.src} alt="YouTube" className="w-5 h-5" />
               </span>
             </div>
@@ -174,12 +184,16 @@ const Header_menu = () => {
                 <img src={colorBgIcon.src} alt="Theme" className="w-5 h-5" />
                 <span>Màu nền</span>
               </span>
-              
+
               {!isLoggedIn ? (
                 <>
                   <span>|</span>
                   <span className="flex items-center space-x-1 relative">
-                    <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
+                    <img
+                      src={accountIcon.src}
+                      alt="Account"
+                      className="w-5 h-5"
+                    />
                     <span
                       className="text-red-400 cursor-pointer hover:text-red-300"
                       onClick={() => setIsSignUpOpen(true)}
@@ -196,7 +210,7 @@ const Header_menu = () => {
                     />
                     <span>/</span>
                     <div className="relative cursor-pointer">
-                      <span 
+                      <span
                         className="hover:text-orange-400"
                         onClick={() => setIsLoginOpen(true)}
                       >
@@ -215,31 +229,61 @@ const Header_menu = () => {
                   <span>|</span>
                   <div className="flex items-center space-x-2">
                     {/* Heart icon for favorites */}
-                    <button 
+                    <button
                       className="p-1 hover:text-red-400 transition-colors"
                       onClick={() => router.push("/profile")}
                     >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                        />
                       </svg>
                     </button>
-                    
+
                     {/* User info dropdown */}
                     <div className="relative group">
                       <div className="flex items-center space-x-2 cursor-pointer hover:text-orange-400">
-                        <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
-                        <span className="max-w-[150px] truncate">{userInfo.name}</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        <img
+                          src={accountIcon.src}
+                          alt="Account"
+                          className="w-5 h-5"
+                        />
+                        <span className="max-w-[150px] truncate">
+                          {userInfo.name}
+                        </span>
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
                         </svg>
                       </div>
-                      
+
                       {/* Dropdown menu */}
                       <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                         <div className="py-2">
                           <div className="px-4 py-2 border-b border-gray-200">
-                            <p className="text-sm font-semibold text-gray-900">{userInfo.name}</p>
-                            <p className="text-xs text-gray-500 truncate">{userInfo.email}</p>
+                            <p className="text-sm font-semibold text-gray-900">
+                              {userInfo.name}
+                            </p>
+                            <p className="text-xs text-gray-500 truncate">
+                              {userInfo.email}
+                            </p>
                           </div>
                           <button
                             onClick={() => router.push("/profile")}
@@ -274,12 +318,22 @@ const Header_menu = () => {
               )}
             </div>
           </div>
-        </div>  x
+        </div>{" "}
+        x
       </div>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <div className="flex items-center cursor-pointer" onClick={() => router.push("/")}>
-            <img src={logoImage.src} alt="TDC Logo" className="h-10 lg:h-[68px]" />
+          <div
+            className="flex items-center cursor-pointer"
+            onClick={() => router.push("/")}
+          >
+            <img
+              src={logoImage.src}
+              alt="TDC Logo"
+              width={150} // đặt theo nhu cầu
+              height={68}
+              className="h-10 lg:h-[68px]"
+            />
           </div>
           <div className="hidden lg:flex flex-1 max-w-2xl mx-8">
             <div className="relative w-full">
@@ -384,7 +438,10 @@ const Header_menu = () => {
             </button>
 
             {/* Mobile Cart */}
-            <button className="relative p-2" onClick={() => router.push("/gio-hang")}>
+            <button
+              className="relative p-2"
+              onClick={() => router.push("/gio-hang")}
+            >
               <img src={shopIcon.src} alt="Shopping Cart" className="w-8 h-8" />
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
                 0
@@ -423,8 +480,15 @@ const Header_menu = () => {
 
           {/* Desktop Right Side */}
           <div className="hidden lg:flex items-center pr-16">
-            <button className="relative p-2" onClick={() => router.push("/gio-hang")}>
-              <img src={shopIcon.src} alt="Shopping Cart" className="w-12 h-12" />
+            <button
+              className="relative p-2"
+              onClick={() => router.push("/gio-hang")}
+            >
+              <img
+                src={shopIcon.src}
+                alt="Shopping Cart"
+                className="w-12 h-12"
+              />
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
@@ -702,7 +766,11 @@ const Header_menu = () => {
               {!isLoggedIn ? (
                 <>
                   <div className="flex items-center space-x-2 text-white mb-3">
-                    <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
+                    <img
+                      src={accountIcon.src}
+                      alt="Account"
+                      className="w-5 h-5"
+                    />
                     <div className="relative cursor-pointer">
                       <span
                         className="text-red-400 cursor-pointer"
@@ -721,7 +789,9 @@ const Header_menu = () => {
                       <span>/</span>
                     </div>
                     <div className="relative cursor-pointer">
-                      <span onClick={() => setIsLoginOpen(true)}>Đăng nhập</span>
+                      <span onClick={() => setIsLoginOpen(true)}>
+                        Đăng nhập
+                      </span>
                       <Auth_Components
                         isOpen={isLoginOpen}
                         onClose={() => setIsLoginOpen(false)}
@@ -734,22 +804,38 @@ const Header_menu = () => {
                 <>
                   <div className="flex items-center justify-between text-white mb-3">
                     <div className="flex items-center space-x-2">
-                      <img src={accountIcon.src} alt="Account" className="w-5 h-5" />
+                      <img
+                        src={accountIcon.src}
+                        alt="Account"
+                        className="w-5 h-5"
+                      />
                       <div>
                         <p className="font-semibold">{userInfo.name}</p>
-                        <p className="text-xs text-gray-300">{userInfo.email}</p>
+                        <p className="text-xs text-gray-300">
+                          {userInfo.email}
+                        </p>
                       </div>
                     </div>
-                    <button 
+                    <button
                       className="p-2 hover:text-red-400 transition-colors"
                       onClick={() => router.push("/profile")}
                     >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                        />
                       </svg>
                     </button>
                   </div>
-                  
+
                   <div className="space-y-2 mb-3">
                     <button
                       onClick={() => router.push("/profile")}
@@ -778,7 +864,7 @@ const Header_menu = () => {
                   </div>
                 </>
               )}
-              
+
               <div className="flex items-center space-x-4 text-white text-sm">
                 <span className="flex items-center space-x-1 cursor-pointer hover:text-orange-400">
                   <img
@@ -1018,7 +1104,11 @@ const Header_menu = () => {
             <div className="border-t border-gray-600 pt-4 mt-4">
               <div className="flex items-center space-x-4 text-white text-sm">
                 <span>Kết nối:</span>
-                <img src={facebookIcon.src} alt="Facebook" className="w-5 h-5" />
+                <img
+                  src={facebookIcon.src}
+                  alt="Facebook"
+                  className="w-5 h-5"
+                />
                 <img src={youtubeIcon.src} alt="YouTube" className="w-5 h-5" />
               </div>
             </div>

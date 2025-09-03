@@ -1,7 +1,8 @@
 import React from 'react';
-import Slide1 from "../../../assets/images/baner1.png";
-import Slide2 from "../../../assets/images/khu-cong-nghiep.png";
+import Slide1 from "../../../../public/images/baner1.png";
+import Slide2 from "../../../../public/images/khu-cong-nghiep.png";
 import './style.css';
+import Image from "next/image";
 
 export default function DanhSachTienIch() {
   const amenities = [
@@ -36,7 +37,7 @@ export default function DanhSachTienIch() {
         <React.Fragment key={index}>
           <div className="phan-khu-amenity-row">
             <div className="phan-khu-category-title">
-              <img
+              <Image
                 src={amenity.categoryImage}
                 alt={amenity.category}
                 className="phan-khu-category-image"
@@ -47,7 +48,7 @@ export default function DanhSachTienIch() {
             <div className="phan-khu-category-content">
               {amenity.items.map((item, itemIndex) => (
                 <div key={itemIndex} className="phan-khu-category-item">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.name}
                     className="phan-khu-item-image"

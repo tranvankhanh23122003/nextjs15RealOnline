@@ -1,5 +1,5 @@
-import moneyIcon from "../../assets/images/Icon_money.png";
-
+import moneyIcon from "../../../public/images/Icon_money.png";
+import Image from "next/image";
 const Cashback_section = () => {
   return (
     <section className="py-16 bg-gradient-to-br from-blue-100 via-blue-50 to-purple-50 relative overflow-hidden">
@@ -87,9 +87,11 @@ const Cashback_section = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-orange-200 rounded-full blur-3xl opacity-30 scale-110 group-hover:scale-125 transition-transform duration-700"></div>
 
               <div className="relative z-10 flex justify-center">
-                <img
+                <Image
                   src={moneyIcon.src}
                   alt="Money Cashback Illustration"
+                  width={150}
+                  height={68}
                   className="w-[400px] h-[400px] md:w-[450px] md:h-[450px] lg:w-[400px] lg:h-[400px] xl:w-[480px] xl:h-[480px] object-contain animate-float drop-shadow-2xl group-hover:scale-110 transition-transform duration-500 cursor-pointer"
                 />
               </div>

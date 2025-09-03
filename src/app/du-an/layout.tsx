@@ -1,4 +1,5 @@
 "use client";
+import "@/styles/duan.css";
 
 
 export default function DuAnLayout({

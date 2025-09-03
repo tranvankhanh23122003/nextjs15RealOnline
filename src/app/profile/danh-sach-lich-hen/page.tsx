@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import AppointmentList from "@/components/Profile/MucDanhSachLichHen";
-import Slide1 from "@/assets/images/baner1.png";
+import Slide1 from "../../../../public/images/baner1.png";
 import { StaticImageData } from "next/image";
 
 interface AppointmentItem {

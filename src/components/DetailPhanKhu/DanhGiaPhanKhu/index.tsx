@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Slide1 from "../../../assets/images/baner1.png";
-import Slide2 from "../../../assets/images/khu-cong-nghiep.png";
+import Slide1 from "../../../../public/images/baner1.png";
+import Slide2 from "../../../../public/images/khu-cong-nghiep.png";
 import "./style.css";
-
+import Image from "next/image";
 const images = [Slide1.src, Slide2.src];
 
 const reviewsData = [
@@ -51,7 +51,7 @@ export default function ReviewsForm() {
         <div className="reviews-form-content">
           {reviewsData.map((review) => (
             <div key={review.id} className="review-item">
-              <img
+              <Image
                 src={review.avatar.src}
                 alt={review.name}
                 width={105}
@@ -80,9 +80,11 @@ export default function ReviewsForm() {
         </div>
         <div className="reviews-form-footer">
           <div className="footer-slide">
-            <img
+            <Image
               src={images[currentSlide]}
               alt={`Slide ${currentSlide + 1}`}
+              width={150}
+              height={68}
               className="slide-image"
             />
             <div className="footer-content">

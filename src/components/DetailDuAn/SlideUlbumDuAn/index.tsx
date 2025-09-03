@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import './style.css'
+import Image from "next/image";
 interface SliderWithAlbumProps {
   images: string[];
 }
@@ -57,8 +58,10 @@ export default function SliderWithAlbumDuAn({ images }: SliderWithAlbumProps) {
     <>
       <div className="duan-slider-container">
         <div className="duan-slider">
-          <img
+          <Image
             src={images[currentSlide]}
+            width={150}       // bắt buộc
+            height={68} 
             alt={`Slide ${currentSlide + 1}`}
             className="duan-slider-image"
           />
@@ -82,10 +85,12 @@ export default function SliderWithAlbumDuAn({ images }: SliderWithAlbumProps) {
         <div className="duan-album">
           <div className="duan-album-inner" ref={albumRef}>
             {images.map((img, index) => (
-              <img
+              <Image
                 key={index}
                 src={img}
                 alt={`Thumbnail ${index + 1}`}
+                width={150}       // bắt buộc
+                height={68} 
                 className={index === currentSlide ? "duan-active" : ""}
                 onClick={() => handleImageClick(img, index)}
               />
@@ -104,10 +109,12 @@ export default function SliderWithAlbumDuAn({ images }: SliderWithAlbumProps) {
         {isDropdownOpen && (
           <div className="duan-dropdown-content">
             {images.map((image, index) => (
-              <img
+              <Image
                 key={index}
                 src={image}
                 alt={`Dropdown ${index + 1}`}
+                width={150}       // bắt buộc
+                height={68} 
                 className="duan-dropdown-image"
                 onClick={() => handleImageClick(image, index)}
               />
@@ -118,9 +125,11 @@ export default function SliderWithAlbumDuAn({ images }: SliderWithAlbumProps) {
 
       {isFullscreen && selectedImage && (
         <div className="duan-fullscreen-overlay" onClick={closeFullscreen}>
-          <img
+          <Image
             src={selectedImage}
             alt="Fullscreen"
+            width={150}       // bắt buộc
+            height={68} 
             className="duan-fullscreen-image"
           />
           <button className="duan-close-btn" onClick={closeFullscreen}>

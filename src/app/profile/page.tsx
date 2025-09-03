@@ -14,7 +14,7 @@ import OrderDetail from "@/components/Profile/CapNhatDonHang";
 import InfoOrderDetails from "@/components/Profile/ThongTinChiTietDonHang";
 import NotificationManager from "@/components/Profile/QuanLyThongBao";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import Slide1 from "@/assets/images/baner1.png";
+import Slide1 from "../../../public/images/baner1.png";
 import { StaticImageData } from "next/image";
 
 const Profile = () => {

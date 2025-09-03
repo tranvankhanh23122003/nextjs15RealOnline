@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
-import Slide1 from "../../../assets/images/baner1.png";
-import Slide2 from "../../../assets/images/khu-cong-nghiep.png";
-import Slide3 from "../../../assets/images/baner1.png";
+import Slide1 from "../../../../public/images/baner1.png";
+import Slide2 from "../../../../public/images/khu-cong-nghiep.png";
+import Slide3 from "../../../../public/images/baner1.png";
 import "./style.css";
+import Image from "next/image";
 const TinTuc = () => {
   const [currentLarge] = useState(0);
   const [currentSmall1] = useState(0);
@@ -19,9 +20,11 @@ const TinTuc = () => {
       <div className="tintuc-container">
         <div className="left-section">
           <div className="slide-large">
-            <img
+            <Image
               src={images[currentLarge]}
               alt="Slide lớn"
+              width={150}
+              height={68}
               className="slide-image"
             />
           </div>
@@ -35,9 +38,11 @@ const TinTuc = () => {
         <div className="right-section">
           <div className="slide-small-wrapper">
             <div className="slide-small">
-              <img
+              <Image
                 src={images[currentSmall1]}
                 alt="Slide nhỏ 1"
+                width={150}
+                height={68}
                 className="slide-image"
               />
               <div className="slide-info">
@@ -46,7 +51,13 @@ const TinTuc = () => {
               </div>
             </div>
             <div className="slide-small">
-              <img src={images[1]} alt="Slide nhỏ 2" className="slide-image" />
+              <Image
+                src={images[1]}
+                alt="Slide nhỏ 2"
+                width={150}
+                height={68}
+                className="slide-image"
+              />
               <div className="slide-info">
                 <h3>Tiêu đề tin 2</h3>
                 <p className="date">08/07/2025 14:00</p>

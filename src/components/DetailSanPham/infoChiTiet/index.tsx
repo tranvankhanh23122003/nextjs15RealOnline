@@ -1,5 +1,6 @@
 import "./style.css";
-import Slider1 from "../../../assets/images/baner1.png";
+import Slider1 from "../../../../public/images/baner1.png";
+import Image from "next/image";
 export default function InFoChiTietSanPham() {
   return (
     <div className="infochitiet-section">
@@ -45,9 +46,11 @@ export default function InFoChiTietSanPham() {
       <div className="highlight-section">
         <div className="highlight-columns">
           <div className="highlight-left">
-            <img
+            <Image
               src={Slider1}
               alt="Highlight Image"
+              width={150}
+              height={68}
               className="highlight-image"
             />
           </div>

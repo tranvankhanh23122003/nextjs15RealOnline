@@ -1,6 +1,6 @@
 
-import ImageTest from "../../assets/images/ImageTest.png";
-
+import ImageTest from "../../../public/images/ImageTest.png";
+import Image from "next/image";
 const TinTuc = () => {
   const mainNews = {
     id: 1,
@@ -55,9 +55,11 @@ const TinTuc = () => {
           <div className="group cursor-pointer">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
               <div className="relative h-64 lg:h-80 overflow-hidden">
-                <img
+                <Image
                   src={mainNews.image.src}
                   alt={mainNews.title}
+                  width={150}
+                  height={68}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
 
@@ -123,9 +125,11 @@ const TinTuc = () => {
                 className="flex space-x-4 group cursor-pointer bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
               >
                 <div className="flex-shrink-0 w-32 h-24 lg:w-40 lg:h-28 overflow-hidden">
-                  <img
+                  <Image
                     src={news.image.src}
                     alt={news.title}
+                    width={150}
+                    height={68}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>

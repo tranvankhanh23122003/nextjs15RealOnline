@@ -5,11 +5,12 @@ import { ChevronDownIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
 
 // Import images
-import testImage from "../../assets/images/Bg_test.png";
-import imageTest from "../../assets/images/ImageTest.png";
-import logoTDC from "../../assets/images/Logo.png";
+import testImage from "../../../public/images/Bg_test.png";
+import imageTest from "../../../public/images/ImageTest.png";
+import logoTDC from "../../../public/images/Logo.png";
 import BookingModal from "../DatCho_LienHe/BookingModal";
 import Booking_TuVan from "../DatCho_LienHe/Booking_TuVan";
+import Image from "next/image";
 interface ProjectCard {
   id: number;
   name: string;
@@ -130,7 +131,7 @@ const List_TDC = () => {
             >
               {/* Project image */}
               <div className="relative">
-                <img
+                <Image
                   src={project.image}
                   alt={project.name}
                   className="w-full h-48 object-cover"
@@ -147,7 +148,7 @@ const List_TDC = () => {
 
                 {/* TDC badge */}
                 <div className="absolute top-3 right-3">
-                  <img src={logoTDC.src} alt="" className="w-20 h-10" />
+                  <Image src={logoTDC.src} alt="" className="w-20 h-10" />
                 </div>
 
                 {/* Heart icon */}
@@ -197,7 +198,7 @@ const List_TDC = () => {
         <div className="relative bg-gradient-to-r from-blue-800 to-blue-900 rounded-lg overflow-hidden">
           {/* Background image overlay */}
           <div className="absolute inset-0 bg-opacity-40">
-            <img
+            <Image
               src={testImage.src}
               alt="Background"
               className="w-full h-full object-cover"

@@ -1,8 +1,6 @@
 import type React from "react";
 import { useState } from "react";
-import google from "../../assets/images/Icon-gg.png";
-import mail from "../../assets/images/Icon-mail.png";
-
+import Image from "next/image";
 const SignUp_Components = ({
   isOpen,
   onClose,
@@ -224,11 +222,7 @@ const SignUp_Components = ({
                       type="button"
                       className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-200"
                     >
-                      <img
-                        src={google.src}
-                        alt="Google"
-                        className="w-4 h-4 md:w-5 md:h-5"
-                      />
+                     <Image src="/images/Icon-gg.png" alt="Google" width={24} height={24} />
                     </button>
                     <button
                       type="button"
@@ -246,11 +240,7 @@ const SignUp_Components = ({
                       type="button"
                       className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition duration-200"
                     >
-                      <img
-                        src={mail.src}
-                        alt="Mail"
-                        className="w-4 h-4 md:w-5 md:h-5"
-                      />
+                      <Image src="/images/Icon-mail.png" alt="Mail" width={24} height={24} />
                     </button>
                   </div>
                 </div>

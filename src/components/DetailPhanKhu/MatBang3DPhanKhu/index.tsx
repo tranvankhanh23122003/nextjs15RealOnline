@@ -1,8 +1,8 @@
 'use client';
 import React, { useRef, useState, useEffect } from 'react';
-import Slide1 from '../../../assets/images/baner1.png'
+import Slide1 from '../../../../public/images/baner1.png'
 import './style.css';
-
+import Image from 'next/image';
 export default function MatBang3DPhanKhu() {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -58,10 +58,12 @@ export default function MatBang3DPhanKhu() {
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
-      <img
+      <Image
         ref={imageRef}
         src={Slide1.src}
         alt="Mặt bằng 3D"
+        width={150}
+        height={68}
         className="image-3d"
         style={{
           transform: `scale(${scale}) translate(${position.x / scale}px, ${position.y / scale}px)`,

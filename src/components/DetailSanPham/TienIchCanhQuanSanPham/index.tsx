@@ -2,8 +2,9 @@
 import { useState, useEffect, useRef } from "react";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import "./style.css";
-import Slide1 from "../../../assets/images/baner1.png";
-import Slide2 from "../../../assets/images/khu-cong-nghiep.png";
+import Image from "next/image";
+import Slide1 from "../../../../public/images/baner1.png";
+import Slide2 from "../../../../public/images/khu-cong-nghiep.png";
 
 type ImageItem = {
   src: string;
@@ -76,9 +77,11 @@ export default function TienIchCanhQuanSanPham() {
       <h2> Tiện ích cảnh quan</h2>
       <div className="image-slider-container">
         <div className="image-slider">
-          <img
+          <Image
             src={images[currentImage].src}
             alt={images[currentImage].title}
+            width={150}
+            height={68} 
             className="image-slide"
           />
         </div>
@@ -100,9 +103,11 @@ export default function TienIchCanhQuanSanPham() {
                 }`}
                 onClick={() => openModal(index)}
               >
-                <img
+                <Image
                   src={image.src}
                   alt={image.title}
+                  width={150}
+                  height={68}
                   className="image-thumbnail"
                 />
                 <span className="thumbnail-text">{image.title}</span>
@@ -123,9 +128,11 @@ export default function TienIchCanhQuanSanPham() {
               &times;
             </button>
             <div className="modal-image-container">
-              <img
+              <Image
                 src={images[currentImage].src}
                 alt={images[currentImage].title}
+                width={150}
+                height={68}
                 className="modal-image"
               />
             </div>
