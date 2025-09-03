@@ -2,8 +2,8 @@ import React from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 // Import images
-import ImageDuanMau from "../../assets/images/ImageDuanMau.png";
-
+import ImageDuanMau from "../../../public/images/ImageDuanMau.png";
+import Image from "next/image";
 interface Product {
   id: number;
   name: string;
@@ -115,7 +115,7 @@ const ProductSelectionModal: React.FC<ProductSelectionModalProps> = ({
                 >
                   {/* Product Image */}
                   <div className="relative">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.name}
                       className="w-full h-48 object-cover"

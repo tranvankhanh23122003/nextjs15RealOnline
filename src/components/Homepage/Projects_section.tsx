@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import logoImage from "../../assets/images/Logo.png";
+import logoImage from "../../../public/images/Logo.png";
 import ProjectApi from "../../services/ProjectApi";
+import Image from "next/image";
 const Projects_section = () => {
   const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -52,7 +53,7 @@ const Projects_section = () => {
             >
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <Image
                     src={project.ImageUrl}
                     alt={project.TenDA}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -60,7 +61,7 @@ const Projects_section = () => {
                   <div className="absolute bg-opacity-10 group-hover:bg-opacity-5 transition-all duration-300"></div>
                   <div className="absolute top-4 right-4">
                     <div className="bg-white rounded-full p-2 shadow-lg">
-                      <img src={logoImage.src} alt="TDC" className="w-8 h-8" />
+                      <Image src={logoImage.src} alt="TDC" className="w-8 h-8" />
                     </div>
                   </div>
 

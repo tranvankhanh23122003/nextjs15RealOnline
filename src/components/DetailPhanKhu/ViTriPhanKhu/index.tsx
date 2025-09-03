@@ -1,7 +1,8 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import "./style.css";
-import banDoImg from "../../../assets/images/baner1.png";
+import banDoImg from "../../../../public/images/baner1.png";
+import Image from 'next/image';
 
 export default function ViTri() {
   const [showMore, setShowMore] = useState(false);
@@ -57,10 +58,12 @@ export default function ViTri() {
       </button>
 
       <div className="phan-khu-map-container" ref={containerRef}>
-        <img
+        <Image
           src={banDoImg.src}
           alt="Bản đồ vị trí phân khu"
           className="phan-khu-map-image"
+          width={300}
+          height={68}
           style={{ transform: `scale(${scale})` }}
         />
       </div>

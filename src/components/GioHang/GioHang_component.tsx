@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { X, Home } from "lucide-react";
-import KhuCongNghiep from "../../assets/images/khu-cong-nghiep.png";
-import testImage from "../../assets/images/Bg_test.png";
+import KhuCongNghiep from "../../../public/images/khu-cong-nghiep.png";
+import testImage from "../../../public/images/Bg_test.png";
 import BookingModal from "../DatCho_LienHe/BookingModal";
 import BookingTuVan from "../DatCho_LienHe/Booking_TuVan";
+import Image from "next/image";
 interface ApartmentItem {
   id: string;
   name: string;
@@ -188,7 +189,7 @@ export default function GioHang_component() {
 
                     {/* Image */}
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         src={item.image || "/placeholder.svg"}
                         alt={item.name}
                         className="w-40 h-30 rounded-lg object-cover"
@@ -461,7 +462,7 @@ export default function GioHang_component() {
         <div className="relative bg-gradient-to-r bg-black/60 rounded-lg overflow-hidden w-full max-w-6xl shadow-2xl">
           {/* Background image overlay */}
           <div className="absolute inset-0">
-            <img
+            <Image
               src={testImage.src}
               alt="Background"
               className="w-full h-full object-cover opacity-30"

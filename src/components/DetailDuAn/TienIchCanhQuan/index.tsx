@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import './syle.css';
-
+import Image from 'next/image';
 type VideoItem = {
   type: 'youtube' | 'mp4';
   src: string; 
@@ -91,9 +91,11 @@ export default function TienIchCanhQuan() {
                 onClick={() => setCurrentVideo(index)}
               >
                 {video.type === 'youtube' ? (
-                  <img
+                  <Image
                     src={`https://img.youtube.com/vi/${video.src}/0.jpg`}
                     alt="youtube thumbnail"
+                    width={150}       
+                    height={68} 
                     className="video-thumbnail"
                   />
                 ) : (

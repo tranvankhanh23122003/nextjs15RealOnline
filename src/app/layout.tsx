@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body suppressHydrationWarning={true}>
+      <body>
         <Header_menu />
         <main>{children}</main>
         <Footer_menu />

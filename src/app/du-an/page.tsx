@@ -1,14 +1,8 @@
 "use client";
 
-import Slide1 from "@/assets/images/baner1.png";
-import Slide2 from "@/assets/images/khu-cong-nghiep.png";
-import Slide3 from "@/assets/images/baner1.png";
-import Slide4 from "@/assets/images/khu-cong-nghiep.png";
-import Slide5 from "@/assets/images/baner1.png";
-import Slide6 from "@/assets/images/khu-cong-nghiep.png";
-import Slide7 from "@/assets/images/baner1.png";
-import Slide8 from "@/assets/images/khu-cong-nghiep.png";
-import Slide9 from "@/assets/images/baner1.png";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import SliderWithAlbumDuAn from "@/components/DetailDuAn/SlideUlbumDuAn";
 import InfoChiTietDuAn from "@/components/DetailDuAn/InfoChiTiet";
 import DiemNoiBat from "@/components/DetailDuAn/DiemNoiBat";
@@ -21,101 +15,105 @@ import FileTaiLieu from "@/components/DetailDuAn/FileTaiLieu";
 import MatBang3D from "@/components/DetailDuAn/MatBang3D";
 import DoiTac from "@/components/DetailDuAn/DoiTac";
 import TinTuc from "@/components/DetailDuAn/TinTuc";
-import "@/styles/duan.css";
+
+import { Area, Project } from "@/types/duan";
 
 const DuAn = () => {
-  const images: string[] = [
-    Slide1.src, Slide2.src, Slide3.src, Slide4.src, Slide5.src, Slide6.src, Slide7.src, Slide8.src, Slide9.src,
-  ];
+  const [projectData, setProjectData] = useState<Project | null>(null);
+  const [cardData, setCardData] = useState<Area[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [images, setImages] = useState<string[]>([]);
 
-  const cardData = [
-    {
-      id: 1,
-      image: Slide1.src,
-      area: "Khu A",
-      project: "Khu biệt thự cao cấp",
-      style: "Cổ điển",
-      type: "Biệt thự",
-    },
-    {
-      id: 2,
-      image: Slide2.src,
-      area: "Khu B",
-      project: "Khu biệt thự cao cấp",
-      style: "Hiện đại",
-      type: "Biệt thự",
-    },
-    {
-      id: 3,
-      image: Slide3.src,
-      area: "Khu C",
-      project: "Khu biệt thự cao cấp",
-      style: "Tân cổ điển",
-      type: "Biệt thự",
-    },
-  ];
+  useEffect(() => {
+    const fetchProjectData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get("/api/dictionary/DuAn");
+        const data = response.data;
+
+        console.log("Dữ liệu API trả về:", data);
+
+        setProjectData(data.project || null);
+        setCardData(data.areas || []);
+
+        // ✅ Lấy images từ mảng areas
+        setImages((data.areas || []).map((area: any) => area.image));
+      } catch (err: any) {
+        console.error("Lỗi khi lấy dữ liệu dự án:", err.message);
+        setError("Không thể tải dữ liệu dự án. Vui lòng thử lại sau.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjectData();
+  }, []);
+
+  if (loading) return <div>Đang tải dữ liệu...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <>
-     <SliderWithAlbumDuAn images={images} />
-<div className="home-page">
+      {/* Slider nhận danh sách ảnh từ API */}
+      <SliderWithAlbumDuAn images={images} />
 
-  <div className="form">
-    <div className="left-section">
-      <h2>Tổng quan dự án khu biệt thự cao cấp Cocoland</h2>
-      <InfoChiTietDuAn />
-      <DiemNoiBat />
+      <div className="home-page">
+        <div className="form">
+          <div className="left-section">
+            <h2>Tổng quan dự án {projectData?.name}</h2>
+            <InfoChiTietDuAn project={projectData} />
+            <DiemNoiBat />
 
-      <h2>Phân khu của dự án khu biệt thự cao cấp Cocoland</h2>
-      <PhanKhu cards={cardData} />
+            <h2>Phân khu của dự án {projectData?.name}</h2>
+            <PhanKhu cards={cardData} />
 
-      <h2>Vị trí khu biệt thự cao cấp</h2>
-      <ViTri />
+            <h2>Vị trí {projectData?.name}</h2>
+            <ViTri />
 
-      <h2>Tiện ích cảnh quan</h2>
-      <TienIchCanhQuan />
+            <h2>Tiện ích cảnh quan</h2>
+            <TienIchCanhQuan />
 
-      <h4>Danh sách tiện ích</h4>
-      <DanhSachTienIch />
+            <h4>Danh sách tiện ích</h4>
+            <DanhSachTienIch />
 
-      <h2>Tài liệu biệt thự cao cấp Cocoland</h2>
-      <FileTaiLieu />
+            <h2>Tài liệu {projectData?.name}</h2>
+            <FileTaiLieu />
 
-      <div className="title-with-legend">
-        <h2>Tổng mặt bằng biệt thự cao cấp Cocoland</h2>
-        <div className="legend">
-          <div className="legend-item">
-            <span className="color-box dang-ban"></span> Đang bán
+            <div className="title-with-legend">
+              <h2>Tổng mặt bằng {projectData?.name}</h2>
+              <div className="legend">
+                <div className="legend-item">
+                  <span className="color-box dang-ban"></span> Đang bán
+                </div>
+                <div className="legend-item">
+                  <span className="color-box da-ban"></span> Đã bán
+                </div>
+                <div className="legend-item">
+                  <span className="color-box chua-mo-ban"></span> Chưa mở bán
+                </div>
+                <div className="legend-item">
+                  <span className="color-box giu-cho"></span> Giữ chỗ
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="legend-item">
-            <span className="color-box da-ban"></span> Đã bán
+
+          <div className="right-section">
+            <TuVanForm />
           </div>
-          <div className="legend-item">
-            <span className="color-box chua-mo-ban"></span> Chưa mở bán
-          </div>
-          <div className="legend-item">
-            <span className="color-box giu-cho"></span> Giữ chỗ
+        </div>
+
+        <div className="info-form">
+          <div className="matbang3d-section">
+            <MatBang3D />
+            <DoiTac />
+            <TinTuc />
           </div>
         </div>
       </div>
-    </div>
-
-    <div className="right-section">
-      <TuVanForm />
-    </div>
-  </div>
-
-  <div className="info-form">
-    <div className="matbang3d-section">
-      <MatBang3D />
-      <DoiTac />
-      <TinTuc />
-    </div>
-  </div>
-</div>
     </>
-   
   );
-}
+};
 
 export default DuAn;

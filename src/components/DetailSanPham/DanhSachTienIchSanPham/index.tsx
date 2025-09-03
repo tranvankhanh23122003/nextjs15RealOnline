@@ -1,7 +1,8 @@
 'use client';
 import React, { useState } from 'react';
-import Slide1 from "../../../assets/images/baner1.png";
-import Slide2 from "../../../assets/images/khu-cong-nghiep.png";
+import Slide1 from "../../../../public/images/baner1.png";
+import Slide2 from "../../../../public/images/khu-cong-nghiep.png";
+import Image from 'next/image';
 import './style.css';
 
 export default function DanhSachTienIchSanPham() {
@@ -58,9 +59,11 @@ export default function DanhSachTienIchSanPham() {
         <React.Fragment key={index}>
           <div className="san-pham-amenity-row">
             <div className="san-pham-category-title">
-              <img
+              <Image
                 src={amenity.categoryImage.src}
                 alt={amenity.category}
+                width={150}
+                height={68}
                 className="san-pham-category-image"
               />
               <span>{`${amenity.category} (${amenity.items.length})`}</span>
@@ -69,9 +72,11 @@ export default function DanhSachTienIchSanPham() {
             <div className="san-pham-category-content">
               {amenity.items.map((item, itemIndex) => (
                 <div key={itemIndex} className="san-pham-category-item">
-                  <img
+                  <Image
                     src={item.image.src}
                     alt={item.name}
+                    width={150}
+                    height={68}
                     className="san-pham-item-image"
                   />
                   <span className="san-pham-item-name">{item.name}</span>
@@ -90,9 +95,11 @@ export default function DanhSachTienIchSanPham() {
             <React.Fragment key={index + amenities.length}>
               <div className="san-pham-amenity-row">
                 <div className="san-pham-category-title">
-                  <img
+                  <Image
                     src={amenity.categoryImage.src}
                     alt={amenity.category}
+                    width={150}
+                    height={68}
                     className="san-pham-category-image"
                   />
                   <span>{`${amenity.category} (${amenity.items.length})`}</span>
@@ -101,9 +108,11 @@ export default function DanhSachTienIchSanPham() {
                 <div className="san-pham-category-content">
                   {amenity.items.map((item, itemIndex) => (
                     <div key={itemIndex} className="san-pham-category-item">
-                      <img
+                      <Image
                         src={item.image.src}
                         alt={item.name}
+                        width={150}
+                        height={68}
                         className="san-pham-item-image"
                       />
                       <span className="san-pham-item-name">{item.name}</span>

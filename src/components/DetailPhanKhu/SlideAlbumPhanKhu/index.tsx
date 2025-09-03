@@ -3,6 +3,7 @@
 import React from "react";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import "./style.css";
+import Image from "next/image";
 
 interface Props {
   images: string[];
@@ -37,9 +38,11 @@ export default function SliderWithMiniSlides({
             <LeftOutlined />
           </button>
           <div className="phankhu-slider">
-            <img
+            <Image
               src={images[currentSlide]}
               alt={`Slide ${currentSlide + 1}`}
+              width={150}
+              height={68}
               className="phankhu-slider-image"
               onClick={() => handleImageClick(images[currentSlide], currentSlide)}
             />
@@ -61,10 +64,12 @@ export default function SliderWithMiniSlides({
         </div>
         <div className="phankhu-mini-slides">
           {images.slice(0, 4).map((img, index) => (
-            <img
+            <Image
               key={index}
               src={img}
               alt={`Mini Slide ${index + 1}`}
+              width={150}
+              height={68}
               className={`phankhu-mini-slide ${index === currentSlide ? "active" : ""}`}
               onClick={() => handleImageClick(img, index)}
             />

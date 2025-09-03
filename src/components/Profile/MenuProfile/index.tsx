@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa";
-import Slide1 from "../../../assets/images/baner1.png";
+import Slide1 from "../../../../public/images/baner1.png";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

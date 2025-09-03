@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
-import Slide1 from "../../../assets/images/baner1.png";
-import Slide2 from "../../../assets/images/khu-cong-nghiep.png";
-import Slide3 from "../../../assets/images/baner1.png";
+import Slide1 from "../../../../public/images/baner1.png";
+import Slide2 from "../../../../public/images/khu-cong-nghiep.png";
+import Slide3 from "../../../../public/images/baner1.png";
+import Image from "next/image";
 import "./style.css";
 
 const TinTucSanPham = () => {
@@ -18,9 +19,10 @@ const TinTucSanPham = () => {
       <div className="sanpham-container">
         <div className="sanpham-left-section">
           <div className="sanpham-slide-large">
-            <img
+            <Image
               src={images[currentLarge].src}
               alt="Slide lớn"
+              width={150} height={68}
               className="sanpham-slide-image"
             />
           </div>
@@ -37,9 +39,10 @@ const TinTucSanPham = () => {
         <div className="sanpham-right-section">
           <div className="sanpham-slide-small-wrapper">
             <div className="sanpham-slide-small">
-              <img
+              <Image
                 src={images[currentSmall1].src}
                 alt="Slide nhỏ 1"
+                width={150} height={68}
                 className="sanpham-slide-image"
               />
               <div className="sanpham-slide-info">
@@ -48,9 +51,10 @@ const TinTucSanPham = () => {
               </div>
             </div>
             <div className="sanpham-slide-small">
-              <img
+              <Image
                 src={images[1].src}
                 alt="Slide nhỏ 2"
+                width={150} height={68}
                 className="sanpham-slide-image"
               />
               <div className="sanpham-slide-info">

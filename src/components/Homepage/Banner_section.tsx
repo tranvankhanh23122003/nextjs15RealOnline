@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import banner1 from "../../assets/images/baner1.png";
+import banner1 from "../../../public/images/baner1.png";
 const Banner_section = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [timeLeft, setTimeLeft] = useState({

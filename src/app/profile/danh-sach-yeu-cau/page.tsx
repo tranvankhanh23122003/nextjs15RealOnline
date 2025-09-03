@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import RequestList from "@/components/Profile/MucDanhSachYeuCau";
-import Slide1 from "../../../assets/images/baner1.png";
+import Slide1 from "../../../../public/images/baner1.png";
 import { StaticImageData } from "next/image";
 
 interface RequestItem {

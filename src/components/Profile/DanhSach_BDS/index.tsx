@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import Slider1 from "../../../assets/images/baner1.png";
+import Slider1 from "../../../../public/images/baner1.png";
 import Image from 'next/image';
 import './style.css';
 

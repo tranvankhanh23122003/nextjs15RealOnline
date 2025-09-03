@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import ImageTest from "../../assets/images/ImageTest.png";
+import ImageTest from "../../../public/images/ImageTest.png";
+import Image from "next/image";
 const BatDongSanGiaTot = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -193,9 +194,11 @@ const BatDongSanGiaTot = () => {
               className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
             >
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src={property.image}
                   alt={`Property ${property.id}`}
+                  width={150}
+                  height={68}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
 

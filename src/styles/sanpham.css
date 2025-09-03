@@ -8,9 +8,20 @@
   display: flex;
   justify-content: center;
 }
+.sanpham-icon-section {
+  position: relative;  /* không absolute */
+  margin-top: 20px;    /* khoảng cách với slide */
+  z-index: 1;          /* đảm bảo không bị che bởi overlay */
+  display: flex;
+  justify-content: center;
+}
 
-
-
+.sanpham-icon-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
 
 
 /* Fullscreen */

@@ -7,12 +7,12 @@ import {
   PlusIcon,
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 // Import components
 import ProductSelectionModal from "./ProductSelectionModal";
 
 // Import images
-import ImageDuanMau from "../../assets/images/ImageDuanMau.png";
+import ImageDuanMau from "../../../public/images/duanmau.png";
 
 interface ProductInfo {
   id: number;
@@ -140,7 +140,7 @@ const SoSanh = () => {
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
         {/* Product Image and Basic Info */}
         <div className="relative">
-          <img
+          <Image
             src={product.image}
             alt={product.name}
             className="w-full h-48 object-cover"

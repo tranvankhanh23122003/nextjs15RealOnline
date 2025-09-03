@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdWarning } from "react-icons/md";
 import { GiNotebook } from "react-icons/gi";
-import Slide1 from "../../../assets/images/baner1.png";
+import Slide1 from "../../../../public/images/baner1.png";
 import "./style.css";
 import ContractTables from "../BangHopDong";
 import Image from "next/image";

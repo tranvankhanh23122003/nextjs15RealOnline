@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import "@/styles/phankhu.css";
 
 interface PhanKhuLayoutProps {
   children: React.ReactNode;

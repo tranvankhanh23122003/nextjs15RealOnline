@@ -2,7 +2,7 @@
 
 import { MapPinIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
-import SLide1 from "../../../assets/images/baner1.png";
+import SLide1 from "../../../../public/images/baner1.png";
 import Image from "next/image";
 import "./style.css";
 

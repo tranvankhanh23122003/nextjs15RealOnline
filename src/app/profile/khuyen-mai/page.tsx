@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import NotificationManager from "@/components/Profile/QuanLyThongBao";
-import Slide1 from "../../../assets/images/baner1.png";
+import Slide1 from "../../../../public/images/baner1.png";
 import { StaticImageData } from "next/image";
 
 interface Notification {

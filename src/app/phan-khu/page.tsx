@@ -6,7 +6,7 @@ import { FaProjectDiagram } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { GiTreeGrowth } from "react-icons/gi";
 import { HiDocumentText } from "react-icons/hi";
-
+import Image from "next/image";
 import SliderWithMiniSlides from "@/components/DetailPhanKhu/SlideAlbumPhanKhu";
 import DiemNoiBatPhanKhu from "@/components/DetailPhanKhu/DiemNoiBatPhanKhu";
 import InfoChiTietPhanKhu from "@/components/DetailPhanKhu/InfoChiTietPhanKhu";
@@ -20,17 +20,16 @@ import MatBang3DPhanKhu from "@/components/DetailPhanKhu/MatBang3DPhanKhu";
 import PriceTable from "@/components/DetailPhanKhu/PricePhanKhu";
 import TinTucPhanKhu from "@/components/DetailPhanKhu/TinTucPhanKhu";
 import { getPhanKhu , PhanKhu as PhanKhuType } from "@/apis/PhanKhu";
-import Slide1 from "@/assets/images/baner1.png";
-import Slide2 from "@/assets/images/khu-cong-nghiep.png";
-import Slide3 from "@/assets/images/baner1.png";
-import Slide4 from "@/assets/images/khu-cong-nghiep.png";
-import Slide5 from "@/assets/images/baner1.png";
-import Slide6 from "@/assets/images/khu-cong-nghiep.png";
-import Slide7 from "@/assets/images/baner1.png";
-import Slide8 from "@/assets/images/khu-cong-nghiep.png";
-import Slide9 from "@/assets/images/baner1.png";
+import Slide1 from "../../../public/images/baner1.png";
+import Slide2 from "../../../public/images/khu-cong-nghiep.png";
+import Slide3 from "../../../public/images/baner1.png";
+import Slide4 from "../../../public/images/khu-cong-nghiep.png";
+import Slide5 from "../../../public/images/baner1.png";
+import Slide6 from "../../../public/images/khu-cong-nghiep.png";
+import Slide7 from "../../../public/images/baner1.png";
+import Slide8 from "../../../public/images/khu-cong-nghiep.png";
+import Slide9 from "../../../public/images/baner1.png";
 
-import "../../styles/phankhu.css";
 
 const images: string[] = [
   Slide1.src,
@@ -115,9 +114,11 @@ const PhanKhu = () => {
             className="phankhu-fullscreen-content"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
+            <Image
               src={selectedImage}
               alt="Ảnh phóng to"
+              width={1200}
+              height={100}
               className="phankhu-fullscreen-image"
             />
             <button className="phankhu-close-btn" onClick={closeFullscreen}>
