@@ -19,3 +19,7 @@ export interface Area {
   style: string;
   type: string;
 }
+export interface DuAnResponse {
+  project: Project;
+  areas: Area[];
+}
