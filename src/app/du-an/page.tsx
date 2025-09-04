@@ -17,6 +17,7 @@ import DoiTac from "@/components/DetailDuAn/DoiTac";
 import TinTuc from "@/components/DetailDuAn/TinTuc";
 
 import { Area, Project } from "@/types/duan";
+import { DictionaryService } from "@/services";
 
 const DuAn = () => {
   const [projectData, setProjectData] = useState<Project | null>(null);
@@ -29,7 +30,8 @@ const DuAn = () => {
     const fetchProjectData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("/api/dictionary/DuAn");
+        const response = await DictionaryService.getDuAn();
+        console.log("Phản hồi từ API:", response);
         const data = response.data;
 
         console.log("Dữ liệu API trả về:", data);
@@ -37,6 +39,7 @@ const DuAn = () => {
         setProjectData(data.project || null);
         setCardData(data.areas || []);
 
+        // ✅ Lấy images từ mảng areas
         setImages((data.areas || []).map((area: any) => area.image));
       } catch (err: any) {
         console.error("Lỗi khi lấy dữ liệu dự án:", err.message);

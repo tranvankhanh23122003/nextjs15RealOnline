@@ -1,9 +1,10 @@
 import AxiosClient from "../apis/AxiosClient";
 import { ApiResponse, DictionaryItem } from "./types";
+import { DuAnResponse } from "@/types/duan";
 
 const DictionaryService = {
   // Project dictionary
-  getDuAn: (): Promise<ApiResponse<DictionaryItem[]>> => {
+  getDuAn: (): Promise<ApiResponse<DuAnResponse>> => {
     return AxiosClient.get("/dictionary/DuAn");
   },
 
