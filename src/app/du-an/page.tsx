@@ -37,7 +37,6 @@ const DuAn = () => {
         setProjectData(data.project || null);
         setCardData(data.areas || []);
 
-        // ✅ Lấy images từ mảng areas
         setImages((data.areas || []).map((area: any) => area.image));
       } catch (err: any) {
         console.error("Lỗi khi lấy dữ liệu dự án:", err.message);

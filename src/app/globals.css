@@ -24,3 +24,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.Toastify__toast {
+  max-width: none !important;
+  width: 560px; /* hoặc 100% tùy bạn */
+}
