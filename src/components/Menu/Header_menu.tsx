@@ -35,6 +35,15 @@ const Header_menu = () => {
     name: "Nguyễn Văn A",
     email: "user@example.com",
   });
+
+  // States for selected filter options
+  const [selectedLoaiHinh, setSelectedLoaiHinh] = useState<string[]>([]);
+  const [selectedKhoangGia, setSelectedKhoangGia] = useState<string>("");
+  const [selectedDienTich, setSelectedDienTich] = useState<string>("");
+  const [selectedPhongNgu, setSelectedPhongNgu] = useState<string>(""); // "" means "Bất kỳ"
+  const [selectedToilet, setSelectedToilet] = useState<string>(""); // "" means "Bất kỳ"
+  const [selectedHuong, setSelectedHuong] = useState<string>("");
+
   const router = useRouter();
 
   useEffect(() => {
@@ -124,6 +133,44 @@ const Header_menu = () => {
     // Có thể thêm logic lưu token, redirect, etc.
   };
 
+  // Filter handlers
+  const handleLoaiHinhChange = (value: string) => {
+    setSelectedLoaiHinh((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value]
+    );
+  };
+
+  const handleKhoangGiaSelect = (value: string) => {
+    setSelectedKhoangGia((prev) => (prev === value ? "" : value));
+  };
+
+  const handleDienTichSelect = (value: string) => {
+    setSelectedDienTich((prev) => (prev === value ? "" : value));
+  };
+
+  const handlePhongNguSelect = (value: string) => {
+    setSelectedPhongNgu((prev) => (prev === value ? "" : value));
+  };
+
+  const handleToiletSelect = (value: string) => {
+    setSelectedToilet((prev) => (prev === value ? "" : value));
+  };
+
+  const handleHuongSelect = (value: string) => {
+    setSelectedHuong((prev) => (prev === value ? "" : value));
+  };
+
+  const handleResetFilters = () => {
+    setSelectedLoaiHinh([]);
+    setSelectedKhoangGia("");
+    setSelectedDienTich("");
+    setSelectedPhongNgu("");
+    setSelectedToilet("");
+    setSelectedHuong("");
+  };
+
   if (!isClient) {
     return (
       <div className="w-full bg-[#1B3459]">
@@ -162,6 +209,11 @@ const Header_menu = () => {
                   alt="Facebook"
                   className="w-5 h-5"
                 />
+                <img
+                  src={facebookIcon.src}
+                  alt="Facebook"
+                  className="w-5 h-5"
+                />
                 <img src={youtubeIcon.src} alt="YouTube" className="w-5 h-5" />
               </span>
             </div>
@@ -189,6 +241,7 @@ const Header_menu = () => {
                 <>
                   <span>|</span>
                   <span className="flex items-center space-x-1 relative">
+                  
                     <img
                       src={accountIcon.src}
                       alt="Account"
@@ -230,9 +283,23 @@ const Header_menu = () => {
                   <div className="flex items-center space-x-2">
                     {/* Heart icon for favorites */}
                     <button
+      
                       className="p-1 hover:text-red-400 transition-colors"
                       onClick={() => router.push("/profile")}
                     >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 000-6.364 4.5 4.5 0 00-6.364 0L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                        />
+                        </svg>
                       <svg
                         className="w-5 h-5"
                         fill="none"
@@ -251,11 +318,9 @@ const Header_menu = () => {
                     {/* User info dropdown */}
                     <div className="relative group">
                       <div className="flex items-center space-x-2 cursor-pointer hover:text-orange-400">
-                        <img
-                          src={accountIcon.src}
-                          alt="Account"
-                          className="w-5 h-5"
-                        />
+                        <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm font-sans">
+                          {userInfo.name.charAt(0).toUpperCase()}
+                        </div>
                         <span className="max-w-[150px] truncate">
                           {userInfo.name}
                         </span>
@@ -275,41 +340,90 @@ const Header_menu = () => {
                       </div>
 
                       {/* Dropdown menu */}
-                      <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                        <div className="py-2">
-                          <div className="px-4 py-2 border-b border-gray-200">
-                            <p className="text-sm font-semibold text-gray-900">
-                              {userInfo.name}
-                            </p>
-                            <p className="text-xs text-gray-500 truncate">
-                              {userInfo.email}
-                            </p>
+                      <div className="absolute right-0 top-full mt-2 w-52 bg-white rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                        <div className="py-3">
+                          {/* User info header */}
+                          <div className="px-4 py-3 border-b bg-blue-1">
+                            <div className="flex items-center space-x-3">
+                              <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-sans">
+                                {userInfo.name.charAt(0).toUpperCase()}
+                              </div>
+                              <div>
+                                <p className="text-sm font-sans text-gray-900">
+                                  {userInfo.name}
+                                </p>
+                                <p className="text-xs text-gray-500">
+                                  Người dùng
+                                </p>
+                              </div>
+                            </div>
                           </div>
-                          <button
-                            onClick={() => router.push("/profile")}
-                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Thông tin tài khoản
-                          </button>
-                          <button
-                            onClick={() => router.push("/profile")}
-                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Quản lý đơn hàng
-                          </button>
-                          <button
-                            onClick={() => router.push("/profile")}
-                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Yêu thích
-                          </button>
-                          <div className="border-t border-gray-200"></div>
-                          <button
-                            onClick={handleLogout}
-                            className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-                          >
-                            Đăng xuất
-                          </button>
+
+                          {/* Menu items */}
+                          <div className="py-2">
+                            <button
+                              onClick={() => router.push("/profile")}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                            >
+                              Đã xem
+                            </button>
+                            <button
+                              onClick={() => router.push("/profile")}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                            >
+                              Yêu thích
+                            </button>
+                            <button
+                              onClick={() => router.push("/profile")}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                            >
+                              Quản lý căn
+                            </button>
+                            <button
+                              onClick={() => router.push("/profile")}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                            >
+                              Quản lý cần
+                            </button>
+                            <button
+                              onClick={() => router.push("/profile")}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                            >
+                              Danh sách lịch hẹn
+                            </button>
+                            <button
+                              onClick={() => router.push("/profile")}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                            >
+                              Danh sách yêu cầu
+                            </button>
+                          </div>
+
+                          {/* Account settings */}
+                          <div className="border-t border-gray-100 py-2">
+                            <button
+                              onClick={() => router.push("/profile")}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                            >
+                              Thông tin tài khoản
+                            </button>
+                            <button
+                              onClick={() => router.push("/profile")}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center"
+                            >
+                              Thay đổi mật khẩu
+                            </button>
+                          </div>
+
+                          {/* Logout */}
+                          <div className="border-t border-gray-100 py-2">
+                            <button
+                              onClick={handleLogout}
+                              className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center"
+                            >
+                              Đăng xuất
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -480,6 +594,7 @@ const Header_menu = () => {
 
           {/* Desktop Right Side */}
           <div className="hidden lg:flex items-center pr-16">
+        
             <button
               className="relative p-2"
               onClick={() => router.push("/gio-hang")}
@@ -561,32 +676,41 @@ const Header_menu = () => {
               </button>
 
               {isLoaiHinhDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg z-10 border">
-                  <div className="py-1">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Căn hộ
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Nhà phố
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Biệt thự
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Đất nền
-                    </a>
+                <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
+                  <div className="p-4">
+                    <div className="space-y-2">
+                      {[
+                        "Shophouse",
+                        "Mặt đằng hàng",
+                        "Căn hộ",
+                        "Chung cư",
+                        "Tất cả",
+                      ].map((type) => (
+                        <label
+                          key={type}
+                          className="flex items-center cursor-pointer"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={selectedLoaiHinh.includes(type)}
+                            onChange={() => handleLoaiHinhChange(type)}
+                            className="mr-3 w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                          />
+                          <span className="text-sm text-gray-700">{type}</span>
+                        </label>
+                      ))}
+                    </div>
+                    <div className="flex justify-between mt-4 pt-3 border-t border-gray-200">
+                      <button
+                        onClick={handleResetFilters}
+                        className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
+                      >
+                        Đặt lại
+                      </button>
+                      <button className="px-6 py-2 bg-[#1B3459] text-white text-sm rounded-md hover:bg-blue-700">
+                        Áp dụng
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -615,32 +739,76 @@ const Header_menu = () => {
               </button>
 
               {isKhoangGiaDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg z-10 border">
-                  <div className="py-1">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Dưới 1 tỷ
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      1 - 3 tỷ
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      3 - 5 tỷ
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Trên 5 tỷ
-                    </a>
+                <div className="absolute top-full left-0 mt-1 w-80 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
+                  <div className="p-4">
+                    <h3 className="text-xl font-sans text-gray-900 mb-3">
+                      Khoảng giá
+                    </h3>
+                    <div className="grid grid-cols-3 gap-2 mb-4 text-[#184482]">
+                      {[
+                        "Dưới 3 tỷ",
+                        "3-5 tỷ",
+                        "5-7 tỷ",
+                        "7-10 tỷ",
+                        "10-20 tỷ",
+                        "Trên 20 tỷ",
+                      ].map((price) => (
+                        <button
+                          key={price}
+                          onClick={() => handleKhoangGiaSelect(price)}
+                          className={`px-3 py-2 text-sm border rounded transition-colors ${
+                            selectedKhoangGia === price
+                              ? "bg-[#1B3459] text-white border-blue-600"
+                              : "border-gray-300 hover:bg-gray-50"
+                          }`}
+                        >
+                          {price}
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="flex items-center">
+                        <span className="text-sm text-gray-700">
+                          Hoặc nhập khoảng (đơn vị VNĐ)
+                        </span>
+                      </label>
+                      <div className="flex items-center mt-2 space-x-2">
+                        <div className="flex-1">
+                          <label className="block text-xs text-gray-500 mb-1">
+                            Giá từ
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Giá thấp nhất"
+                            className="w-full px-3 py-2 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          />
+                        </div>
+                        <span className="text-gray-400 mt-6">-</span>
+                        <div className="flex-1">
+                          <label className="block text-xs text-gray-500 mb-1">
+                            Giá đến
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Giá cao nhất"
+                            className="w-full px-3 py-2 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between mt-4 pt-3 border-t border-gray-200">
+                      <button
+                        onClick={handleResetFilters}
+                        className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
+                      >
+                        Đặt lại
+                      </button>
+                      <button className="px-6 py-2 bg-[#1B3459] text-white text-sm rounded-md hover:bg-blue-700">
+                        Áp dụng
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -669,32 +837,76 @@ const Header_menu = () => {
               </button>
 
               {isDienTichDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg z-10 border">
-                  <div className="py-1">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Dưới 50m²
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      50 - 80m²
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      80 - 120m²
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Trên 120m²
-                    </a>
+                <div className="absolute top-full left-0 mt-1 w-80 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
+                  <div className="p-4">
+                    <h3 className="text-xl font-sans text-gray-900 mb-3">
+                      Diện tích
+                    </h3>
+                    <div className="grid grid-cols-3 gap-2 mb-4 text-[#184482]">
+                      {[
+                        "Dưới 50 m²",
+                        "50-100 m²",
+                        "100-150 m²",
+                        "150-300 m²",
+                        "300-500 m²",
+                        "Trên 500 m²",
+                      ].map((area) => (
+                        <button
+                          key={area}
+                          onClick={() => handleDienTichSelect(area)}
+                          className={`px-3 py-2 text-sm border rounded transition-colors ${
+                            selectedDienTich === area
+                              ? "bg-[#1B3459] text-white border-blue-600"
+                              : "border-gray-300 hover:bg-gray-50"
+                          }`}
+                        >
+                          {area}
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="mb-4">
+                      <label className="flex items-center">
+                        <span className="text-sm text-gray-700">
+                          Hoặc nhập khoảng (đơn vị m²)
+                        </span>
+                      </label>
+                      <div className="flex items-center mt-2 space-x-2">
+                        <div className="flex-1">
+                          <label className="block text-xs text-gray-500 mb-1">
+                            Diện tích từ
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Diện tích thấp nhất"
+                            className="w-full px-3 py-2 text-xs border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          />
+                        </div>
+                        <span className="text-gray-400 mt-6">-</span>
+                        <div className="flex-1">
+                          <label className="block text-xs text-gray-500 mb-1">
+                            Diện tích đến
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Diện tích cao nhất"
+                            className="w-full px-3 py-2 text-xs border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between mt-4 pt-3 border-t border-gray-200">
+                      <button
+                        onClick={handleResetFilters}
+                        className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
+                      >
+                        Đặt lại
+                      </button>
+                      <button className="px-6 py-2 bg-[#1B3459] text-white text-sm rounded-md hover:bg-blue-700">
+                        Áp dụng
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -723,32 +935,118 @@ const Header_menu = () => {
               </button>
 
               {isThemBoLocDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg z-10 border">
-                  <div className="py-1">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Hướng nhà
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Số phòng ngủ
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Số phòng tắm
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Đã bàn giao
-                    </a>
+                <div className="absolute top-full left-0 mt-1 w-80 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
+                  <div className="p-4">
+                    {/* Phòng ngủ và toilet */}
+                    <div className="mb-4">
+                      <h4 className="text-xl font-sans text-gray-900 mb-3">
+                        Phòng ngủ và toilet
+                      </h4>
+                      <div className="space-y-2">
+                        <div className=" items-center justify-between">
+                          <span className="text-sm text-gray-700">
+                            Phòng ngủ
+                          </span>
+                          <div className="flex items-center space-x-1">
+                            <button
+                              onClick={() => handlePhongNguSelect("")}
+                              className={`px-2 py-1 text-xs border rounded transition-colors ${
+                                selectedPhongNgu === ""
+                                  ? "bg-[#1B3459] text-white border-blue-600"
+                                  : "border-gray-300 hover:bg-blue-50 hover:border-blue-300 text-gray-500"
+                              }`}
+                            >
+                              Bất kỳ
+                            </button>
+                            <div className="flex space-x-1 ">
+                              {[1, 2, 3, 4, "5+"].map((num) => (
+                                <button
+                                  key={num}
+                                  onClick={() =>
+                                    handlePhongNguSelect(num.toString())
+                                  }
+                                  className={`w-6 h-6 text-xs border rounded transition-colors ${
+                                    selectedPhongNgu === num.toString()
+                                      ? "bg-[#1B3459] text-white border-blue-600"
+                                      : "border-gray-300 hover:bg-blue-50 hover:border-blue-300 text-[#184482]"
+                                  }`}
+                                >
+                                  {num}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="items-center justify-between">
+                          <span className="text-sm text-gray-700">Toilet</span>
+                          <div className="flex items-center space-x-1">
+                            <button
+                              onClick={() => handleToiletSelect("")}
+                              className={`px-2 py-1 text-xs border rounded transition-colors ${
+                                selectedToilet === ""
+                                  ? "bg-[#1B3459] text-white border-blue-600"
+                                  : "border-gray-300 hover:bg-blue-50 hover:border-blue-300 text-gray-500"
+                              }`}
+                            >
+                              Bất kỳ
+                            </button>
+                            <div className="flex space-x-1">
+                              {[1, 2, 3, 4, "5+"].map((num) => (
+                                <button
+                                  key={num}
+                                  onClick={() =>
+                                    handleToiletSelect(num.toString())
+                                  }
+                                  className={`w-6 h-6 text-xs border rounded transition-colors ${
+                                    selectedToilet === num.toString()
+                                      ? "bg-[#1B3459] text-white border-blue-600"
+                                      : "border-gray-300 hover:bg-blue-50 hover:border-blue-300"
+                                  }`}
+                                >
+                                  {num}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Hướng */}
+                    <div className="mb-4">
+                      <h4 className="text-sm font-medium text-gray-800 mb-2">
+                        Hướng
+                      </h4>
+                      <div className="flex items-center justify-between">
+                        <div className="flex space-x-2">
+                          {["Tất cả", "Đông"].map((direction) => (
+                            <button
+                              key={direction}
+                              onClick={() => handleHuongSelect(direction)}
+                              className={`px-3 py-1 text-xs border rounded transition-colors ${
+                                selectedHuong === direction
+                                  ? "bg-[#1B3459] text-white border-blue-600"
+                                  : "border-gray-300 hover:bg-gray-50"
+                              }`}
+                            >
+                              {direction}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between mt-4 pt-3 border-t border-gray-200">
+                      <button
+                        onClick={handleResetFilters}
+                        className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
+                      >
+                        Đặt lại
+                      </button>
+                      <button className="px-6 py-2 bg-[#1B3459] text-white text-sm rounded-md hover:bg-blue-700">
+                        Áp dụng
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -792,6 +1090,9 @@ const Header_menu = () => {
                       <span onClick={() => setIsLoginOpen(true)}>
                         Đăng nhập
                       </span>
+                      <span onClick={() => setIsLoginOpen(true)}>
+                        Đăng nhập
+                      </span>
                       <Auth_Components
                         isOpen={isLoginOpen}
                         onClose={() => setIsLoginOpen(false)}
@@ -802,18 +1103,14 @@ const Header_menu = () => {
                 </>
               ) : (
                 <>
-                  <div className="flex items-center justify-between text-white mb-3">
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src={accountIcon.src}
-                        alt="Account"
-                        className="w-5 h-5"
-                      />
+                  <div className="flex items-center justify-between text-white mb-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-sans">
+                        {userInfo.name.charAt(0).toUpperCase()}
+                      </div>
                       <div>
-                        <p className="font-semibold">{userInfo.name}</p>
-                        <p className="text-xs text-gray-300">
-                          {userInfo.email}
-                        </p>
+                        <p className="font-sans">{userInfo.name}</p>
+                        <p className="text-xs text-gray-300">Quản lý</p>
                       </div>
                     </div>
                     <button
@@ -835,32 +1132,66 @@ const Header_menu = () => {
                       </svg>
                     </button>
                   </div>
-
+                  
                   <div className="space-y-2 mb-3">
                     <button
                       onClick={() => router.push("/profile")}
-                      className="w-full text-left text-white hover:text-orange-400 py-1"
+                      className="w-full text-left text-white hover:text-orange-400 py-2 px-2 rounded hover:bg-white hover:bg-opacity-10"
                     >
-                      Thông tin tài khoản
+                      Đã xem
                     </button>
                     <button
                       onClick={() => router.push("/profile")}
-                      className="w-full text-left text-white hover:text-orange-400 py-1"
-                    >
-                      Quản lý đơn hàng
-                    </button>
-                    <button
-                      onClick={() => router.push("/profile")}
-                      className="w-full text-left text-white hover:text-orange-400 py-1"
+                      className="w-full text-left text-white hover:text-orange-400 py-2 px-2 rounded hover:bg-white hover:bg-opacity-10"
                     >
                       Yêu thích
                     </button>
                     <button
-                      onClick={handleLogout}
-                      className="w-full text-left text-red-400 hover:text-red-300 py-1"
+                      onClick={() => router.push("/profile")}
+                      className="w-full text-left text-white hover:text-orange-400 py-2 px-2 rounded hover:bg-white hover:bg-opacity-10"
                     >
-                      Đăng xuất
+                      Quản lý căn
                     </button>
+                    <button
+                      onClick={() => router.push("/profile")}
+                      className="w-full text-left text-white hover:text-orange-400 py-2 px-2 rounded hover:bg-white hover:bg-opacity-10"
+                    >
+                      Quản lý cần
+                    </button>
+                    <button
+                      onClick={() => router.push("/profile")}
+                      className="w-full text-left text-white hover:text-orange-400 py-2 px-2 rounded hover:bg-white hover:bg-opacity-10"
+                    >
+                      Danh sách lịch hẹn
+                    </button>
+                    <button
+                      onClick={() => router.push("/profile")}
+                      className="w-full text-left text-white hover:text-orange-400 py-2 px-2 rounded hover:bg-white hover:bg-opacity-10"
+                    >
+                      Danh sách yêu cầu
+                    </button>
+                    <div className="border-t border-gray-600 my-2 pt-2">
+                      <button
+                        onClick={() => router.push("/profile")}
+                        className="w-full text-left text-white hover:text-orange-400 py-2 px-2 rounded hover:bg-white hover:bg-opacity-10"
+                      >
+                        Thông tin tài khoản
+                      </button>
+                      <button
+                        onClick={() => router.push("/profile")}
+                        className="w-full text-left text-white hover:text-orange-400 py-2 px-2 rounded hover:bg-white hover:bg-opacity-10"
+                      >
+                        Thay đổi mật khẩu
+                      </button>
+                    </div>
+                    <div className="border-t border-gray-600 pt-2">
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-left text-red-400 hover:text-red-300 py-2 px-2 rounded hover:bg-red-500 hover:bg-opacity-10"
+                      >
+                        Đăng xuất
+                      </button>
+                    </div>
                   </div>
                 </>
               )}
@@ -1104,6 +1435,11 @@ const Header_menu = () => {
             <div className="border-t border-gray-600 pt-4 mt-4">
               <div className="flex items-center space-x-4 text-white text-sm">
                 <span>Kết nối:</span>
+                <img
+                  src={facebookIcon.src}
+                  alt="Facebook"
+                  className="w-5 h-5"
+                />
                 <img
                   src={facebookIcon.src}
                   alt="Facebook"

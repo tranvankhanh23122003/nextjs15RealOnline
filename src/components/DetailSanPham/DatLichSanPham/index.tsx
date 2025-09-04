@@ -29,6 +29,12 @@ const DatLichSanPham: React.FC = () => {
     alert("Chuyển sang form đăng ký"); // Giả lập, thay bằng logic thật nếu có
   };
 
+  const handleLoginSuccess = (userData: { name: string; email: string }) => {
+    console.log("Đăng nhập thành công:", userData);
+    setShowLoginForm(false);
+    // Add your success logic here
+  };
+
   return (
     <div className="sanpham-content">
       <h3>Đặt lịch xem nhà ngay hôm nay để nhận ưu đãi tốt nhất</h3>
@@ -113,7 +119,7 @@ const DatLichSanPham: React.FC = () => {
         isOpen={showLoginForm}
         onClose={handleCloseLoginForm}
         onSwitchToSignUp={handleSwitchToSignUp}
-        onLoginSuccess={handleCloseLoginForm}
+        onLoginSuccess={handleLoginSuccess}
       />
     </div>
   );

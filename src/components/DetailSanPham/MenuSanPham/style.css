@@ -72,7 +72,6 @@
   color: #6b7280;
 }
 
-/* Icon Row */
 .sanpham-icon-row {
   display: flex;
   justify-content: center;
@@ -81,7 +80,10 @@
   color: #374151;
   margin-bottom: 10px;
 }
-
+.sanpham-icon-row span{
+  display: flex;
+  gap: 4px;
+}
 .sanpham-icon {
   color: #2563eb;
   font-size: 14px;

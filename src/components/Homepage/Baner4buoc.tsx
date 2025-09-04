@@ -211,29 +211,6 @@ const Baner4buoc = () => {
             </div>
           ))}
         </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <p className="text-lg text-gray-600 mb-6">
-            Bắt đầu hành trình sở hữu ngôi nhà mơ ước của bạn ngay hôm nay!
-          </p>
-          <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
-            <svg
-              className="w-6 h-6 mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 10V3L4 14h7v7l9-11h-7z"
-              />
-            </svg>
-            Bắt đầu ngay
-          </button>
-        </div>
       </div>
     </section>
   );

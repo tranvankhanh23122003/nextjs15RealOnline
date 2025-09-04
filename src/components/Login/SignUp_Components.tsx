@@ -1,6 +1,12 @@
+"use client";
 import type React from "react";
 import { useState } from "react";
 import Image from "next/image";
+import { toast, Bounce } from "react-toastify";
+import google from "../../assets/images/Icon-gg.png";
+import mail from "../../assets/images/Icon-mail.png";
+import UserService from "../../services/UserService";
+
 const SignUp_Components = ({
   isOpen,
   onClose,
@@ -14,9 +20,49 @@ const SignUp_Components = ({
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("SignUp:", { phone, password });
+
+    try {
+      const response = await UserService.register({
+        username: phone,
+        password: password,
+        email: phone,
+        fullName: phone,
+        phoneNumber: phone,
+      });
+
+      console.log("Đăng ký thành công:", response);
+
+      // Hiển thị toast thành công với react-toastify
+      toast.success("Đăng ký thành công! Đang chuyển đến trang đăng nhập...", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        transition: Bounce,
+      });
+
+      // Delay chút rồi chuyển sang form login
+      setTimeout(() => {
+        onSwitchToLogin();
+      }, 1500);
+    } catch (error) {
+      console.error("Lỗi đăng ký:", error);
+      toast.error("Đăng ký thất bại! Vui lòng thử lại.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
   };
 
   if (!isOpen) return null;
