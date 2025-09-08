@@ -62,8 +62,8 @@ export default function ViTri() {
           src={banDoImg.src}
           alt="Bản đồ vị trí phân khu"
           className="phan-khu-map-image"
-          width={300}
-          height={68}
+          width={900}
+          height={80}
           style={{ transform: `scale(${scale})` }}
         />
       </div>

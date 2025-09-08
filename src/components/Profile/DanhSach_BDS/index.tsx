@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+// components/Table.tsx
+"use client";
+
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Slider1 from "../../../../public/images/baner1.png";
 import Image from 'next/image';
@@ -20,7 +23,7 @@ interface TableProps {
   setSelectedItem: (item: CanItem) => void;
   selectedCategory: string;
   onReviewClick: (item: CanItem) => void;
-  onViewDetails: (item: CanItem) => void; 
+  onViewDetails: (item: CanItem) => void;
 }
 
 const getStatusClass = (status: string) => {
@@ -40,29 +43,52 @@ const getStatusClass = (status: string) => {
 
 const Table: React.FC<TableProps> = ({ data, setSelectedItem, selectedCategory, onReviewClick, onViewDetails }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; 
+  const itemsPerPage = 5;
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Tính toán phân trang
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Tổng số trang
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
-  // Xử lý chuyển trang
   const handlePageChange = (page: number) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
 
+  // IntersectionObserver animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    itemRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      itemRefs.current.forEach((el) => {
+        if (el) observer.unobserve(el);
+      });
+    };
+  }, [currentItems]);
+
   return (
     <div className="profile-table__container">
-      {currentItems.map((item) => (
+      {currentItems.map((item, index) => (
         <div
           key={item.id}
           className="profile-table__item"
+          ref={(el) => { itemRefs.current[index] = el; }} // sửa callback ref
           onClick={() => setSelectedItem(item)}
         >
           <div className="profile-table__header">
@@ -73,7 +99,7 @@ const Table: React.FC<TableProps> = ({ data, setSelectedItem, selectedCategory, 
           </div>
           <hr className="profile-table__divider" />
           <div className="profile-table__details">
-            <Image className="profile-table__image" src={Slider1} alt="" />
+            <Image className="profile-table__image" src={Slider1} alt="" width={150} height={68} />
             <div className="profile-table__content">
               <div className="profile-table__name">Tên: {item.code}</div>
               <div className="profile-table__price">Giá: {item.price} tỷ</div>
@@ -108,7 +134,8 @@ const Table: React.FC<TableProps> = ({ data, setSelectedItem, selectedCategory, 
           </div>
         </div>
       ))}
-      {/* Phân trang */}
+
+      {/* Pagination */}
       <div className="profile-pagination">
         <button
           className="profile-pagination-btn"
@@ -120,9 +147,7 @@ const Table: React.FC<TableProps> = ({ data, setSelectedItem, selectedCategory, 
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
           <button
             key={page}
-            className={`profile-pagination-btn ${
-              currentPage === page ? "profile-active-page" : ""
-            }`}
+            className={`profile-pagination-btn ${currentPage === page ? "profile-active-page" : ""}`}
             onClick={() => handlePageChange(page)}
           >
             {page}
