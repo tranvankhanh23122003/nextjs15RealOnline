@@ -5,6 +5,25 @@
   position: relative;
 }
 
+.section {
+  opacity: 0; /* Bắt đầu mờ */
+  transform: translateY(20px); /* Bắt đầu từ dưới */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Hiệu ứng mượt */
+  margin-bottom: 40px;
+  
+ 
+}
+.section-3d {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.section.visible {
+  opacity: 1; /* Hiện rõ khi vào viewport */
+  transform: translateY(0); /* Di chuyển về vị trí ban đầu */
+}
+
 .slider-container {
   width: 100vw;
   height: 90vh;
@@ -20,10 +39,10 @@
 .matbang3d-wrapper {
   width: 100%;
   display: flex;
-  justify-content: center; /* căn giữa */
+  justify-content: center;
   margin-bottom: 2rem;
+  
 }
-
 
 .slider-image {
   width: 100%;
@@ -115,7 +134,7 @@
   color: #f47f29;
 }
 
-.fullscreen-overlay {
+.phankhu-fullscreen-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -128,13 +147,13 @@
   z-index: 2000;
 }
 
-.fullscreen-image {
+.phankhu-fullscreen-image {
   max-width: 90vw;
   max-height: 90vh;
   object-fit: contain;
 }
 
-.close-btn {
+.phankhu-close-btn {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -148,7 +167,7 @@
   transition: background-color 0.3s ease;
 }
 
-.close-btn:hover {
+.phankhu-close-btn:hover {
   background-color: #e07020;
 }
 
@@ -161,18 +180,19 @@
 }
 
 .left-section {
+  
   flex: 0 0 70%;
   padding-right: 20px;
 }
 
 .left-section h2 {
-  font-size: 2.0em;
+  font-size: 2.2em; /* Tăng từ 2.0em */
   margin-bottom: 15px;
   font-weight: bold;
 }
 
 .left-section h4 {
-  font-size: 1.5em;
+  font-size: 1.7em; /* Tăng từ 1.5em */
   margin-bottom: 15px;
   font-weight: bold;
 }
@@ -191,7 +211,7 @@
 }
 
 .title-with-legend h2 {
-  font-size: 28px;
+  font-size: 30px; /* Tăng từ 28px */
   font-weight: 700;
   margin: 0;
   color: #1e293b;
@@ -208,7 +228,7 @@
 .legend-item {
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: 16px; /* Tăng từ 15px */
   font-weight: 500;
   color: #475569;
   gap: 8px;
@@ -250,6 +270,61 @@
   background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
 }
 
+/* CSS cho PhanKhuA */
+.phankhu-a-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.phankhu-a-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.phankhu-a-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.phankhu-a-image {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.light-text {
+  color: #666;
+  font-size: 16px; /* Tăng từ 14px */
+}
+
+.bold-text {
+  font-weight: bold;
+  font-size: 18px; /* Tăng từ 16px */
+}
+
+.detail-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px; /* Tăng từ 14px */
+}
+
+.detail-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive cho điện thoại (max-width: 768px) */
 @media (max-width: 768px) {
   .slider-container {
     height: 60vh;
@@ -295,7 +370,7 @@
   }
 
   .title-with-legend h2 {
-    font-size: 22px;
+    font-size: 24px; /* Giảm từ 30px */
   }
 
   .legend {
@@ -306,50 +381,113 @@
     font-size: 14px;
     padding: 6px 10px;
   }
-}
 
-@media (max-width: 480px) {
-  .slider-container {
-    height: 40vh;
+  .phankhu-a-container {
+    padding: 10px;
   }
 
-  .album-inner img {
-    width: 100px;
-    height: 60px;
+  .phankhu-a-card {
+    padding: 10px;
   }
 
-  .control-btn {
-    width: 30px;
-    height: 30px;
+  .light-text {
     font-size: 14px;
   }
 
-  .image-count-overlay {
-    width: 30px;
-    height: 30px;
-    font-size: 10px;
+  .bold-text {
+    font-size: 16px;
   }
 
-  .title-with-legend {
-    margin: 16px auto 12px auto;
-    padding: 0 12px;
+  .detail-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Responsive cho tablet (min-width: 769px và max-width: 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .slider-container {
+    height: 70vh;
+  }
+
+  .album-inner img {
+    width: 160px;
+    height: 80px;
+  }
+
+  .left-section h2 {
+    font-size: 2.0em;
+  }
+
+  .left-section h4 {
+    font-size: 1.5em;
   }
 
   .title-with-legend h2 {
-    font-size: 18px;
-  }
-
-  .legend {
-    gap: 8px;
+    font-size: 26px;
   }
 
   .legend-item {
-    font-size: 13px;
-    padding: 4px 8px;
+    font-size: 15px;
   }
 
-  .color-box {
-    width: 14px;
-    height: 14px;
+  .phankhu-a-container {
+    padding: 15px;
+  }
+
+  .light-text {
+    font-size: 15px;
+  }
+
+  .bold-text {
+    font-size: 17px;
+  }
+
+  .detail-btn {
+    font-size: 15px;
+  }
+}
+
+/* Responsive cho PC lớn (min-width: 1025px) */
+@media (min-width: 1025px) {
+  .slider-container {
+    height: 90vh;
+  }
+
+  .album-inner img {
+    width: 200px;
+    height: 100px;
+  }
+
+  .left-section h2 {
+    font-size: 2.4em;
+  }
+
+  .left-section h4 {
+    font-size: 1.8em;
+  }
+
+  .title-with-legend h2 {
+    font-size: 32px;
+  }
+
+  .legend-item {
+    font-size: 16px;
+  }
+
+  .phankhu-a-container {
+    padding: 20px;
+  }
+
+  .light-text {
+    font-size: 16px;
+  }
+
+  .bold-text {
+    font-size: 18px;
+  }
+
+  .detail-btn {
+    font-size: 16px;
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MdDashboard, MdMiscellaneousServices } from "react-icons/md";
 import { FaProjectDiagram } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
@@ -8,7 +8,7 @@ import { GiTreeGrowth } from "react-icons/gi";
 import { HiDocumentText } from "react-icons/hi";
 import Image from "next/image";
 
-
+// Components
 import SliderWithMiniSlides from "@/components/DetailPhanKhu/SlideAlbumPhanKhu";
 import DiemNoiBatPhanKhu from "@/components/DetailPhanKhu/DiemNoiBatPhanKhu";
 import InfoChiTietPhanKhu from "@/components/DetailPhanKhu/InfoChiTietPhanKhu";
@@ -22,16 +22,16 @@ import MatBang3DPhanKhu from "@/components/DetailPhanKhu/MatBang3DPhanKhu";
 import PriceTable from "@/components/DetailPhanKhu/PricePhanKhu";
 import TinTucPhanKhu from "@/components/DetailPhanKhu/TinTucPhanKhu";
 
-// import ảnh
+// Images
 import Slide1 from "../../../public/images/baner1.png";
 import Slide2 from "../../../public/images/khu-cong-nghiep.png";
-import Slide3 from  "../../../public/images/baner1.png";
+import Slide3 from "../../../public/images/baner1.png";
 import Slide4 from "../../../public/images/khu-cong-nghiep.png";
-import Slide5 from  "../../../public/images/baner1.png";
+import Slide5 from "../../../public/images/baner1.png";
 import Slide6 from "../../../public/images/khu-cong-nghiep.png";
 import Slide7 from "../../../public/images/baner1.png";
-import Slide8 from"../../../public/images/khu-cong-nghiep.png";
-import Slide9 from  "../../../public/images/baner1.png";
+import Slide8 from "../../../public/images/khu-cong-nghiep.png";
+import Slide9 from "../../../public/images/baner1.png";
 
 const images: string[] = [
   Slide1.src,
@@ -64,6 +64,7 @@ export default function PhanKhu() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   const handleImageClick = (image: string, index: number) => {
     setSelectedImage(image);
@@ -76,45 +77,56 @@ export default function PhanKhu() {
     setSelectedImage(null);
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      sectionRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
+
   return (
     <>
-      {/* Slider hình ảnh */}
-      <SliderWithMiniSlides
-        images={images}
-        currentSlide={currentSlide}
-        setCurrentSlide={setCurrentSlide}
-        handleImageClick={handleImageClick}
-        title="Bộ sưu tập sản phẩm"
-        subtitle="Khám phá thiết kế và chi tiết hình ảnh"
-      />
+      {/* Slider */}
+      <div className="section" ref={(el) => { sectionRefs.current[0] = el; }}>
+        <SliderWithMiniSlides
+          images={images}
+          currentSlide={currentSlide}
+          setCurrentSlide={setCurrentSlide}
+          handleImageClick={handleImageClick}
+          title="Bộ sưu tập sản phẩm"
+          subtitle="Khám phá thiết kế và chi tiết hình ảnh"
+        />
+      </div>
 
-      {/* Mục lục icon */}
-      <div className="phankhu-icon-section">
+      {/* Icon Section */}
+      <div className="section phankhu-icon-section" ref={(el) => { sectionRefs.current[1] = el; }}>
         <div className="phankhu-icon-wrapper">
-          <div className="phankhu-icon-item">
-            <MdDashboard className="phankhu-icon" />
-            <span className="phankhu-icon-label">Tổng quan</span>
-          </div>
-          <div className="phankhu-icon-item">
-            <FaProjectDiagram className="phankhu-icon" />
-            <span className="phankhu-icon-label">Phân khu</span>
-          </div>
-          <div className="phankhu-icon-item">
-            <GoLocation className="phankhu-icon" />
-            <span className="phankhu-icon-label">Vị trí</span>
-          </div>
-          <div className="phankhu-icon-item">
-            <MdMiscellaneousServices className="phankhu-icon" />
-            <span className="phankhu-icon-label">Tiện ích</span>
-          </div>
-          <div className="phankhu-icon-item">
-            <GiTreeGrowth className="phankhu-icon" />
-            <span className="phankhu-icon-label">Cảnh quan</span>
-          </div>
-          <div className="phankhu-icon-item">
-            <HiDocumentText className="phankhu-icon" />
-            <span className="phankhu-icon-label">Tài liệu tổng mặt bằng</span>
-          </div>
+          <div className="phankhu-icon-item"><MdDashboard className="phankhu-icon" /><span className="phankhu-icon-label">Tổng quan</span></div>
+          <div className="phankhu-icon-item"><FaProjectDiagram className="phankhu-icon" /><span className="phankhu-icon-label">Phân khu</span></div>
+          <div className="phankhu-icon-item"><GoLocation className="phankhu-icon" /><span className="phankhu-icon-label">Vị trí</span></div>
+          <div className="phankhu-icon-item"><MdMiscellaneousServices className="phankhu-icon" /><span className="phankhu-icon-label">Tiện ích</span></div>
+          <div className="phankhu-icon-item"><GiTreeGrowth className="phankhu-icon" /><span className="phankhu-icon-label">Cảnh quan</span></div>
+          <div className="phankhu-icon-item"><HiDocumentText className="phankhu-icon" /><span className="phankhu-icon-label">Tài liệu tổng mặt bằng</span></div>
         </div>
       </div>
 
@@ -122,13 +134,7 @@ export default function PhanKhu() {
       {isFullscreen && selectedImage && (
         <div className="phankhu-fullscreen-overlay" onClick={closeFullscreen}>
           <div className="phankhu-fullscreen-content" onClick={(e) => e.stopPropagation()}>
-            <Image
-              src={selectedImage}
-              alt="Ảnh phóng to"
-              width={1200}
-              height={800}
-              className="phankhu-fullscreen-image"
-            />
+            <Image src={selectedImage} alt="Ảnh phóng to" width={1200} height={800} className="phankhu-fullscreen-image" />
             <button className="phankhu-close-btn" onClick={closeFullscreen}>Đóng</button>
           </div>
         </div>
@@ -136,32 +142,47 @@ export default function PhanKhu() {
 
       <div className="form">
         <div className="left-section">
-          <h2>Thông tin chi tiết</h2>
-          <InfoChiTietPhanKhu />
-          <DiemNoiBatPhanKhu />
+          <div className="section" ref={(el) => { sectionRefs.current[2] = el; }}>
+            <h2>Thông tin chi tiết</h2>
+            <InfoChiTietPhanKhu />
+          </div>
 
-          <h2>Loại hình của phân khu A</h2>
-          <PhanKhuA cards={duLieuPhanKhuA} />
+          <div className="section" ref={(el) => { sectionRefs.current[3] = el; }}>
+            <DiemNoiBatPhanKhu />
+          </div>
 
-          <h2>Đánh giá tiêu biểu</h2>
-          <Reviews />
+          <div className="section" ref={(el) => { sectionRefs.current[4] = el; }}>
+            <h2>Loại hình của phân khu A</h2>
+            <PhanKhuA cards={duLieuPhanKhuA} />
+          </div>
 
-          <h2>Vị Trí Phân Khu A</h2>
-          <ViTriPhanKhu />
+          <div className="section" ref={(el) => { sectionRefs.current[5] = el; }}>
+            <h2>Đánh giá tiêu biểu</h2>
+            <Reviews />
+          </div>
 
-          <h2>Tiện ích cảnh quan</h2>
-          <TienIchCanhQuanPhanKhu />
+          <div className="section" ref={(el) => { sectionRefs.current[6] = el; }}>
+            <h2>Vị Trí Phân Khu A</h2>
+            <ViTriPhanKhu />
+          </div>
 
-          <h2>Phân khu A - Không gian sống “biệt thự” đẳng cấp</h2>
-          <DanhSachTienIch />
+          <div className="section" ref={(el) => { sectionRefs.current[7] = el; }}>
+            <h2>Tiện ích cảnh quan</h2>
+            <TienIchCanhQuanPhanKhu />
+          </div>
+
+          <div className="section" ref={(el) => { sectionRefs.current[8] = el; }}>
+            <h2>Phân khu A - Không gian sống “biệt thự” đẳng cấp</h2>
+            <DanhSachTienIch />
+          </div>
         </div>
 
-        <div className="right-section">
+        <div className="right-section" ref={(el) => { sectionRefs.current[9] = el; }}>
           <TuVanFormPhanKhu />
         </div>
       </div>
 
-      <div className="title-with-legend">
+      <div className="section title-with-legend" ref={(el) => { sectionRefs.current[10] = el; }}>
         <h2>Tổng mặt bằng biệt thự cao cấp Cocoland</h2>
         <div className="legend">
           <div className="legend-item"><span className="color-box dang-ban"></span> Đang bán</div>
@@ -171,9 +192,17 @@ export default function PhanKhu() {
         </div>
       </div>
 
-      <MatBang3DPhanKhu />
-      <PriceTable />
-      <TinTucPhanKhu />
+      <div className="section-3d" ref={(el) => { sectionRefs.current[11] = el; }}>
+        <MatBang3DPhanKhu />
+      </div>
+
+      <div className="section" ref={(el) => { sectionRefs.current[12] = el; }}>
+        <PriceTable />
+      </div>
+
+      <div className="section" ref={(el) => { sectionRefs.current[13] = el; }}>
+        <TinTucPhanKhu />
+      </div>
     </>
   );
 }

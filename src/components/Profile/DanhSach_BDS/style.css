@@ -1,6 +1,7 @@
 .profile-table__container {
   width: 100%;
   height: auto;
+  padding: 0 16px;
 }
 
 .profile-table__item {
@@ -11,7 +12,14 @@
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  opacity: 0; /* Bắt đầu mờ */
+  transform: translateY(20px); /* Bắt đầu từ dưới */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Hiệu ứng mượt */
+}
+
+.profile-table__item.visible {
+  opacity: 1; /* Hiện rõ khi vào viewport */
+  transform: translateY(0); /* Di chuyển về vị trí ban đầu */
 }
 
 .profile-table__item:hover {
@@ -27,13 +35,13 @@
 }
 
 .profile-table__project-name {
-  font-size: 16px;
+  font-size: 18px; /* Tăng từ 16px */
   font-weight: bold;
   color: #333;
 }
 
 .profile-table__status {
-  font-size: 14px;
+  font-size: 16px; /* Tăng từ 14px */
   padding: 4px 8px;
   border-radius: 4px;
   font-weight: 500;
@@ -70,7 +78,6 @@
   border: 1px solid #ccc;
 }
 
-
 .profile-table__divider {
   border: 0;
   height: 1px;
@@ -89,6 +96,7 @@
   color: #444;
   width: 300px;
   height: auto;
+  border-radius: 8px;
 }
 
 .profile-table__content {
@@ -104,7 +112,7 @@
 .profile-table__type,
 .profile-table__paid,
 .profile-table__remaining {
-  font-size: 14px;
+  font-size: 16px; /* Tăng từ 14px */
   color: #444;
 }
 
@@ -130,53 +138,11 @@
   color: #e74c3c;
 }
 
-@media (max-width: 768px) {
-  .profile-table__item {
-    padding: 12px;
-  }
-
-  .profile-table__header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .profile-table__project-name {
-    font-size: 14px;
-  }
-
-  .profile-table__status {
-    font-size: 12px;
-  }
-
-  .profile-table__details {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .profile-table__image {
-    margin-bottom: 8px;
-  }
-
-  .profile-table__content {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
-  .profile-table__price,
-  .profile-table__block,
-  .profile-table__area,
-  .profile-table__type,
-  .profile-table__paid,
-  .profile-table__remaining {
-    font-size: 12px;
-  }
-}
 .profile-table__action {
   display: flex;
   justify-content: flex-end;
   margin-top: 12px;
-  gap: 10px ;
+  gap: 10px;
 }
 
 .profile-table__button {
@@ -185,8 +151,8 @@
   border: none;
   border-radius: 6px;
   padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;  
+  font-size: 16px; /* Tăng từ 14px */
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
@@ -208,7 +174,7 @@
   border-radius: 4px;
   padding: 8px 12px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Tăng từ 0.9rem */
   transition: background-color 0.2s ease;
 }
 
@@ -220,13 +186,40 @@
   background-color: #f97316;
   color: white;
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+
+/* Responsive cho điện thoại (max-width: 768px) */
+@media (max-width: 768px) {
+  .profile-table__container {
+    padding: 0 8px;
+  }
+
   .profile-table__item {
-    padding: 14px;
+    padding: 12px;
+  }
+
+  .profile-table__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .profile-table__project-name {
+    font-size: 16px;
+  }
+
+  .profile-table__status {
+    font-size: 14px;
   }
 
   .profile-table__details {
-    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-table__image {
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 8px;
   }
 
   .profile-table__content {
@@ -240,6 +233,91 @@
   .profile-table__type,
   .profile-table__paid,
   .profile-table__remaining {
-    font-size: 13px;
+    font-size: 14px;
+  }
+
+  .profile-table__button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .profile-pagination-btn {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive cho tablet (min-width: 769px và max-width: 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .profile-table__item {
+    padding: 14px;
+  }
+
+  .profile-table__details {
+    gap: 12px;
+  }
+
+  .profile-table__image {
+    width: 250px;
+  }
+
+  .profile-table__content {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .profile-table__price,
+  .profile-table__block,
+  .profile-table__area,
+  .profile-table__type,
+  .profile-table__paid,
+  .profile-table__remaining {
+    font-size: 15px;
+  }
+
+  .profile-table__button {
+    font-size: 15px;
+  }
+}
+
+/* Responsive cho PC lớn (min-width: 1025px) */
+@media (min-width: 1025px) {
+  .profile-table__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .profile-table__item {
+    padding: 20px;
+  }
+
+  .profile-table__project-name {
+    font-size: 20px;
+  }
+
+  .profile-table__status {
+    font-size: 16px;
+  }
+
+  .profile-table__image {
+    width: 350px;
+  }
+
+  .profile-table__price,
+  .profile-table__block,
+  .profile-table__area,
+  .profile-table__type,
+  .profile-table__paid,
+  .profile-table__remaining {
+    font-size: 16px;
+  }
+
+  .profile-table__button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .profile-pagination-btn {
+    font-size: 1.1rem;
   }
 }
