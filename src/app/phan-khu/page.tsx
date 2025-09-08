@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { MdDashboard, MdMiscellaneousServices } from "react-icons/md";
 import { FaProjectDiagram } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { GiTreeGrowth } from "react-icons/gi";
 import { HiDocumentText } from "react-icons/hi";
 import Image from "next/image";
+
+
 import SliderWithMiniSlides from "@/components/DetailPhanKhu/SlideAlbumPhanKhu";
 import DiemNoiBatPhanKhu from "@/components/DetailPhanKhu/DiemNoiBatPhanKhu";
 import InfoChiTietPhanKhu from "@/components/DetailPhanKhu/InfoChiTietPhanKhu";
@@ -19,17 +21,17 @@ import DanhSachTienIch from "@/components/DetailDuAn/DanhSachTienIch";
 import MatBang3DPhanKhu from "@/components/DetailPhanKhu/MatBang3DPhanKhu";
 import PriceTable from "@/components/DetailPhanKhu/PricePhanKhu";
 import TinTucPhanKhu from "@/components/DetailPhanKhu/TinTucPhanKhu";
-import { getPhanKhu , PhanKhu as PhanKhuType } from "@/apis/PhanKhu";
+
+// import ảnh
 import Slide1 from "../../../public/images/baner1.png";
 import Slide2 from "../../../public/images/khu-cong-nghiep.png";
-import Slide3 from "../../../public/images/baner1.png";
+import Slide3 from  "../../../public/images/baner1.png";
 import Slide4 from "../../../public/images/khu-cong-nghiep.png";
-import Slide5 from "../../../public/images/baner1.png";
+import Slide5 from  "../../../public/images/baner1.png";
 import Slide6 from "../../../public/images/khu-cong-nghiep.png";
 import Slide7 from "../../../public/images/baner1.png";
-import Slide8 from "../../../public/images/khu-cong-nghiep.png";
-import Slide9 from "../../../public/images/baner1.png";
-
+import Slide8 from"../../../public/images/khu-cong-nghiep.png";
+import Slide9 from  "../../../public/images/baner1.png";
 
 const images: string[] = [
   Slide1.src,
@@ -43,19 +45,25 @@ const images: string[] = [
   Slide9.src,
 ];
 
-const PhanKhu = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [duLieuPhanKhuA, setDuLieuPhanKhuA] = useState<PhanKhuType[]>([]);
+interface PhanKhuItem {
+  id: number;
+  image: string;
+  area: string;
+  acreage: string;
+  price: string;
+  type: string;
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getPhanKhu();
-      setDuLieuPhanKhuA(data);
-    };
-    fetchData();
-  }, []);
+const duLieuPhanKhuA: PhanKhuItem[] = [
+  { id: 1, image: Slide1.src, area: "Shop house", acreage: "100-140 m²", price: "Từ 17,2 tỷ - 20 tỷ", type: "Biệt thự" },
+  { id: 2, image: Slide2.src, area: "Shop house", acreage: "100-140 m²", price: "Từ 17,2 tỷ - 20 tỷ", type: "Biệt thự" },
+  { id: 3, image: Slide3.src, area: "Shop house", acreage: "100-140 m²", price: "Từ 17,2 tỷ - 20 tỷ", type: "Biệt thự" },
+];
+
+export default function PhanKhu() {
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleImageClick = (image: string, index: number) => {
     setSelectedImage(image);
@@ -70,6 +78,7 @@ const PhanKhu = () => {
 
   return (
     <>
+      {/* Slider hình ảnh */}
       <SliderWithMiniSlides
         images={images}
         currentSlide={currentSlide}
@@ -79,6 +88,7 @@ const PhanKhu = () => {
         subtitle="Khám phá thiết kế và chi tiết hình ảnh"
       />
 
+      {/* Mục lục icon */}
       <div className="phankhu-icon-section">
         <div className="phankhu-icon-wrapper">
           <div className="phankhu-icon-item">
@@ -108,22 +118,18 @@ const PhanKhu = () => {
         </div>
       </div>
 
+      {/* Fullscreen */}
       {isFullscreen && selectedImage && (
         <div className="phankhu-fullscreen-overlay" onClick={closeFullscreen}>
-          <div
-            className="phankhu-fullscreen-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="phankhu-fullscreen-content" onClick={(e) => e.stopPropagation()}>
             <Image
               src={selectedImage}
               alt="Ảnh phóng to"
               width={1200}
-              height={100}
+              height={800}
               className="phankhu-fullscreen-image"
             />
-            <button className="phankhu-close-btn" onClick={closeFullscreen}>
-              Đóng
-            </button>
+            <button className="phankhu-close-btn" onClick={closeFullscreen}>Đóng</button>
           </div>
         </div>
       )}
@@ -133,14 +139,19 @@ const PhanKhu = () => {
           <h2>Thông tin chi tiết</h2>
           <InfoChiTietPhanKhu />
           <DiemNoiBatPhanKhu />
+
           <h2>Loại hình của phân khu A</h2>
           <PhanKhuA cards={duLieuPhanKhuA} />
+
           <h2>Đánh giá tiêu biểu</h2>
           <Reviews />
+
           <h2>Vị Trí Phân Khu A</h2>
           <ViTriPhanKhu />
+
           <h2>Tiện ích cảnh quan</h2>
           <TienIchCanhQuanPhanKhu />
+
           <h2>Phân khu A - Không gian sống “biệt thự” đẳng cấp</h2>
           <DanhSachTienIch />
         </div>
@@ -153,34 +164,16 @@ const PhanKhu = () => {
       <div className="title-with-legend">
         <h2>Tổng mặt bằng biệt thự cao cấp Cocoland</h2>
         <div className="legend">
-          <div className="legend-item">
-            <span className="color-box dang-ban"></span> Đang bán
-          </div>
-          <div className="legend-item">
-            <span className="color-box da-ban"></span> Đã bán
-          </div>
-          <div className="legend-item">
-            <span className="color-box chua-mo-ban"></span> Chưa mở bán
-          </div>
-          <div className="legend-item">
-            <span className="color-box giu-cho"></span> Giữ chỗ
-          </div>
+          <div className="legend-item"><span className="color-box dang-ban"></span> Đang bán</div>
+          <div className="legend-item"><span className="color-box da-ban"></span> Đã bán</div>
+          <div className="legend-item"><span className="color-box chua-mo-ban"></span> Chưa mở bán</div>
+          <div className="legend-item"><span className="color-box giu-cho"></span> Giữ chỗ</div>
         </div>
       </div>
 
-      <div className="info-form">
-        <div className="matbang3d-wrapper">
-          <MatBang3DPhanKhu />
-        </div>
-        <div className="section">
-          <PriceTable />
-        </div>
-        <div className="section">
-          <TinTucPhanKhu />
-        </div>
-      </div>
+      <MatBang3DPhanKhu />
+      <PriceTable />
+      <TinTucPhanKhu />
     </>
   );
-};
-
-export default PhanKhu;
+}

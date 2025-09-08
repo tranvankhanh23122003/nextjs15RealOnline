@@ -73,7 +73,7 @@ const DuAn = () => {
             <h2>Vị trí {projectData?.name}</h2>
             <ViTri />
 
-            <h2>Tiện ích cảnh quan</h2>
+            <h2>Tiện ích cảnh quan thế</h2>
             <TienIchCanhQuan />
 
             <h4>Danh sách tiện ích</h4>
