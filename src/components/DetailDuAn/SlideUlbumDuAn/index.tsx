@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import './style.css'
 import Image from "next/image";
+import './style.css';
+
 interface SliderWithAlbumProps {
   images: string[];
 }
@@ -22,11 +23,10 @@ export default function SliderWithAlbumDuAn({ images }: SliderWithAlbumProps) {
     setCurrentSlide((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
+  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
 
   const handleImageClick = (image: string, index: number) => {
+    if (!image) return;
     setSelectedImage(image);
     setCurrentSlide(index);
     setIsFullscreen(true);
@@ -43,28 +43,34 @@ export default function SliderWithAlbumDuAn({ images }: SliderWithAlbumProps) {
 
     const slideWidth = 210;
     const visibleCount = 6;
-    const maxOffset = (images.length - visibleCount) * slideWidth;
+    const maxOffset = Math.max((images.length - visibleCount) * slideWidth, 0);
 
     let offset = 0;
     if (currentSlide >= visibleCount) {
       offset = (currentSlide - visibleCount + 1) * slideWidth;
-      if (offset > maxOffset) offset = 0;
+      if (offset > maxOffset) offset = maxOffset;
     }
 
     album.style.transform = `translateX(-${offset}px)`;
   }, [currentSlide, images.length]);
 
+  if (!images || images.length === 0) {
+    return <p>Chưa có hình ảnh để hiển thị.</p>;
+  }
+
   return (
     <>
       <div className="duan-slider-container">
         <div className="duan-slider">
-          <Image
-            src={images[currentSlide]}
-            width={150}       // bắt buộc
-            height={68} 
-            alt={`Slide ${currentSlide + 1}`}
-            className="duan-slider-image"
-          />
+          {images[currentSlide] && (
+            <Image
+              src={images[currentSlide]}
+              width={150}
+              height={68}
+              alt={`Slide ${currentSlide + 1}`}
+              className="duan-slider-image"
+            />
+          )}
           <div className="duan-top-left-text">
             Trang chủ / Khu biệt thự cao cấp Cocoland
             <br />
@@ -84,13 +90,13 @@ export default function SliderWithAlbumDuAn({ images }: SliderWithAlbumProps) {
 
         <div className="duan-album">
           <div className="duan-album-inner" ref={albumRef}>
-            {images.map((img, index) => (
+            {images.filter(Boolean).map((img, index) => (
               <Image
                 key={index}
                 src={img}
                 alt={`Thumbnail ${index + 1}`}
-                width={150}       // bắt buộc
-                height={68} 
+                width={150}
+                height={68}
                 className={index === currentSlide ? "duan-active" : ""}
                 onClick={() => handleImageClick(img, index)}
               />
@@ -108,15 +114,15 @@ export default function SliderWithAlbumDuAn({ images }: SliderWithAlbumProps) {
 
         {isDropdownOpen && (
           <div className="duan-dropdown-content">
-            {images.map((image, index) => (
+            {images.filter(Boolean).map((img, index) => (
               <Image
                 key={index}
-                src={image}
+                src={img}
                 alt={`Dropdown ${index + 1}`}
-                width={150}       // bắt buộc
-                height={68} 
+                width={150}
+                height={68}
                 className="duan-dropdown-image"
-                onClick={() => handleImageClick(image, index)}
+                onClick={() => handleImageClick(img, index)}
               />
             ))}
           </div>
@@ -128,8 +134,8 @@ export default function SliderWithAlbumDuAn({ images }: SliderWithAlbumProps) {
           <Image
             src={selectedImage}
             alt="Fullscreen"
-            width={150}       // bắt buộc
-            height={68} 
+            width={1200}
+            height={800}
             className="duan-fullscreen-image"
           />
           <button className="duan-close-btn" onClick={closeFullscreen}>

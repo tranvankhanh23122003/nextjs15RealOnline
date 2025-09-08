@@ -4,11 +4,13 @@ import queryString from 'query-string';
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? '';
 const AxiosClient = axios.create({
   baseURL: `${API_URL}/api`,
+  // baseURL: "http://becamexecomapi.citysoft.vn/api", // Cập nhật base URL
+
   headers: {
     'Content-Type': 'application/json',
   },
   paramsSerializer: (params) => queryString.stringify(params),
-  timeout: 10000, // timeout sau 10 giây
+  timeout: 10000, // timeout sau 10 giây  
 });
 
 // Add request interceptor (tự động thêm token nếu cần)
