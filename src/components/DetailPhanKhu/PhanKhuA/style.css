@@ -11,7 +11,6 @@
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
 }
   
   .phanKhuA-image {
@@ -28,19 +27,23 @@
     margin: 5px 0;
   }
  
-  
   .phanKhuA-button {
+    width: 100%; /* chiếm tràn ngang */
     background-color: #f47f29;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* căn giữa chữ */
     color: #fff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 10px 0; /* padding ngang bây giờ để button tràn, padding dọc vẫn giữ */
+    border-radius: 5px; /* bo tròn ở dưới nếu muốn */
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 10px; /* nếu muốn cách nội dung phía trên */
     font-size: 14px;
     font-weight: bold;
     transition: background-color 0.3s ease;
   }
+  
   
   .phanKhuA-button:hover {
     background-color: #e56b1a;

@@ -1,3 +1,29 @@
+.section {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.visible-down {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section.visible-up {
+  opacity: 1;
+  transform: translateY(0);
+  transform-origin: top;
+}
+
+.section:not(.visible-down):not(.visible-up) {
+  opacity: 0;
+  transform: translateY(20px); /* Mặc định đẩy xuống khi cuộn lên */
+}
+
+.section.visible-up:not(.visible-down) {
+  transform: translateY(-20px); /* Đẩy lên khi cuộn xuống */
+}
+
+/* CSS gốc của ProjectGridTDC */
 .project-grid-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -28,7 +54,7 @@
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, opacity 0.6s ease-out, transform 0.6s ease-out; /* Thêm transition cho hiệu ứng cuộn */
 }
 
 .project-card:hover {

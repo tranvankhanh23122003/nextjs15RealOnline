@@ -1,46 +1,41 @@
-
+/* CSS cho phần tin tức của PhanKhu, đồng bộ với CSS mong muốn */
 .tintuc-page {
-  width: 100%; /* Full chiều rộng */
-  max-width: 1200px; 
-  margin: 0 auto; 
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   margin-bottom: 20px;
-  padding: 24px 40px; /* Đồng bộ padding với PriceTable */
+  padding: 24px 15px;
   box-sizing: border-box;
-  font-family: Arial, sans-serif; /* Đồng bộ font */
+  font-family: Arial, sans-serif;
 }
 
-/* Tiêu đề */
 .tintuc-page h2 {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #374151; /* Đồng bộ màu chữ */
-  margin: 0 0 20px 0; /* Chỉ giữ margin dưới */
-  text-align: left; /* Căn trái để đồng bộ */
+  color: #374151;
+  margin: 0 0 20px 0;
+  text-align: left;
 }
 
-/* Container nội dung */
 .tintuc-container {
   width: 100%;
-  max-width: 100%; /* Đảm bảo nội dung nằm trong max-width của tintuc-page */
+  max-width: 100%;
   display: flex;
   gap: 20px;
   align-items: flex-start;
 }
 
-/* Left Section */
 .left-section {
   flex: 0 0 40%;
 }
 
-/* Right Section */
 .right-section-phan-khu {
-  flex: 1;  
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Slide lớn */
 .slide-large {
   width: 100%;
   overflow: hidden;
@@ -51,7 +46,7 @@
   height: 320px;
   object-fit: cover;
   display: block;
-  border-radius: 8px; /* Thêm góc bo cho hình ảnh */
+  border-radius: 8px;
 }
 
 .left-section .slide-info {
@@ -59,7 +54,6 @@
   margin-top: 10px;
 }
 
-/* Slide nhỏ */
 .slide-small-wrapper {
   display: flex;
   gap: 20px;
@@ -77,18 +71,17 @@
   height: 160px;
   object-fit: cover;
   display: block;
-  border-radius: 8px; /* Thêm góc bo */
+  border-radius: 8px;
 }
 
 .slide-small .slide-info {
   padding: 8px 0;
 }
 
-/* Thông tin */
 .slide-info h3 {
   font-size: 18px;
   margin-bottom: 4px;
-  color: #374151; /* Đồng bộ màu chữ */
+  color: #374151;
 }
 
 .slide-info p {
@@ -102,12 +95,12 @@
   color: #888;
 }
 
-/* Responsive */
+/* Responsive cho tin tức */
 @media (max-width: 768px) {
   .tintuc-page {
     max-width: 100%;
-    margin: 0 10px; /* Khoảng trắng nhỏ hơn */
-    padding: 16px 20px; /* Đồng bộ với PriceTable */
+    margin: 0 10px;
+    padding: 16px 20px;
   }
 
   .tintuc-page h2 {
@@ -115,7 +108,7 @@
   }
 
   .tintuc-container {
-    flex-direction: column; /* Chuyển sang dọc trên mobile */
+    flex-direction: column;
     gap: 16px;
   }
 
@@ -124,16 +117,16 @@
   }
 
   .slide-large .slide-image {
-    height: 240px; /* Giảm chiều cao */
+    height: 240px;
   }
 
   .slide-small-wrapper {
-    flex-direction: column; /* Slide nhỏ xếp dọc */
+    flex-direction: column;
     gap: 16px;
   }
 
   .slide-small .slide-image {
-    height: 120px; /* Giảm chiều cao */
+    height: 120px;
   }
 
   .slide-info h3 {
@@ -151,8 +144,8 @@
 
 @media (max-width: 480px) {
   .tintuc-page {
-    margin: 0 8px; /* Khoảng trắng nhỏ hơn */
-    padding: 12px 16px; /* Đồng bộ với PriceTable */
+    margin: 0 8px;
+    padding: 12px 16px;
   }
 
   .tintuc-page h2 {

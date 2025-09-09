@@ -1,3 +1,21 @@
+.section-3d {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  margin-bottom: 40px;
+}
+
+.section-3d.visible-down {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-3d.visible-up {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* CSS gốc của bạn */
 .home-page {
   width: 100%;
   overflow-x: hidden;
@@ -19,24 +37,106 @@
 }
 
 .left-section h2 {
-  font-size: 2.5em; 
+  font-size: 2.5em;
   margin-bottom: 15px;
   font-weight: bold;
 }
+
 .left-section h4 {
   font-size: 1.5em;
   margin-bottom: 15px;
   font-weight: bold;
 }
+
 .left-section .content-detail {
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 }
 
+
+.title-with-legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 40px auto 24px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title-with-legend h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0;
+  color: #1e293b;
+  letter-spacing: -0.025em;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #475569;
+  gap: 8px;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.legend-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.color-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.dang-ban {
+  background-color: green;
+}
+
+.da-ban {
+  background-color: red;
+}
+
+.chua-mo-ban {
+  background-color: gold;
+}
+
+.giu-cho {
+  background-color: purple;
+}
+
+.info-form {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Responsive cho điện thoại (max-width: 768px) */
 @media (max-width: 768px) {
   .slider-container {
     height: 60vh;
@@ -90,8 +190,17 @@
     height: 35px;
     font-size: 12px;
   }
+
+  .section-3d {
+    transform: translateY(15px);
+  }
+
+  .section-3d.visible-up {
+    transform: translateY(15px);
+  }
 }
 
+/* Responsive cho điện thoại nhỏ (max-width: 480px) */
 @media (max-width: 480px) {
   .slider-container {
     height: 40vh;
@@ -118,64 +227,12 @@
     height: 30px;
     font-size: 10px;
   }
-}
 
-.title-with-legend {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 16px;
-}
+  .section-3d {
+    transform: translateY(10px);
+  }
 
-.title-with-legend h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.legend {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color: #333;
-  gap: 6px;
-}
-
-.color-box {
-  width: 14px;
-  height: 14px;
-  border-radius: 2px;
-  display: inline-block;
-}
-
-.dang-ban {
-  background-color: green;
-}
-
-.da-ban {
-  background-color: red;
-}
-
-.chua-mo-ban {
-  background-color: gold;
-}
-
-.giu-cho {
-  background-color: purple;
-}
-
-.info-form {
-  width: 100%;
-  max-width: 1200px;
-  margin: 40px auto; 
-  padding: 0 20px;   
-  box-sizing: border-box;
+  .section-3d.visible-up {
+    transform: translateY(10px);
+  }
 }

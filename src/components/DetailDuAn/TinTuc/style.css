@@ -1,83 +1,173 @@
 .tintuc-page {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 24px 15px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.tintuc-page h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #374151;
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+
+.tintuc-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.left-section {
+  flex: 0 0 40%;
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.slide-large {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide-large .slide-image {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.left-section .slide-info {
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.slide-small-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.slide-small {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.slide-small .slide-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.slide-small .slide-info {
+  padding: 8px 0;
+}
+
+.slide-info h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: #374151;
+}
+
+.slide-info p {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+.slide-info .date {
+  font-size: 13px;
+  color: #888;
+}
+
+/* Responsive cho tin tức */
+@media (max-width: 768px) {
+  .tintuc-page {
+    max-width: 100%;
+    margin: 0 10px;
+    padding: 16px 20px;
   }
-  
+
+  .tintuc-page h2 {
+    font-size: 2rem;
+  }
+
   .tintuc-container {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
   }
-  
+
   .left-section {
-    flex: 0 0 40%;
-  }
-  
-  .right-section {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
   }
-  
-  /* Slide lớn */
-  .slide-large {
-    width: 100%;
-    overflow: hidden;
-  }
-  
+
   .slide-large .slide-image {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    display: block;
+    height: 240px;
   }
-  
-  .left-section .slide-info {
-    padding: 10px 0;
-    margin-top: 10px;
-  }
-  
-  /* Slide nhỏ */
+
   .slide-small-wrapper {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .slide-small {
-    flex: 1;
-    display: flex;
     flex-direction: column;
-    overflow: hidden;
+    gap: 16px;
   }
-  
+
   .slide-small .slide-image {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    display: block;
+    height: 120px;
   }
-  
-  .slide-small .slide-info {
-    padding: 8px 0;
-  }
-  
-  /* Thông tin */
+
   .slide-info h3 {
-    font-size: 18px;
-    margin-bottom: 4px;
-    color: #222;
+    font-size: 16px;
   }
-  
+
   .slide-info p {
-    font-size: 14px;
-    margin-bottom: 4px;
-    color: #555;
-  }
-  
-  .slide-info .date {
     font-size: 13px;
-    color: #888;
   }
-  
+
+  .slide-info .date {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tintuc-page {
+    margin: 0 8px;
+    padding: 12px 16px;
+  }
+
+  .tintuc-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .slide-large .slide-image {
+    height: 200px;
+  }
+
+  .slide-small .slide-image {
+    height: 100px;
+  }
+
+  .slide-info h3 {
+    font-size: 14px;
+  }
+
+  .slide-info p {
+    font-size: 12px;
+  }
+
+  .slide-info .date {
+    font-size: 11px;
+  }
+}

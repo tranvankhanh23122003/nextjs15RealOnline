@@ -1,14 +1,17 @@
-"use client"
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Slide1 from "../../../../public/images/baner1.png";
 import Image from "next/image";
 import "./style.css";
-import {  PropertyGridProps } from "../../../types/property";
+import { PropertyGridProps } from "../../../types/property";
 
 const PropertyGridBDS: React.FC<PropertyGridProps> = ({ properties }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // Số mục trên mỗi trang
+  const [visibleCards, setVisibleCards] = useState<{ [key: string]: string }>({});
+  const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const itemsPerPage = 6;
 
   const renderStars = (rating: number) => {
     return (
@@ -16,9 +19,7 @@ const PropertyGridBDS: React.FC<PropertyGridProps> = ({ properties }) => {
         {[1, 2, 3, 4, 5].map((star) => (
           <span
             key={star}
-            className={`text-sm ${
-              star <= rating ? "text-yellow-400" : "text-gray-300"
-            }`}
+            className={`text-sm ${star <= rating ? "text-yellow-400" : "text-gray-300"}`}
           >
             ★
           </span>
@@ -27,30 +28,80 @@ const PropertyGridBDS: React.FC<PropertyGridProps> = ({ properties }) => {
     );
   };
 
-  // Tính toán phân trang
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentProperties = properties.slice(indexOfFirstItem, indexOfLastItem);
-
-  // Tổng số trang
   const totalPages = Math.ceil(properties.length / itemsPerPage);
 
-  // Xử lý chuyển trang
   const handlePageChange = (page: number) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
+      setVisibleCards({}); // Reset trạng thái hiển thị khi đổi trang
     }
   };
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    let lastScrollY = window.scrollY;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const cardId = entry.target.getAttribute("data-card-id");
+        if (!cardId) return;
+
+        const currentScrollY = window.scrollY;
+        const isScrollingDown = currentScrollY > lastScrollY;
+
+        if (entry.isIntersecting) {
+          setVisibleCards((prev) => ({
+            ...prev,
+            [cardId]: isScrollingDown ? "visible-down" : "visible-up",
+          }));
+        } else {
+          setVisibleCards((prev) => ({
+            ...prev,
+            [cardId]: "",
+          }));
+        }
+
+        lastScrollY = currentScrollY;
+      });
+    }, observerOptions);
+
+    Object.values(cardRefs.current).forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      Object.values(cardRefs.current).forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, [currentPage]); // Cập nhật observer khi đổi trang
 
   return (
     <div className="profile-property-grid-container">
       <div className="profile-property-grid">
         {currentProperties.map((property) => (
-          <div key={property.id} className="profile-property-card">
+          <div
+            key={property.id}
+            className={`profile-property-card section ${visibleCards[property.id] || ""}`}
+            data-card-id={property.id}
+            ref={(el) => {
+              cardRefs.current[property.id] = el;
+            }}
+          >
             <div className="relative">
               <Image
                 src={Slide1}
                 alt={`Property ${property.id}`}
+                width={400} // Tỷ lệ hợp lý cho height: 12rem
+                height={192} // 12rem = 192px
                 className="profile-property-image"
               />
               <div className="profile-price-badge">{property.price}</div>
@@ -73,16 +124,10 @@ const PropertyGridBDS: React.FC<PropertyGridProps> = ({ properties }) => {
 
             <div className="profile-property-content">
               {renderStars(property.rating)}
-              <h3 className="profile-property-description">
-                {property.description}
-              </h3>
+              <h3 className="profile-property-description">{property.description}</h3>
               <div className="profile-property-details">
-                <div className="profile-property-detail">
-                  🏠 {property.bedrooms} phòng
-                </div>
-                <div className="profile-property-detail">
-                  📐 {property.area}
-                </div>
+                <div className="profile-property-detail">🏠 {property.bedrooms} phòng</div>
+                <div className="profile-property-detail">📐 {property.area}</div>
               </div>
               <p className="profile-property-address">{property.address}</p>
             </div>
@@ -90,7 +135,6 @@ const PropertyGridBDS: React.FC<PropertyGridProps> = ({ properties }) => {
         ))}
       </div>
 
-      {/* Phân trang */}
       <div className="profile-pagination">
         <button
           className="profile-pagination-btn"
@@ -102,9 +146,7 @@ const PropertyGridBDS: React.FC<PropertyGridProps> = ({ properties }) => {
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
           <button
             key={page}
-            className={`profile-pagination-btn ${
-              currentPage === page ? "profile-active-page" : ""
-            }`}
+            className={`profile-pagination-btn ${currentPage === page ? "profile-active-page" : ""}`}
             onClick={() => handlePageChange(page)}
           >
             {page}

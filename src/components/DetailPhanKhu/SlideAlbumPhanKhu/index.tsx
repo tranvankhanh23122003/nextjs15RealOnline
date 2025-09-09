@@ -50,7 +50,7 @@ export default function SliderWithMiniSlides({
               Trang chủ / {title}
               <br />
               <a href="/" className="phankhu-back-link">
-                &lt; Về trang chủ
+                &lt; Về dự án khu biệt thự cao cấp Cocoland
               </a>
             </div>
             <div className="phankhu-bottom-left-text">

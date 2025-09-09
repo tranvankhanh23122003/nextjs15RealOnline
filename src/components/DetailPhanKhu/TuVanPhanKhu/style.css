@@ -1,9 +1,9 @@
 /* Container toàn form */
 .phankhu-form-wrapper {
-  max-width: 400px;
+  width: 450px;
   margin: 0 auto;
   padding: 32px 24px;
-  background-color: #f1f5f9; /* nền nhạt */
+  background-color: #f1f5f9;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   font-family: sans-serif;
@@ -16,12 +16,24 @@
   margin-bottom: 20px;
 }
 
+/* Benefit text với icon dấu tích */
 .phankhu-benefit-text {
   font-size: 0.95rem;
   color: #374151;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* căn giữa */
+  gap: 8px;
 }
 
+.phankhu-benefit-text::before {
+  content: "✔";
+  color: #16a34a; /* xanh lá */
+  font-weight: bold;
+}
+
+/* Input */
 .phankhu-form input {
   display: block;
   width: 100%;
@@ -37,12 +49,13 @@
   font-size: 0.8rem;
   color: #6b7280;
   margin: 12px 0;
+  text-align: center;
 }
 
 /* Button */
 .phankhu-form button {
   width: 100%;
-  background-color: #2563eb;
+  background-color: #1B3459;
   color: white;
   padding: 12px;
   border: none;
@@ -82,6 +95,9 @@
   color: #111827;
   font-size: 0.95rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Responsive */

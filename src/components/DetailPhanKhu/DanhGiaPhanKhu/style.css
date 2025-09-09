@@ -31,18 +31,19 @@
 
 /* Điểm đánh giá 4.9 */
 .reviews-form-rating {
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-weight: bold;
   color: #f59e0b;
   background-color: #ffffff;
-  padding: 8px 12px;
+  padding: 4px 8px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
+margin-right: 5px; /* đây là dòng quan trọng */
 }
 
 /* Tiêu đề chính */
 .reviews-form-title {
-  font-size: 1.6em;
+  font-size: 1.3em;
   font-weight: bold;
   color: #1f2937;
   margin: 0;
@@ -70,8 +71,10 @@
 
 /* Avatar */
 .review-item-avatar {
-  border-radius: 50%;
-  object-fit: cover;
+  width: 105px;   
+  height: 105px;
+  border-radius: 50%; 
+  object-fit: cover;  
   flex-shrink: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

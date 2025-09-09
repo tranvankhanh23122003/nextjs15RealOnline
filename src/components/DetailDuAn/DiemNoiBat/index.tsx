@@ -29,7 +29,7 @@ export default function DiemNoiBat() {
           </p>
         </div>
       )}
-      <button onClick={() => setShowMore(!showMore)} className="view-more">
+      <button onClick={() => setShowMore(!showMore)} className="view-more-duan">
         {showMore ? "Thu gọn" : "Xem thêm"}
       </button>
     </div>

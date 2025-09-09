@@ -26,6 +26,7 @@ export default function DoiTac() {
         "Thương hiệu phát triển chủ lực kinh doanh bất động sản, sản xuất vật liệu và xây dựng.",
       image: Slide1,
     },
+    
   ];
 
   return (
