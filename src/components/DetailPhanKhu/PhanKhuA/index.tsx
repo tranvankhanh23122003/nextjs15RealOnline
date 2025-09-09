@@ -16,7 +16,7 @@ export default function PhanKhuA({ cards }: { cards: CardData[] }) {
           <p className="phanKhuA-label">Giá bán</p>
           <p className="phanKhuA-value">{card.price}</p>
           <button onClick={() => router.push("/san-pham")} className="phanKhuA-button">
-            Xem chi tiết
+            Xem quỹ căn
           </button>
         </div>
       ))}

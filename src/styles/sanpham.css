@@ -1,4 +1,29 @@
-/* Container chính */
+.section {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.visible-down {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section.visible-up {
+  opacity: 1;
+  transform: translateY(0);
+  transform-origin: top;
+}
+
+.section:not(.visible-down):not(.visible-up) {
+  opacity: 0;
+  transform: translateY(20px); /* Mặc định đẩy xuống khi cuộn lên */
+}
+
+.section.visible-up:not(.visible-down) {
+  transform: translateY(-20px); /* Đẩy lên khi cuộn xuống */
+}
+
+/* CSS gốc của SanPhamPage */
 .sanpham-content-section {
   width: 100%;
   overflow-x: hidden;
@@ -8,10 +33,11 @@
   display: flex;
   justify-content: center;
 }
+
 .sanpham-icon-section {
-  position: relative;  /* không absolute */
-  margin-top: 20px;    /* khoảng cách với slide */
-  z-index: 1;          /* đảm bảo không bị che bởi overlay */
+  position: relative;
+  margin-top: 20px;
+  z-index: 1;
   display: flex;
   justify-content: center;
 }
@@ -23,8 +49,6 @@
   justify-content: center;
 }
 
-
-/* Fullscreen */
 .sanpham-fullscreen-overlay {
   position: fixed;
   top: 0;
@@ -69,7 +93,6 @@
   background-color: #e07020;
 }
 
-/* Nội dung chính */
 .sanpham-content-wrapper {
   width: 100%;
   max-width: 1200px;
@@ -77,9 +100,6 @@
   gap: 20px;
   box-sizing: border-box;
 }
-
-
-
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -124,4 +144,3 @@
     margin-top: 20px;
   }
 }
-

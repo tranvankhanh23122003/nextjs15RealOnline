@@ -62,7 +62,6 @@ const PriceTable: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Gửi dữ liệu ở đây
     alert("Thông tin đã được gửi!");
     closeContactModal();
   };
@@ -74,47 +73,65 @@ const PriceTable: React.FC = () => {
     }).format(price);
   };
 
+  const handleMostViewed = () => {
+    console.log("Xem nhiều nhất");
+  };
+  const handleBestPrice = () => {
+    console.log("Giá tốt nhất");
+  };
+
   return (
-    <div className="price-table-container">
-      <h1 className="price-table-title">Bảng Giá Căn Hộ Coco Land</h1>
-      <div className="price-table-wrapper">
-        <table className="price-table">
-          <thead>
-            <tr>
-              <th>Mã căn</th>
-              <th>DT đất (m²)</th>
-              <th>Giá bán</th>
-              <th>Giá/m²</th>
-              <th>Loại hình</th>
-              <th>Số tầng</th>
-              <th>Hướng cửa</th>
-              <th>DTXD (m²)</th>
-              <th>Liên hệ</th>
-            </tr>
-          </thead>
-          <tbody>
-            {priceData.map((property) => (
-              <tr key={property.id}>
-                <td>{property.id}</td>
-                <td>{property.landArea}</td>
-                <td>{formatPrice(property.salePrice)}</td>
-                <td>{formatPrice(property.pricePerM2)}</td>
-                <td>{property.type}</td>
-                <td>{property.floors}</td>
-                <td>{property.direction}</td>
-                <td>{property.constructionArea}</td>
-                <td>
-                  <button
-                    className="contact-button"
-                    onClick={() => openContactModal(property)}
-                  >
-                    Liên hệ
-                  </button>
-                </td>
+    <>
+      {/* Button lọc ngoài bảng, background màu */}
+      <div className="filter-banner">
+        <button className="filter-button-top" onClick={handleMostViewed}>
+          Xem nhiều nhất
+        </button>
+        <button className="filter-button-top" onClick={handleBestPrice}>
+          Giá tốt nhất
+        </button>
+      </div>
+
+      <div className="price-table-container">
+        <div className="price-table-wrapper">
+          <table className="price-table">
+            <thead>
+              <tr>
+                <th>Mã căn</th>
+                <th>DT đất (m²)</th>
+                <th>Giá bán</th>
+                <th>Giá/m²</th>
+                <th>Loại hình</th>
+                <th>Số tầng</th>
+                <th>Hướng cửa</th>
+                <th>DTXD (m²)</th>
+                <th>Liên hệ</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {priceData.map((property) => (
+                <tr key={property.id}>
+                  <td>{property.id}</td>
+                  <td>{property.landArea}</td>
+                  <td>{formatPrice(property.salePrice)}</td>
+                  <td>{formatPrice(property.pricePerM2)}</td>
+                  <td>{property.type}</td>
+                  <td>{property.floors}</td>
+                  <td>{property.direction}</td>
+                  <td>{property.constructionArea}</td>
+                  <td>
+                    <button
+                      className="contact-button"
+                      onClick={() => openContactModal(property)}
+                    >
+                      Liên hệ
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {isModalOpen && selectedProperty && (
@@ -145,7 +162,7 @@ const PriceTable: React.FC = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
