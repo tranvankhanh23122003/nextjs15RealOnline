@@ -56,7 +56,49 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 }
+/* Icon section */
+.duan-icon-section {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 
+}
+
+.duan-icon-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  
+}
+
+.duan-icon-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  gap: 10px;
+
+}
+
+.duan-icon-item:hover {
+  border-color: #f47f29;
+  color: #f47f29;
+}
+
+.duan-icon-item span {
+  font-size: 1em;
+  color: #374151;
+  text-align: center;
+}
 
 .title-with-legend {
   display: flex;
