@@ -71,8 +71,8 @@ margin-right: 5px; /* đây là dòng quan trọng */
 
 /* Avatar */
 .review-item-avatar {
-  width: 105px;   
-  height: 105px;
+  width: 70px;   
+  height: 70px;
   border-radius: 50%; 
   object-fit: cover;  
   flex-shrink: 0;
