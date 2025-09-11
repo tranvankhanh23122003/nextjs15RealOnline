@@ -58,6 +58,7 @@ export default function MatBang3DPhanKhu() {
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
+      
       <Image
         ref={imageRef}
         src={Slide1.src}

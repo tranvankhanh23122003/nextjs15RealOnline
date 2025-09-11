@@ -34,7 +34,7 @@
 }
 
 /* Input */
-.duan-form input {
+.duan-form-consultation input {
   display: block;
   width: 100%;
   padding: 12px 14px;
@@ -53,9 +53,9 @@
 }
 
 /* Button */
-.duan-form button {
+.duan-form-consultation button {
   width: 100%;
-  background-color: #2563eb;
+  background-color: #224B6F;
   color: white;
   padding: 12px;
   border: none;
@@ -65,7 +65,7 @@
   transition: background-color 0.3s;
 }
 
-.duan-form button:hover {
+.duan-form-consultation button:hover {
   background-color: #1e40af;
 }
 
@@ -99,6 +99,40 @@
   justify-content: center;
   align-items: center;
 }
+/* Giữ nguyên code cũ, chỉ bổ sung phần dưới */
+
+/* Container icon + text */
+.duan-call-option,
+.duan-chat-option {
+  gap: 8px; /* cách icon với text */
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.duan-call-option:hover {
+  background-color: #d1fae5; /* xanh lá nhạt */
+  color: #065f46;
+}
+
+.duan-chat-option:hover {
+  background-color: #e0f2fe; /* xanh dương nhạt */
+  color: #1d4ed8;
+}
+
+/* Icon chung */
+.contact-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+}
+
+/* Zalo logo */
+.zalo-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {

@@ -3,7 +3,7 @@ import Slide2 from "../../../../public/images/khu-cong-nghiep.png";
 import Image from "next/image";
 import "./style.css";
 
-export default function DoiTac() {
+export default function   DoiTac() {
   const partners = [
     {
       id: 1,

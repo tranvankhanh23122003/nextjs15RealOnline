@@ -14,6 +14,7 @@ const Projects_section = () => {
     const fetchData = async () => {
       try {
         const response = await ProjectApi.getAll({});
+        // const data = Array.isArray(response.data) ? response.data : response.data?.data || [];
         setProjects(response.data);
       } catch (error) {
         console.error("Lỗi khi lấy danh sách dự án:", error);

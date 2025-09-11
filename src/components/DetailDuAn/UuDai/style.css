@@ -1,0 +1,126 @@
+.ticket-container {
+    display: flex;
+    background: #f9fafb;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  /* Lỗ bo tròn 2 bên */
+  .ticket-container::before,
+  .ticket-container::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+  
+  .ticket-container::before {
+    left: -10px;
+  }
+  .ticket-container::after {
+    right: -10px;
+  }
+  
+  /* Bên trái */
+  .ticket-left {
+    flex: 1;
+    background: #ffffff;
+    padding: 16px;
+    border-right: 1px dashed #d1d5db;
+  }
+  
+  .ticket-title {
+    font-size: 14px;
+    color: #374151;
+  }
+  
+  .ticket-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #111827;
+  }
+  
+  .ticket-old-price {
+    font-size: 13px;
+    color: red;
+    text-decoration: line-through;
+    margin-bottom: 8px;
+  }
+  
+  .ticket-badge {
+    display: block;      
+    background: #059669;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    width: fit-content;   /* để ôm vừa chữ */
+  }
+  
+
+  
+  
+  .ticket-desc {
+    display: inline-block;   /* chỉ ôm vừa chữ */
+    background: #E7C4AB;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 13px;        /* chỉnh cỡ chữ */
+    line-height: 1.4;       /* cân đối chiều cao */
+    white-space: nowrap;    /* không xuống dòng giữa chừng */
+  }
+  
+  /* Bên phải */
+  .ticket-right {
+    flex: 1.2;
+    padding: 16px;
+    background: #e6f0fa;
+    position: relative;
+  }
+  
+  .ticket-offer-title {
+    color: #f97316;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .ticket-offer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+  }
+  
+  .ticket-offer-list li {
+    font-size: 14px;
+    color: #111827;
+    margin-bottom: 6px;
+  }
+  
+  .ticket-offer-list li::before {
+    content: "✔ ";
+    color: #10b981;
+  }
+  .ticket-link {
+    font-size: 13px;
+    font-weight: bold;
+    color: #111827;
+    text-decoration: none;
+    position: absolute;   
+    bottom: 10px;       
+    right: 16px;         
+  }
+  .ticket-link:hover {
+    text-decoration: underline;
+  }
+  

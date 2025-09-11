@@ -217,7 +217,7 @@
 
 .phankhu-slider-wrapper {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1450px;
   display: flex;
   gap: 20px;
 }
@@ -338,12 +338,9 @@
 }
 
 .phankhu-mini-slide:hover {
-  border-color: #f47f29;
+  border-color: #224B6F;
 }
 
-.phankhu-mini-slide.active {
-  border-color: #f47f29;
-}
 
 /* Icon section */
 .phankhu-icon-section {
@@ -375,8 +372,8 @@
 }
 
 .phankhu-icon-item:hover {
-  border-color: #f47f29;
-  color: #f47f29;
+  border-color: #224B6F;
+  color: #224B6F;
 }
 
 .phankhu-icon-item span {

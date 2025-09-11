@@ -3,8 +3,16 @@
     padding: 20px;
   
   }
-
-  
+.content-map{
+  display: flex;
+}
+  .left{
+    width: 70%;
+  }
+  .right{
+    width: 30%;
+    margin-right: 20px;
+  }
   .sanpham-status-tag {
     display: inline-block;
     background-color: #22c55e;
@@ -122,4 +130,4 @@
     padding: 2px 6px;
     border-radius: 4px;
   }
-  
+    
