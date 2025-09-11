@@ -41,6 +41,14 @@
   display: flex;
   justify-content: center;
 }
+.sanpham-content-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
 
 .sanpham-icon-wrapper {
   display: flex;
@@ -93,13 +101,6 @@
   background-color: #e07020;
 }
 
-.sanpham-content-wrapper {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  gap: 20px;
-  box-sizing: border-box;
-}
 
 /* Responsive */
 @media (max-width: 768px) {

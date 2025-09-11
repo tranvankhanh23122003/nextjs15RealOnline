@@ -4,7 +4,9 @@ import './style.css'
 const MaCanSanPham: React.FC = () => {
   return (
     <div className="sanpham-content">
-      <div className="sanpham-status-tag">ĐANG BÁN</div>
+      <div className="content-map">
+        <div className="left">
+        <div className="sanpham-status-tag">ĐANG BÁN</div>
       <h2>#Macan01, Shophouse, khu A, biệt thự cao cấp Cocoland</h2>
       <div className="sanpham-location">
         <GoLocation />
@@ -13,6 +15,21 @@ const MaCanSanPham: React.FC = () => {
       <div className="sanpham-note">
         Tiêu chuẩn bàn giao: Thô. Bấm xem chi tiết <a href="#">tại đây</a>
       </div>
+        </div>
+        <div className="right">
+        <div className="sanpham-header-right">
+          <iframe
+            title="mini-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.123456!2d106.625!3d10.824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1234567abc%3A0x1234567890abcdef!2sMy%20Phuoc%20Industrial%20Park!5e0!3m2!1sen!2s!4v1694381234567!5m2!1sen!2s"
+            allowFullScreen={false}
+            loading="lazy"
+          ></iframe>
+        </div>
+        </div>
+     
+    
+      </div>
+    
    
       <div className="sanpham-pricing-boxes">
         <div className="sanpham-price-box highlight">

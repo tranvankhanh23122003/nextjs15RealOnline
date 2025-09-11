@@ -21,19 +21,20 @@
   overflow-x: hidden;
   font-family: Arial, sans-serif;
   position: relative;
+  padding: 0 100px; /* 100px đều 2 bên */
+  box-sizing: border-box;
 }
 
 .form {
   display: flex;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%; /* chiếm hết chiều ngang của .home-page */
+  padding: 20px 40px; /* chỉ padding trên/dưới */
+  gap: 20px; /* khoảng cách giữa left và right section */
 }
+
 
 .left-section {
   flex: 0 0 70%;
-  padding-right: 20px;
 }
 
 .left-section h2 {
@@ -172,7 +173,7 @@
 
 .info-form {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 40px auto;
   padding: 0 20px;
   box-sizing: border-box;

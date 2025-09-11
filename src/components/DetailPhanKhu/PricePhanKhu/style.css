@@ -1,6 +1,6 @@
 .price-table-container {
   width: 100%; 
-  max-width: 1200px; 
+  max-width: 1400px; 
   margin: 0 auto; 
   margin-bottom: 20px;
   padding: 24px 40px; 
@@ -14,9 +14,8 @@
 /* Banner button lọc ngoài bảng */
 .filter-banner {
   display: flex;      /* cho các button nằm ngang */
-  gap: 20px;          /* khoảng cách giữa các button */
+  gap: 10px;          /* khoảng cách giữa các button */
   padding: 15px;
-  margin-left: 250px; /* vẫn căn trái theo ý bạn */
   flex-wrap: wrap;
   margin-bottom: 10px;
   border-radius: 12px;
@@ -24,7 +23,7 @@
 
 
 .filter-button-top {
-  background-color: #f47f29;
+  background-color: #224B6F;
   color: #fff;
   border: none;
   padding: 12px 28px;
@@ -58,7 +57,7 @@
 }
 
 .filter-button-top {
-  background-color: #f47f29;
+  background-color: #224B6F;
   color: #fff;
   border: none;
   padding: 10px 24px;
@@ -124,7 +123,7 @@
 
 /* Button liên hệ */
 .contact-button {
-  background-color: #f59e0b;
+  background-color: #224B6F;
   color: #ffffff;
   border: none;
   padding: 8px 16px;
@@ -225,6 +224,45 @@
 .submit-button:hover {
   background-color: #e58e00;
 }
+.view-all-button {
+  background: none;
+  border: none;
+  color: #2563eb; /* xanh lam */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; 
+}
+
+.view-all-button::after {
+  content: "→"; /* mũi tên */
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.view-all-button:hover::after {
+  transform: translateX(4px); /* mũi tên chạy sang phải khi hover */
+}
+
+/* Gạch chân */
+.view-all-button::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+.view-all-button:hover::before {
+  width: 100%;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -292,5 +330,16 @@
   .submit-button {
     font-size: 0.9rem;
     padding: 8px;
+  }
+  @media (max-width: 768px) {
+    .view-all-button {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .view-all-button {
+      font-size: 0.85rem;
+    }
   }
 }

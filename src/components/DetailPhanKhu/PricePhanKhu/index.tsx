@@ -133,6 +133,9 @@ const PriceTable: React.FC = () => {
           </table>
         </div>
       </div>
+      <div className="view-all-container">
+        <button className="view-all-button">Xem toàn bộ căn </button>
+      </div>
 
       {isModalOpen && selectedProperty && (
         <div className="contact-modal">

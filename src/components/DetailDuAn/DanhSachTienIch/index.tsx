@@ -1,20 +1,33 @@
 import React from "react";
+import Image from "next/image";
+import { FaChevronDown, FaTheaterMasks, FaSchool, FaHospital } from "react-icons/fa";
 import Slide1 from "../../../../public/images/baner1.png";
 import Slide2 from "../../../../public/images/khu-cong-nghiep.png";
-import Image from "next/image";
-
 import "./style.css";
 
+type AmenityItem = {
+  name: string;
+  image: any;
+};
+
+type Amenity = {
+  category: string;
+  icon: React.ReactNode;
+  items: AmenityItem[];
+};
+
 export default function DanhSachTienIch() {
-  const amenities = [
+  const amenities: Amenity[] = [
     {
       category: "Giải trí",
-      categoryImage: Slide1.src,
-      items: [{ name: "Beta Cinema Bình Dương", image: Slide1 }],
+      icon: <FaTheaterMasks className="category-icon" />,
+      items: [
+        { name: "Beta Cinema Bình Dương", image: Slide1 }
+      ],
     },
     {
       category: "Trường học",
-      categoryImage: Slide2.src,
+      icon: <FaSchool className="category-icon" />,
       items: [
         { name: "Trường THPT Đan Phượng", image: Slide2 },
         { name: "Trường THCS Tân Hội", image: Slide1 },
@@ -22,7 +35,7 @@ export default function DanhSachTienIch() {
     },
     {
       category: "Y tế",
-      categoryImage: Slide1.src,
+      icon: <FaHospital className="category-icon" />,
       items: [
         { name: "Trạm Y tế Bình Dương", image: Slide2 },
         { name: "Bệnh viện Đa khoa Bình Dương", image: Slide1 },
@@ -37,29 +50,31 @@ export default function DanhSachTienIch() {
       {amenities.map((amenity, index) => (
         <React.Fragment key={index}>
           <div className="amenity-row">
+            {/* Trái: Tiêu đề */}
             <div className="category-title">
-              <Image
-                src={amenity.categoryImage}
-                alt={amenity.category}
-                width={150}
-                height={68}
-                className="category-image"
-              />
+              {amenity.icon}
               <span>{`${amenity.category} (${amenity.items.length})`}</span>
             </div>
+
+            {/* Phải: Nội dung (ảnh + tên) */}
             <div className="category-content">
               {amenity.items.map((item, itemIndex) => (
                 <div key={itemIndex} className="category-item">
                   <Image
-                    src={item.image.src}
+                    src={item.image}
                     alt={item.name}
-                    width={150}
-                    height={68}
+                    width={80}
+                    height={60}
                     className="item-image"
                   />
                   <span className="item-name">{item.name}</span>
                 </div>
               ))}
+            </div>
+
+            {/* Icon dropdown cuối hàng */}
+            <div className="dropdown-icon">
+              <FaChevronDown />
             </div>
           </div>
 

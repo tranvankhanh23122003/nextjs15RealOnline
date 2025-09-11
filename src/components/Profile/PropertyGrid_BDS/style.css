@@ -1,27 +1,4 @@
-.section {
-  opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
 
-.section.visible-down {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.section.visible-up {
-  opacity: 1;
-  transform: translateY(0);
-  transform-origin: top;
-}
-
-.section:not(.visible-down):not(.visible-up) {
-  opacity: 0;
-  transform: translateY(20px); /* Mặc định đẩy xuống khi cuộn lên */
-}
-
-.section.visible-up:not(.visible-down) {
-  transform: translateY(-20px); /* Đẩy lên khi cuộn xuống */
-}
 
 /* CSS gốc của PropertyGridBDS */
 .profile-property-grid-container {

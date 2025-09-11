@@ -7,7 +7,8 @@ import { FaProjectDiagram } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { GiTreeGrowth } from "react-icons/gi";
 import { HiDocumentText } from "react-icons/hi";
-
+import Slide1 from "../../../public/images/baner1.png"
+import Slide2 from "../../../public/images/khu-cong-nghiep.png"
 import SliderWithAlbumDuAn from "@/components/DetailDuAn/SlideUlbumDuAn";
 import InfoChiTietDuAn from "@/components/DetailDuAn/InfoChiTiet";
 import DiemNoiBat from "@/components/DetailDuAn/DiemNoiBat";
@@ -20,7 +21,7 @@ import FileTaiLieu from "@/components/DetailDuAn/FileTaiLieu";
 import MatBang3D from "@/components/DetailDuAn/MatBang3D";
 import DoiTac from "@/components/DetailDuAn/DoiTac";
 import TinTuc from "@/components/DetailDuAn/TinTuc";
-
+import UuDai from "@/components/DetailDuAn/UuDai";
 import { Area, Project } from "@/types/duan";
 import { DictionaryService } from "@/services";
 
@@ -146,10 +147,18 @@ const DuAn = () => {
       <div className="home-page">
         <div className="form">
           <div className="left-section">
+            <div className="section"
+             ref={(el) => {
+              sectionRefs.current[2] = el;
+            }}
+            >
+<h2>Khu Biệt thự cao cấp Cocoland</h2>
+<UuDai />
+            </div>
             <div
               className="section"
               ref={(el) => {
-                sectionRefs.current[2] = el;
+                sectionRefs.current[3] = el;
               }}
             >
               <h2>Tổng quan dự án {projectData?.name}</h2>
@@ -159,7 +168,7 @@ const DuAn = () => {
             <div
               className="section"
               ref={(el) => {
-                sectionRefs.current[3] = el;
+                sectionRefs.current[4] = el;
               }}
             >
               <DiemNoiBat />
@@ -168,7 +177,7 @@ const DuAn = () => {
             <div
               className="section"
               ref={(el) => {
-                sectionRefs.current[4] = el;
+                sectionRefs.current[5] = el;
               }}
             >
               <h2>Phân khu của dự án {projectData?.name}</h2>
@@ -178,7 +187,7 @@ const DuAn = () => {
             <div
               className="section"
               ref={(el) => {
-                sectionRefs.current[5] = el;
+                sectionRefs.current[6] = el;
               }}
             >
               <h2>Vị trí {projectData?.name}</h2>
@@ -188,7 +197,7 @@ const DuAn = () => {
             <div
               className="section"
               ref={(el) => {
-                sectionRefs.current[6] = el;
+                sectionRefs.current[7] = el;
               }}
             >
               <h2>Tiện ích cảnh quan thế</h2>
@@ -198,7 +207,7 @@ const DuAn = () => {
             <div
               className="section"
               ref={(el) => {
-                sectionRefs.current[7] = el;
+                sectionRefs.current[8] = el;
               }}
             >
               <h4>Danh sách tiện ích</h4>
@@ -208,7 +217,7 @@ const DuAn = () => {
             <div
               className="section"
               ref={(el) => {
-                sectionRefs.current[8] = el;
+                sectionRefs.current[9] = el;
               }}
             >
               <h2>Tài liệu {projectData?.name}</h2>
@@ -219,7 +228,7 @@ const DuAn = () => {
           <div
             className="right-section"
             ref={(el) => {
-              sectionRefs.current[9] = el;
+              sectionRefs.current[10] = el;
             }}
           >
             <TuVanForm />
@@ -230,7 +239,7 @@ const DuAn = () => {
           <div
             className="section title-with-legend"
             ref={(el) => {
-              sectionRefs.current[10] = el;
+              sectionRefs.current[11] = el;
             }}
           >
             <h2>Tổng mặt bằng {projectData?.name}</h2>
@@ -260,7 +269,7 @@ const DuAn = () => {
           <div
             className="section"
             ref={(el) => {
-              sectionRefs.current[11] = el;
+              sectionRefs.current[12] = el;
             }}
           >
             <DoiTac />
@@ -269,9 +278,9 @@ const DuAn = () => {
           <div
             className="section"
             ref={(el) => {
-              sectionRefs.current[12] = el;
+              sectionRefs.current[13] = el;
             }}
-          >
+            >
             <TinTuc />
           </div>
         </div>

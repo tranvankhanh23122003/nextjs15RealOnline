@@ -1,5 +1,5 @@
 .profile-menu-container {
-  width: 25%;
+  width: 20%;
   min-width: 250px;
   flex-shrink: 0;
   background-color: #f3f4f6;
@@ -102,6 +102,14 @@
   transition: background-color 0.2s ease;
   border-radius: 0.375rem;
   margin-left: -10px;
+   /* Thêm để icon và text nằm ngang */
+   display: flex;
+   align-items: center;
+   gap: 0.5rem; /* khoảng cách icon với text */
+}
+.profile-submenu-item svg {
+  font-size: 1rem; /* chỉnh icon vừa chữ */
+  flex-shrink: 0;  /* không cho icon bị co */
 }
 
 .profile-submenu-item:last-child {
@@ -121,17 +129,27 @@
 .profile-menu-logout {
   cursor: pointer;
   padding: 0.75rem;
-  text-align: center;
   border-radius: 0.375rem;
   font-weight: 600;
   color: #ef4444;
   transition: background-color 0.2s ease;
   border: 1px solid #ef4444;
+
+  /* Thêm để icon + chữ cân đối */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* căn giữa cả cụm */
+  gap: 0.5rem; /* khoảng cách icon và chữ */
 }
 
 .profile-menu-logout:hover {
   background-color: #fee2e2;
 }
+
+.profile-menu-logout svg {
+  font-size: 1rem;
+}
+
 
 /* Responsive cho mobile */
 @media (max-width: 768px) {

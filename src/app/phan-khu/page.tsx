@@ -12,8 +12,7 @@ import Image from "next/image";
 import SliderWithMiniSlides from "@/components/DetailPhanKhu/SlideAlbumPhanKhu";
 import DiemNoiBatPhanKhu from "@/components/DetailPhanKhu/DiemNoiBatPhanKhu";
 import InfoChiTietPhanKhu from "@/components/DetailPhanKhu/InfoChiTietPhanKhu";
-import TuVanFormPhanKhu from "@/components/DetailPhanKhu/TuVanPhanKhu";
-
+import TuVanForm from "@/components/DetailDuAn/TuVanForm";
 import PhanKhuA from "@/components/DetailPhanKhu/PhanKhuA";
 import Reviews from "@/components/DetailPhanKhu/DanhGiaPhanKhu";
 import ViTriPhanKhu from "@/components/DetailPhanKhu/ViTriPhanKhu";
@@ -109,10 +108,10 @@ export default function PhanKhu() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add(
-              isScrollingDown ? "visible-down" : "visible-up"
+              isScrollingDown ? "phankhu-visible-down" : "phankhu-visible-up"
             );
           } else {
-            entry.target.classList.remove("visible-down", "visible-up");
+            entry.target.classList.remove("phankhu-visible-down", "phankhu-visible-up");
           }
         });
 
@@ -139,7 +138,7 @@ export default function PhanKhu() {
     <>
       {/* Slider */}
       <div
-        className="section"
+        className="phankhu-section"
         ref={(el) => {
           sectionRefs.current[0] = el;
         }}
@@ -156,7 +155,7 @@ export default function PhanKhu() {
 
       {/* Icon Section */}
       <div
-        className="section phankhu-icon-section"
+        className="phankhu-section phankhu-icon-section"
         ref={(el) => {
           sectionRefs.current[1] = el;
         }}
@@ -210,151 +209,148 @@ export default function PhanKhu() {
         </div>
       )}
 
-      <div className="form">
-        <div className="left-section">
-          <div
-            className="section"
-            ref={(el) => {
-              sectionRefs.current[2] = el;
-            }}
-          >
-            <h2>Tổng quan phân khu A</h2>
-            <InfoChiTietPhanKhu />
+      <div className="phankhu-home-page">
+        <div className="phankhu-form">
+          <div className="phankhu-left-section">
+            <div
+              className="phankhu-section"
+              ref={(el) => {
+                sectionRefs.current[2] = el;
+              }}
+            >
+              <h2>Tổng quan phân khu A</h2>
+              <InfoChiTietPhanKhu />
+            </div>
+
+            <div
+              className="phankhu-section"
+              ref={(el) => {
+                sectionRefs.current[3] = el;
+              }}
+            >
+              <DiemNoiBatPhanKhu />
+            </div>
+
+            <div
+              className="phankhu-section"
+              ref={(el) => {
+                sectionRefs.current[4] = el;
+              }}
+            >
+              <h2>Loại hình của phân khu A</h2>
+              <PhanKhuA cards={duLieuPhanKhuA} />
+            </div>
+
+            <div
+              className="phankhu-section"
+              ref={(el) => {
+                sectionRefs.current[5] = el;
+              }}
+            >
+              <h2>Đánh giá tiêu biểu</h2>
+              <Reviews />
+            </div>
+
+            <div
+              className="phankhu-section"
+              ref={(el) => {
+                sectionRefs.current[6] = el;
+              }}
+            >
+              <h2>Vị Trí Phân Khu A</h2>
+              <ViTriPhanKhu />
+            </div>
+
+            <div
+              className="phankhu-section"
+              ref={(el) => {
+                sectionRefs.current[7] = el;
+              }}
+            >
+              <h2>Tiện ích cảnh quan</h2>
+              <TienIchCanhQuanPhanKhu />
+            </div>
+
+            <div
+              className="phankhu-section"
+              ref={(el) => {
+                sectionRefs.current[8] = el;
+              }}
+            >
+              <h2>Phân khu A - Không gian sống “biệt thự” đẳng cấp</h2>
+              <p>
+                Sở hữu lợi thế kế cận Paradise Bay với các siêu tiện ích tầm cỡ,
+                tiếp giáp khu giáo dục liên cấp. Bên trong nội khu là cảnh quan
+                nghệ thuật lấy cảm hứng từ châu Âu: quảng trường Europe Square,
+                vườn tượng nghệ thuật cổ điển, công viên BBQ.
+              </p>
+              <h4>Danh Sách Tiện ích</h4>
+              <DanhSachTienIch />
+            </div>
           </div>
 
           <div
-            className="section"
+            className="phankhu-right-section"
             ref={(el) => {
-              sectionRefs.current[3] = el;
+              sectionRefs.current[9] = el;
             }}
           >
-            <DiemNoiBatPhanKhu />
-          </div>
-
-          <div
-            className="section"
-            ref={(el) => {
-              sectionRefs.current[4] = el;
-            }}
-          >
-            <h2>Loại hình của phân khu A</h2>
-            <PhanKhuA cards={duLieuPhanKhuA} />
-          </div>
-
-          <div
-            className="section"
-            ref={(el) => {
-              sectionRefs.current[5] = el;
-            }}
-          >
-            <h2>Đánh giá tiêu biểu</h2>
-            <Reviews />
-          </div>
-
-          <div
-            className="section"
-            ref={(el) => {
-              sectionRefs.current[6] = el;
-            }}
-          >
-            <h2>Vị Trí Phân Khu A</h2>
-            <ViTriPhanKhu />
-          </div>
-
-          <div
-            className="section"
-            ref={(el) => {
-              sectionRefs.current[7] = el;
-            }}
-          >
-            <h2>Tiện ích cảnh quan</h2>
-            <TienIchCanhQuanPhanKhu />
-          </div>
-
-          <div
-            className="section"
-            ref={(el) => {
-              sectionRefs.current[8] = el;
-            }}
-          >
-            <h2 style={{fontSize:"31px"}}>Phân khu A - Không gian sống “biệt thự” đẳng cấp</h2>
-            <p>
-              Sở hữu lợi thế kế cận Paradise Bay với các siêu tiện ích tầm cỡ,
-              tiếp giáp khu giáo dục liên cấp. Bên trong nội khu là cảnh quan
-              nghệ thuật lấy cảm hứng từ châu Âu: quảng trường Europe Square,
-              vườn tượng nghệ thuật cổ điển, công viên BBQ.
-            </p>
-            <h2 style={{fontSize:"20px", margin :"20px 0px 0px 0px "}}>Danh Sách Tiện ích </h2>
-            <DanhSachTienIch />
+            <TuVanForm />
           </div>
         </div>
 
-        <div
-          className="right-section"
-          ref={(el) => {
-            sectionRefs.current[9] = el;
-          }}
-        >
-          <TuVanFormPhanKhu />
+        <div className="phankhu-info-form">
+          <div
+            className="phankhu-section phankhu-title-with-legend"
+            ref={(el) => {
+              sectionRefs.current[10] = el;
+            }}
+          >
+            <h2>Tổng mặt bằng biệt thự cao cấp Cocoland</h2>
+            <div className="phankhu-legend">
+              <div className="phankhu-legend-item">
+                <span className="phankhu-color-box phankhu-dang-ban"></span> Đang bán
+              </div>
+              <div className="phankhu-legend-item">
+                <span className="phankhu-color-box phankhu-da-ban"></span> Đã bán
+              </div>
+              <div className="phankhu-legend-item">
+                <span className="phankhu-color-box phankhu-chua-mo-ban"></span> Chưa mở bán
+              </div>
+              <div className="phankhu-legend-item">
+                <span className="phankhu-color-box phankhu-giu-cho"></span> Giữ chỗ
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="phankhu-section-3d"
+            ref={(el) => {
+              sectionRefs.current[11] = el;
+            }}
+          >
+            <MatBang3DPhanKhu />
+          </div>
+
+          <div
+            className="phankhu-section"
+            ref={(el) => {
+              sectionRefs.current[12] = el;
+            }}
+          >
+            <h1 className="phankhu-price-table-title">Giá Quỹ Căn của Phân Khu A</h1>
+            <PriceTable />
+          </div>
+
+          <div
+            className="phankhu-section"
+            ref={(el) => {
+              sectionRefs.current[13] = el;
+            }}
+          >
+            <TinTucPhanKhu />
+          </div>
         </div>
-      </div>
-
-      <div
-        className="section title-with-legend"
-        ref={(el) => {
-          sectionRefs.current[10] = el;
-        }}
-      >
-        <h2>Tổng mặt bằng biệt thự cao cấp Cocoland</h2>
-        <div className="legend">
-          <div className="legend-item">
-            <span className="color-box dang-ban"></span> Đang bán
-          </div>
-          <div className="legend-item">
-            <span className="color-box da-ban"></span> Đã bán
-          </div>
-          <div className="legend-item">
-            <span className="color-box chua-mo-ban"></span> Chưa mở bán
-          </div>
-          <div className="legend-item">
-            <span className="color-box giu-cho"></span> Giữ chỗ
-          </div>
-        </div>
-      </div>
-
-      <div
-        className="section-3d"
-        ref={(el) => {
-          sectionRefs.current[11] = el;
-        }}
-      >
-        <MatBang3DPhanKhu />
-      </div>
-
-      <div
-        className="section"
-        ref={(el) => {
-          sectionRefs.current[12] = el;
-        }}
-      >
-        <h1 className="price-table-title">Giá Quỹ Căn của Phân Khu A</h1>
-        {/* .price-table-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #374151;
-  margin: 0 0 20px 0;
-  margin-left: 250px;
-} */}
-        <PriceTable />
-      </div>
-
-      <div
-        className="section"
-        ref={(el) => {
-          sectionRefs.current[13] = el;
-        }}
-      >
-        <TinTucPhanKhu />
       </div>
     </>
   );
