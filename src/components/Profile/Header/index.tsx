@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css'
+
 interface CanItem {
   id: number;
   management: string;
@@ -75,6 +76,22 @@ const Header: React.FC<HeaderProps> = ({
               {category}
             </span>
           ))}
+        </div>
+
+        {/* Thanh tìm kiếm + thời gian */}
+        <div className="profile-header-filters">
+          <div className="profile-header-search-wrapper">
+          <i className="fas fa-search"></i>
+            <input
+              type="text"
+              placeholder="Tìm kiếm... 🔎"
+              className="profile-header-search"
+            />
+          </div>
+          <input
+            type="date"
+            className="profile-header-date"
+          />
         </div>
       </div>
     </div>

@@ -88,7 +88,7 @@ const Table: React.FC<TableProps> = ({ data, setSelectedItem, selectedCategory, 
         <div
           key={item.id}
           className="profile-table__item"
-          ref={(el) => { itemRefs.current[index] = el; }} // sửa callback ref
+          ref={(el) => { itemRefs.current[index] = el; }}
           onClick={() => setSelectedItem(item)}
         >
           <div className="profile-table__header">
@@ -117,19 +117,10 @@ const Table: React.FC<TableProps> = ({ data, setSelectedItem, selectedCategory, 
               className="profile-table__button"
               onClick={(e) => {
                 e.stopPropagation();
-                onReviewClick(item);
+                onViewDetails(item); // giữ nguyên logic cũ
               }}
             >
               Đánh giá / Khiếu nại
-            </button>
-            <button
-              className="profile-table__button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onViewDetails(item);
-              }}
-            >
-              Xem chi tiết
             </button>
           </div>
         </div>
